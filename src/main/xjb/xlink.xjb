@@ -1,0 +1,5 @@
+<jxb:bindings schemaLocation="http://www.w3.org/1999/xlink" node="/xsd:schema">
+        <jxb:schemaBindings>
+            <jxb:package name="com.bsoft.symbol.sld.xlink"/>
+        </jxb:schemaBindings>
+ </jxb:bindings>

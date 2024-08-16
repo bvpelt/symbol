@@ -1,0 +1,5 @@
+<jxb:bindings schemaLocation="http://schemas.opengis.net/wfs/1.1.0/wfs.xsd" node="/xsd:schema">
+        <jxb:schemaBindings>
+            <jxb:package name="com.bsoft.symbol.sld.wfs"/>
+        </jxb:schemaBindings>
+ </jxb:bindings>

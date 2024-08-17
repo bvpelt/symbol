@@ -7,6 +7,7 @@ Bron https://github.com/Geonovum/TPOD/blob/master/Presentatiemodel/Symbolenbibli
 
 ## References
 - [jaxb tutorial](https://www.baeldung.com/jaxb)
+- [example binding.xjb](https://github.com/orbisgis/ogc-custom-jaxb/blob/master/ogc-custom-model/src/main/resources/binding.xjb)
 
 
 ## Maven package

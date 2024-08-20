@@ -5,8 +5,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Se_Description {
-    private String se_Title;
+public class Ogc_Filter {
+    private Ogc_PropertyIsEqualTo ogc_PropertyIsEqualTo;
 }
-
-

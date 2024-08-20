@@ -5,8 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Sld_NamedLayer {
-    private Se_Description se_Description;
-    private Sld_UserStyle sld_UserStyle;
+public class Se_LineSymbolyzer {
+    private Se_Stroke se_Stroke;
     private String se_Name;
 }

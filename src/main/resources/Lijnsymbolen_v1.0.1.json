@@ -1,12 +1,16 @@
 {"sld_StyledLayerDescriptor": {
     "xmlns_se": "http://www.opengis.net/se",
     "sld_NamedLayer": {
-        "se_Description": {"se_Title": "Lijnsymbolen"},
+        "se_Description": {
+            "se_Title": "Lijnsymbolen"
+        },
         "sld_UserStyle": {
             "se_Description": {"se_Title": "Lijnsymbolen"},
             "se_FeatureTypeStyle": [
                 {
-                    "se_Description": {"se_Title": "Dikke lijn"},
+                    "se_Description": {
+                        "se_Title": "Dikke lijn"
+                    },
                     "se_Rule": [
                         {
                             "ogc_Filter": {"ogc_PropertyIsEqualTo": {
@@ -14,7 +18,8 @@
                                 "ogc_Literal": "lt000"
                             }},
                             "se_LineSymbolizer": {
-                                "se_Stroke": {"se_SvgParameter": [
+                                "se_Stroke": {
+                                    "se_SvgParameter": [
                                     {
                                         "name": "stroke",
                                         "content": "#000000"
@@ -31,7 +36,8 @@
                                         "name": "stroke-linecap",
                                         "content": "butt"
                                     }
-                                ]},
+                                ]
+                                },
                                 "se_Name": "lt000"
                             },
                             "se_Name": "lt000"

@@ -5,8 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Se_Description {
-    private String se_Title;
+public class Se_SvgParameter {
+    private String name;
+    private String content;
 }
-
-

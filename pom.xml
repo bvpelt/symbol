@@ -33,6 +33,8 @@
 
     <properties>
         <java.version>18</java.version>
+        <flyway-core.version>10.17.1</flyway-core.version>
+        <org.postgresql.version>42.7.3</org.postgresql.version>
     </properties>
 
     <dependencies>
@@ -80,6 +82,27 @@
         </dependency>
 
         <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>${flyway-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-database-postgresql</artifactId>
+            <version>${flyway-core.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
@@ -108,38 +131,20 @@
                     </excludes>
                 </configuration>
             </plugin>
-
-            <!--
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxb2-maven-plugin</artifactId>
-                <version>3.2.0</version>
-                <executions>
-                    <execution>
-                        <id>xjc</id>
-                        <goals>
-                            <goal>xjc</goal>
-                        </goals>
-                        <configuration>
-                            <target>3.0</target>
-                            <xjbSources>
-                                ##
-                                <xjbSource>src/main/xjb/sld.xjb</xjbSource>
-                                <xjbSource>src/main/xjb/xlink.xml</xjbSource>
-                                ##
-                                <xjbSource>src/main/xjb/xlink.xml</xjbSource>
-                            </xjbSources>
-                            <sources>
-                                <source>src/main/resources/sld-schema/gml/smil/smil20.xsd</source>
-                            </sources>
-                            <verbose>true</verbose>
-                            <packageName>com.bsoft.symbol.sld</packageName>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>${flyway-core.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.postgresql</groupId>
+                        <artifactId>postgresql</artifactId>
 
-                        </configuration>
-                    </execution>
-                </executions>
+                        <version>${org.postgresql.version}</version>
+
+                    </dependency>
+                </dependencies>
             </plugin>
-            -->
         </plugins>
     </build>
 

@@ -1,5 +1,6 @@
 package com.bsoft.symbol.services;
 
+import com.bsoft.symbol.area.AreaSld;
 import com.bsoft.symbol.line.LineSld;
 import com.bsoft.symbol.point.PointSld;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,10 +23,6 @@ public class JsonToJava {
     public LineSld readLinesFromJson(String filename) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
-        // ClassPathResource resource = new ClassPathResource(filename);
-        // String inputFile = resource.getFilename();
-
-        //File jsonFile = new File("src/main/resources/Lijnsymbolen_v1.0.1.json"); // Replace with your file path
         File jsonFile = new File(filename); // Replace with your file path
         LineSld lineSld = objectMapper.readValue(jsonFile, LineSld.class);
 
@@ -35,13 +32,19 @@ public class JsonToJava {
     public PointSld readPointsFromJson(String filename) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
-        // ClassPathResource resource = new ClassPathResource(filename);
-        // String inputFile = resource.getFilename();
-
-        //File jsonFile = new File("src/main/resources/Lijnsymbolen_v1.0.1.json"); // Replace with your file path
         File jsonFile = new File(filename); // Replace with your file path
         PointSld pointSld = objectMapper.readValue(jsonFile, PointSld.class);
 
         return pointSld;
+    }
+
+    public AreaSld readAreasFromJson(String filename) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+
+
+        File jsonFile = new File(filename); // Replace with your file path
+        AreaSld areaSld = objectMapper.readValue(jsonFile, AreaSld.class);
+
+        return areaSld;
     }
 }

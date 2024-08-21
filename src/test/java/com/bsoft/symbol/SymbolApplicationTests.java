@@ -1,6 +1,8 @@
 package com.bsoft.symbol;
 
 
+import com.bsoft.symbol.area.AreaSld;
+import com.bsoft.symbol.area.Se_PolygonSymbolizer;
 import com.bsoft.symbol.line.Se_FeatureTypeStyle;
 import com.bsoft.symbol.line.Se_Rule;
 import com.bsoft.symbol.line.Se_Stroke;
@@ -12,6 +14,7 @@ import com.bsoft.symbol.line.*;
 import com.bsoft.symbol.model.Graphic;
 import com.bsoft.symbol.model.Line;
 import com.bsoft.symbol.point.*;
+import com.bsoft.symbol.repository.AreaRepository;
 import com.bsoft.symbol.repository.GrapphicRepository;
 import com.bsoft.symbol.repository.LineRepository;
 import com.bsoft.symbol.services.JsonToJava;
@@ -39,6 +42,9 @@ class SymbolApplicationTests {
 
     @Autowired
     GrapphicRepository graphicRepository;
+
+    @Autowired
+    AreaRepository areaRepository;
 
     @Test
     void contextLoads() {
@@ -106,7 +112,6 @@ class SymbolApplicationTests {
             log.error(e.getMessage());
         }
     }
-
 
     @Test
     void readPointSLD() {
@@ -177,7 +182,6 @@ class SymbolApplicationTests {
         }
     }
 
-
     @Test
     void readLineSLD() {
         JsonToJava json = new JsonToJava(objectMapper);
@@ -232,6 +236,43 @@ class SymbolApplicationTests {
             log.info("Converted {} line symbols", lines.size());
 
             log.info("Line symbols:\n{}", lines);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
+    }
+
+
+    @Test
+    void readAreaSld() {
+        JsonToJava json = new JsonToJava(objectMapper);
+
+        try {
+            areaRepository.deleteAll();
+            AreaSld areaSld = json.readAreasFromJson("src/main/resources/Vlaksymbolen_v1.1.0.json");
+
+            com.bsoft.symbol.area.Sld_StyledLayerDescriptor styledLayerDescriptor = areaSld.getSld_StyledLayerDescriptor();
+            com.bsoft.symbol.area.Sld_NamedLayer sld_NamedLayer = styledLayerDescriptor.getSld_NamedLayer();
+            com.bsoft.symbol.area.Sld_UserStyle sld_UserStyle = sld_NamedLayer.getSld_UserStyle();
+            ArrayList<com.bsoft.symbol.area.Se_FeatureTypeStyle> se_FeatureTypeStyle = sld_UserStyle.getSe_FeatureTypeStyle();
+            se_FeatureTypeStyle.forEach(featureType -> {
+                ArrayList<com.bsoft.symbol.area.Se_Rule> se_Rule = featureType.getSe_Rule();
+                se_Rule.forEach(rule -> {
+                    Se_PolygonSymbolizer se_PolygonSymbolizer = rule.getSe_PolygonSymbolizer();
+                    com.bsoft.symbol.area.Se_Fill se_Fill = se_PolygonSymbolizer.getSe_Fill();
+                    ArrayList<com.bsoft.symbol.area.Se_SvgParameter> se_SvgParameters_Fill = se_Fill.getSe_SvgParameter();
+                    se_SvgParameters_Fill.forEach(fill_parameter -> {
+                        String name = fill_parameter.getName();
+                    });
+
+                    com.bsoft.symbol.area.Se_Stroke se_Stroke = se_PolygonSymbolizer.getSe_Stroke();
+                    ArrayList<com.bsoft.symbol.area.Se_SvgParameter> se_SvgParameter_Stroke = se_Stroke.getSe_SvgParameter();
+                    se_SvgParameter_Stroke.forEach(stroke_parameter -> {
+                        String name = stroke_parameter.getName();
+                    });
+                });
+
+            });
+
         } catch (Exception e) {
             log.error(e.getMessage());
         }

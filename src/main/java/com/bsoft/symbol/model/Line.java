@@ -10,7 +10,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @Entity
-public class Symbol implements Serializable {
+public class Line implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -28,8 +28,8 @@ public class Symbol implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Symbol symbol = (Symbol) o;
-        return opacity == symbol.opacity && width == symbol.width && Objects.equals(name, symbol.name) && Objects.equals(stroke, symbol.stroke) && Objects.equals(linecap, symbol.linecap) && Objects.equals(dasharray, symbol.dasharray);
+        Line line = (Line) o;
+        return opacity == line.opacity && width == line.width && Objects.equals(name, line.name) && Objects.equals(stroke, line.stroke) && Objects.equals(linecap, line.linecap) && Objects.equals(dasharray, line.dasharray);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class Symbol implements Serializable {
 
     @Override
     public String toString() {
-        return "Symbol{" +
+        return "Line{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", stroke='" + stroke + '\'' +

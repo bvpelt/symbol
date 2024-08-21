@@ -1,4 +1,4 @@
-package com.bsoft.symbol.lijn;
+package com.bsoft.symbol.line;
 
 import lombok.Getter;
 import lombok.Setter;

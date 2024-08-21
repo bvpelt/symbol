@@ -1,4 +1,4 @@
-package com.bsoft.symbol.lijn;
+package com.bsoft.symbol.line;
 public class LijnSld {
     Sld_StyledLayerDescriptor Sld_StyledLayerDescriptorObject;
 

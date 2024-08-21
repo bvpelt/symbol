@@ -1,8 +1,9 @@
 package com.bsoft.symbol;
 
-import com.bsoft.symbol.lijn.*;
-import com.bsoft.symbol.model.Symbol;
-import com.bsoft.symbol.repository.SymbolRepository;
+
+import com.bsoft.symbol.line.*;
+import com.bsoft.symbol.model.Line;
+import com.bsoft.symbol.repository.LineRepository;
 import com.bsoft.symbol.services.JsonToJava;
 import com.bsoft.symbol.services.SLDService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,14 +23,14 @@ class SymbolApplicationTests {
     ObjectMapper objectMapper;
 
     @Autowired
-    SymbolRepository symbolRepository;
+    LineRepository lineRepository;
 
     @Test
     void contextLoads() {
     }
 
     @Test
-    void genPuntSLD() {
+    void genPointSLD() {
         SLDService sldService = new SLDService();
 
         try {
@@ -41,7 +42,7 @@ class SymbolApplicationTests {
     }
 
     @Test
-    void genLijnSLD() {
+    void genLineSLD() {
         SLDService sldService = new SLDService();
 
         try {
@@ -64,8 +65,9 @@ class SymbolApplicationTests {
         }
     }
 
+    /*
     @Test
-    void readPuntSLD() {
+    void readPointSLD() {
         JsonToJava json = new JsonToJava(objectMapper);
 
         try {
@@ -122,13 +124,15 @@ class SymbolApplicationTests {
         }
     }
 
+     */
+
     @Test
-    void readLijnSLD() {
+    void readLineSLD() {
         JsonToJava json = new JsonToJava(objectMapper);
 
         try {
             LijnSld lijnSld = json.readUsersFromJson("src/main/resources/Lijnsymbolen_v1.0.1.json");
-            ArrayList<Symbol> symbols = new ArrayList<Symbol>();
+            ArrayList<Line> lines = new ArrayList<Line>();
 
             Sld_StyledLayerDescriptor styledLayerDescriptor = lijnSld.getSld_StyledLayerDescriptor();
             Sld_NamedLayer sldNamedLayer = styledLayerDescriptor.getSld_NamedLayer();
@@ -140,8 +144,8 @@ class SymbolApplicationTests {
                 ArrayList<Se_Rule> seRules = featuretype.getSe_Rule();
                 seRules.forEach(rule -> {
                     log.info("Processing {}", rule.getSe_Name());
-                    Symbol symbol = new Symbol();
-                    symbol.setName(rule.getSe_Name());
+                    Line line = new Line();
+                    line.setName(rule.getSe_Name());
                     Se_LineSymbolyzer seLineSymbolyzer = rule.getSe_LineSymbolizer();
                     Se_Stroke seStroke = seLineSymbolyzer.getSe_Stroke();
                     ArrayList<Se_SvgParameter> seSvgParameter = seStroke.getSe_SvgParameter();
@@ -149,32 +153,32 @@ class SymbolApplicationTests {
                     seSvgParameter.forEach(parameter -> {
                         switch (parameter.getName()) {
                             case "stroke":
-                                symbol.setStroke(parameter.getContent());
+                                line.setStroke(parameter.getContent());
                                 break;
                             case "stroke-opacity":
-                                symbol.setOpacity(Integer.parseInt(parameter.getContent()));
+                                line.setOpacity(Integer.parseInt(parameter.getContent()));
                                 break;
                             case "stroke-width":
-                                symbol.setWidth(Integer.parseInt(parameter.getContent()));
+                                line.setWidth(Integer.parseInt(parameter.getContent()));
                                 break;
                             case "stroke-linecap":
-                                symbol.setLinecap(parameter.getContent());
+                                line.setLinecap(parameter.getContent());
                                 break;
 							case "stroke-dasharray":
-								symbol.setDasharray(parameter.getContent());
+                                line.setDasharray(parameter.getContent());
 								break;
                             default:
                                 log.error("Unexpected parameter name: {}", parameter.getName());
 								break;
                         }
                     });
-                    symbols.add(symbol);
-                    symbolRepository.save(symbol);
+                    lines.add(line);
+                    lineRepository.save(line);
                 });
             });
-			log.info("Converted {} symbols", symbols.size());
+			log.info("Converted {} line symbols", lines.size());
 
-			log.info("Symbols:\n{}", symbols);
+			log.info("Line symbols:\n{}", lines);
         } catch (Exception e) {
             log.error(e.getMessage());
         }

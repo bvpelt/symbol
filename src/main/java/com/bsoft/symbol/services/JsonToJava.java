@@ -1,9 +1,8 @@
 package com.bsoft.symbol.services;
 
-import com.bsoft.symbol.lijn.LijnSld;
+import com.bsoft.symbol.line.LijnSld;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
 import java.io.File;

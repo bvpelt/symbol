@@ -5,8 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Se_Rule {
-    private Ogc_Filter ogc_Filter;
-    private Se_PointSymbolizer se_PointSymbolizer;
+public class Se_PointSymbolizer {
+    private Se_Graphic se_Graphic;
     private String se_Name;
 }

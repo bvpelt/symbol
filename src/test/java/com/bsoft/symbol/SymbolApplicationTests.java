@@ -1,8 +1,18 @@
 package com.bsoft.symbol;
 
 
+import com.bsoft.symbol.line.Se_FeatureTypeStyle;
+import com.bsoft.symbol.line.Se_Rule;
+import com.bsoft.symbol.line.Se_Stroke;
+import com.bsoft.symbol.line.Se_SvgParameter;
+import com.bsoft.symbol.line.Sld_NamedLayer;
+import com.bsoft.symbol.line.Sld_StyledLayerDescriptor;
+import com.bsoft.symbol.line.Sld_UserStyle;
 import com.bsoft.symbol.line.*;
+import com.bsoft.symbol.model.Graphic;
 import com.bsoft.symbol.model.Line;
+import com.bsoft.symbol.point.*;
+import com.bsoft.symbol.repository.GrapphicRepository;
 import com.bsoft.symbol.repository.LineRepository;
 import com.bsoft.symbol.services.JsonToJava;
 import com.bsoft.symbol.services.SLDService;
@@ -24,6 +34,9 @@ class SymbolApplicationTests {
 
     @Autowired
     LineRepository lineRepository;
+
+    @Autowired
+    GrapphicRepository graphicRepository;
 
     @Test
     void contextLoads() {
@@ -65,73 +78,84 @@ class SymbolApplicationTests {
         }
     }
 
-    /*
+
     @Test
     void readPointSLD() {
         JsonToJava json = new JsonToJava(objectMapper);
 
         try {
-            LijnSld lijnSld = json.readUsersFromJson("src/main/resources/Puntsymbolen_v1.0.1.json");
-            ArrayList<Symbol> symbols = new ArrayList<Symbol>();
+            graphicRepository.deleteAll();
+            PointSld pointSld = json.readPointsFromJson("src/main/resources/Puntsymbolen_v1.0.1.json");
 
-            Sld_StyledLayerDescriptor styledLayerDescriptor = lijnSld.getSld_StyledLayerDescriptor();
-            Sld_NamedLayer sldNamedLayer = styledLayerDescriptor.getSld_NamedLayer();
-            Sld_UserStyle sldUserStyle = sldNamedLayer.getSld_UserStyle();
-            log.info("Processing {}", sldUserStyle.getSe_Name());
-            ArrayList<Se_FeatureTypeStyle> seFeatureTypeStyles = sldUserStyle.getSe_FeatureTypeStyle();
-            seFeatureTypeStyles.forEach(featuretype -> {
-                log.info("Processing {}", featuretype.getSe_Description().getSe_Title());
-                ArrayList<Se_Rule> seRules = featuretype.getSe_Rule();
-                seRules.forEach(rule -> {
-                    log.info("Processing {}", rule.getSe_Name());
-                    Symbol symbol = new Symbol();
-                    symbol.setName(rule.getSe_Name());
-                    Se_LineSymbolyzer seLineSymbolyzer = rule.getSe_LineSymbolizer();
-                    Se_Stroke seStroke = seLineSymbolyzer.getSe_Stroke();
-                    ArrayList<Se_SvgParameter> seSvgParameter = seStroke.getSe_SvgParameter();
+            com.bsoft.symbol.point.Sld_StyledLayerDescriptor sld_StyledLayerDescriptor = pointSld.getSld_StyledLayerDescriptor();
+            com.bsoft.symbol.point.Sld_NamedLayer sld_NamedLayer = sld_StyledLayerDescriptor.getSld_NamedLayer();
+            com.bsoft.symbol.point.Sld_UserStyle sld_UserStyle = sld_NamedLayer.getSld_UserStyle();
+            ArrayList<com.bsoft.symbol.point.Se_FeatureTypeStyle> se_featureTypeStyle = sld_UserStyle.getSe_FeatureTypeStyle();
 
-                    seSvgParameter.forEach(parameter -> {
+            se_featureTypeStyle.forEach(featureType -> {
+                ArrayList<com.bsoft.symbol.point.Se_Rule> se_Rule = featureType.getSe_Rule();
+                se_Rule.forEach(rule -> {
+                    Graphic graphic = new Graphic();
+                    String name = rule.getSe_Name();
+                    graphic.setName(name);
+                    log.info("Rule name: {}", name);
+                    Se_PointSymbolizer se_PointSymbolizer = rule.getSe_PointSymbolizer();
+                    Se_Graphic se_Graphic = se_PointSymbolizer.getSe_Graphic();
+                    int size = se_Graphic.getSe_Size();
+                    int rotation = se_Graphic.getSe_Rotation();
+                    graphic.setSize(size);
+                    graphic.setRotation(rotation);
+                    Se_Mark se_Mark = se_Graphic.getSe_Mark();
+                    Se_Fill se_Fill = se_Mark.getSe_Fill();
+                    ArrayList<com.bsoft.symbol.point.Se_SvgParameter> se_svgParameter_Fill = se_Fill.getSe_SvgParameter();
+                    se_svgParameter_Fill.forEach(parameter -> {
                         switch (parameter.getName()) {
-                            case "stroke":
-                                symbol.setStroke(parameter.getContent());
+                            case "fill":
+                                graphic.setFill(parameter.getContent());
                                 break;
-                            case "stroke-opacity":
-                                symbol.setOpacity(Integer.parseInt(parameter.getContent()));
-                                break;
-                            case "stroke-width":
-                                symbol.setWidth(Integer.parseInt(parameter.getContent()));
-                                break;
-                            case "stroke-linecap":
-                                symbol.setLinecap(parameter.getContent());
-                                break;
-                            case "stroke-dasharray":
-                                symbol.setDasharray(parameter.getContent());
+                            case "fill-opacity":
+                                graphic.setFillopacity(parameter.getContent());
                                 break;
                             default:
-                                log.error("Unexpected parameter name: {}", parameter.getName());
+                                log.error("Unknown fill parameter: {}", parameter.getName());
                                 break;
                         }
                     });
-                    symbols.add(symbol);
-                    //symbolRepository.save(symbol);
+                    com.bsoft.symbol.point.Se_Stroke se_Stroke = se_Mark.getSe_Stroke();
+                    ArrayList<com.bsoft.symbol.point.Se_SvgParameter> se_svgParameter_Stroke = se_Stroke.getSe_SvgParameter();
+                    se_svgParameter_Stroke.forEach(parameter -> {
+                        switch (parameter.getName()) {
+                            case "stroke":
+                                graphic.setStroke(parameter.getContent());
+                                break;
+                            case "stroke-opacity":
+                                graphic.setStrokeopacity(Integer.parseInt(parameter.getContent()));
+                                break;
+                            case "stroke-width":
+                                graphic.setStrokewidth(Integer.parseInt(parameter.getContent()));
+                                break;
+                            default:
+                                log.error("Unknown stroke parameter: {}", parameter.getName());
+                                break;
+                        }
+                    });
+                    graphicRepository.save(graphic);
                 });
             });
-            log.info("Converted {} symbols", symbols.size());
 
-            log.info("Symbols:\n{}", symbols);
         } catch (Exception e) {
             log.error(e.getMessage());
         }
     }
 
-     */
 
     @Test
     void readLineSLD() {
         JsonToJava json = new JsonToJava(objectMapper);
 
         try {
-            LineSld lineSld = json.readUsersFromJson("src/main/resources/Lijnsymbolen_v1.0.1.json");
+            lineRepository.deleteAll();
+            LineSld lineSld = json.readLinesFromJson("src/main/resources/Lijnsymbolen_v1.0.1.json");
             ArrayList<Line> lines = new ArrayList<Line>();
 
             Sld_StyledLayerDescriptor styledLayerDescriptor = lineSld.getSld_StyledLayerDescriptor();
@@ -173,7 +197,7 @@ class SymbolApplicationTests {
                         }
                     });
                     lines.add(line);
-               //     lineRepository.save(line);
+                    lineRepository.save(line);
                 });
             });
             log.info("Converted {} line symbols", lines.size());

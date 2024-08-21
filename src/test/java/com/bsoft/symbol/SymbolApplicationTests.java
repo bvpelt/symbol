@@ -131,10 +131,10 @@ class SymbolApplicationTests {
         JsonToJava json = new JsonToJava(objectMapper);
 
         try {
-            LijnSld lijnSld = json.readUsersFromJson("src/main/resources/Lijnsymbolen_v1.0.1.json");
+            LineSld lineSld = json.readUsersFromJson("src/main/resources/Lijnsymbolen_v1.0.1.json");
             ArrayList<Line> lines = new ArrayList<Line>();
 
-            Sld_StyledLayerDescriptor styledLayerDescriptor = lijnSld.getSld_StyledLayerDescriptor();
+            Sld_StyledLayerDescriptor styledLayerDescriptor = lineSld.getSld_StyledLayerDescriptor();
             Sld_NamedLayer sldNamedLayer = styledLayerDescriptor.getSld_NamedLayer();
             Sld_UserStyle sldUserStyle = sldNamedLayer.getSld_UserStyle();
             log.info("Processing {}", sldUserStyle.getSe_Name());
@@ -164,21 +164,21 @@ class SymbolApplicationTests {
                             case "stroke-linecap":
                                 line.setLinecap(parameter.getContent());
                                 break;
-							case "stroke-dasharray":
+                            case "stroke-dasharray":
                                 line.setDasharray(parameter.getContent());
-								break;
+                                break;
                             default:
                                 log.error("Unexpected parameter name: {}", parameter.getName());
-								break;
+                                break;
                         }
                     });
                     lines.add(line);
-                    lineRepository.save(line);
+               //     lineRepository.save(line);
                 });
             });
-			log.info("Converted {} line symbols", lines.size());
+            log.info("Converted {} line symbols", lines.size());
 
-			log.info("Line symbols:\n{}", lines);
+            log.info("Line symbols:\n{}", lines);
         } catch (Exception e) {
             log.error(e.getMessage());
         }

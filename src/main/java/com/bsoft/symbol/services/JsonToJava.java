@@ -1,6 +1,6 @@
 package com.bsoft.symbol.services;
 
-import com.bsoft.symbol.line.LijnSld;
+import com.bsoft.symbol.line.LineSld;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,16 +17,17 @@ public class JsonToJava {
     public JsonToJava(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
     }
-    public LijnSld readUsersFromJson(String filename) throws IOException {
+
+    public LineSld readUsersFromJson(String filename) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
-       // ClassPathResource resource = new ClassPathResource(filename);
-       // String inputFile = resource.getFilename();
+        // ClassPathResource resource = new ClassPathResource(filename);
+        // String inputFile = resource.getFilename();
 
         //File jsonFile = new File("src/main/resources/Lijnsymbolen_v1.0.1.json"); // Replace with your file path
         File jsonFile = new File(filename); // Replace with your file path
-        LijnSld lijnSld = objectMapper.readValue(jsonFile, LijnSld.class);
+        LineSld lineSld = objectMapper.readValue(jsonFile, LineSld.class);
 
-        return lijnSld;
+        return lineSld;
     }
 }

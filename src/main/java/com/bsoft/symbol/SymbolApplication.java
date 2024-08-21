@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SymbolApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SymbolApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SymbolApplication.class, args);
+    }
 
 }

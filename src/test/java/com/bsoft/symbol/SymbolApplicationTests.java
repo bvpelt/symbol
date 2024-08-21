@@ -23,6 +23,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.util.ArrayList;
 
 @Slf4j
@@ -48,7 +50,16 @@ class SymbolApplicationTests {
 
         try {
             JSONObject json = sldService.convertXML("Puntsymbolen_v1.0.1.sld");
-            log.info(json.toString(4));
+            String jsonString = json.toString(4);
+            log.info(jsonString);
+
+            String outputFileName = "/tmp/Puntsymbolen_v1.0.1.json";
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter(outputFileName));
+            writer.write(jsonString);
+            writer.flush(); // Force flushing the buffer
+            writer.close();
+
         } catch (Exception e) {
             log.error(e.getMessage());
         }
@@ -60,7 +71,16 @@ class SymbolApplicationTests {
 
         try {
             JSONObject json = sldService.convertXML("Lijnsymbolen_v1.0.1.sld");
-            log.info(json.toString(4));
+            String jsonString = json.toString(4);
+            log.info(jsonString);
+
+            String outputFileName = "/tmp/Lijnsymbolen_v1.0.1.json";
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter(outputFileName));
+            writer.write(jsonString);
+            writer.flush(); // Force flushing the buffer
+            writer.close();
+
         } catch (Exception e) {
             log.error(e.getMessage());
         }
@@ -71,8 +91,17 @@ class SymbolApplicationTests {
         SLDService sldService = new SLDService();
 
         try {
-            JSONObject json = sldService.convertXML("Vlaksymbolen_v1.0.1.sld");
-            log.info(json.toString(4));
+            JSONObject json = sldService.convertXML("Vlaksymbolen_v1.1.0.sld");
+            String jsonString = json.toString(4);
+            log.info(jsonString);
+
+            String outputFileName = "/tmp/Vlaksymbolen_v1.1.0.json";
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter(outputFileName));
+            writer.write(jsonString);
+            writer.flush(); // Force flushing the buffer
+            writer.close();
+
         } catch (Exception e) {
             log.error(e.getMessage());
         }

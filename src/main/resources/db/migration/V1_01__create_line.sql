@@ -3,6 +3,7 @@
 create table line
 (
     id        bigint not null primary key,
+    type      text,
     name      text,
     stroke    text,
     opacity   int,

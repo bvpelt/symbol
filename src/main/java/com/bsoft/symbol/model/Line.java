@@ -20,6 +20,7 @@ public class Line implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String type;
     private String name;
     private String stroke;
     private int opacity;

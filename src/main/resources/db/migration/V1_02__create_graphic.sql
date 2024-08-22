@@ -3,6 +3,7 @@
 create table graphic
 (
     id            bigint not null primary key,
+    type          text,
     size          int,
     rotation      int,
     fill          text,

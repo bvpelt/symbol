@@ -19,6 +19,7 @@ public class Graphic implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String type;
     private int size;
     private int rotation;
     private String fill;

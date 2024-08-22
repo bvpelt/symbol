@@ -126,12 +126,14 @@ class SymbolApplicationTests {
             com.bsoft.symbol.point.Sld_StyledLayerDescriptor sld_StyledLayerDescriptor = pointSld.getSld_StyledLayerDescriptor();
             com.bsoft.symbol.point.Sld_NamedLayer sld_NamedLayer = sld_StyledLayerDescriptor.getSld_NamedLayer();
             com.bsoft.symbol.point.Sld_UserStyle sld_UserStyle = sld_NamedLayer.getSld_UserStyle();
+            String type = sld_UserStyle.getSe_Name();
             ArrayList<com.bsoft.symbol.point.Se_FeatureTypeStyle> se_featureTypeStyle = sld_UserStyle.getSe_FeatureTypeStyle();
 
             se_featureTypeStyle.forEach(featureType -> {
                 ArrayList<com.bsoft.symbol.point.Se_Rule> se_Rule = featureType.getSe_Rule();
                 se_Rule.forEach(rule -> {
                     Graphic graphic = new Graphic();
+                    graphic.setType(type);
                     String name = rule.getSe_Name();
                     graphic.setName(name);
                     log.info("Rule name: {}", name);
@@ -196,6 +198,7 @@ class SymbolApplicationTests {
             Sld_StyledLayerDescriptor styledLayerDescriptor = lineSld.getSld_StyledLayerDescriptor();
             Sld_NamedLayer sldNamedLayer = styledLayerDescriptor.getSld_NamedLayer();
             Sld_UserStyle sldUserStyle = sldNamedLayer.getSld_UserStyle();
+            String type = sldUserStyle.getSe_Name();
             log.info("Processing {}", sldUserStyle.getSe_Name());
             ArrayList<Se_FeatureTypeStyle> seFeatureTypeStyles = sldUserStyle.getSe_FeatureTypeStyle();
             seFeatureTypeStyles.forEach(featuretype -> {
@@ -204,6 +207,7 @@ class SymbolApplicationTests {
                 seRules.forEach(rule -> {
                     log.info("Processing {}", rule.getSe_Name());
                     Line line = new Line();
+                    line.setType(type);
                     line.setName(rule.getSe_Name());
                     Se_LineSymbolyzer seLineSymbolyzer = rule.getSe_LineSymbolizer();
                     Se_Stroke seStroke = seLineSymbolyzer.getSe_Stroke();

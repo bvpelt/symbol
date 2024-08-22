@@ -59,7 +59,7 @@ class SymbolApplicationTests {
         try {
             JSONObject json = sldService.convertXML("Puntsymbolen_v1.0.1.sld");
             String jsonString = json.toString(4);
-            log.info(jsonString);
+            log.trace(jsonString);
 
             String outputFileName = "/tmp/Puntsymbolen_v1.0.1.json";
 
@@ -80,7 +80,7 @@ class SymbolApplicationTests {
         try {
             JSONObject json = sldService.convertXML("Lijnsymbolen_v1.0.1.sld");
             String jsonString = json.toString(4);
-            log.info(jsonString);
+            log.trace(jsonString);
 
             String outputFileName = "/tmp/Lijnsymbolen_v1.0.1.json";
 
@@ -101,7 +101,7 @@ class SymbolApplicationTests {
         try {
             JSONObject json = sldService.convertXML("Vlaksymbolen_v1.1.0.sld");
             String jsonString = json.toString(4);
-            log.info(jsonString);
+            log.trace(jsonString);
 
             String outputFileName = "/tmp/Vlaksymbolen_v1.1.0.json";
 
@@ -299,7 +299,7 @@ class SymbolApplicationTests {
                         Se_OnlineResource se_OnlineResource = se_ExternalGraphic.getSe_OnlineResource();
                         String xlinkhref = se_OnlineResource.getXlink_href();
 
-                        area.setSymbol(xlinkhref.replace("./symbols/",""));
+                        area.setSymbol(xlinkhref.replace("./symbols/", ""));
                     }
 
                     com.bsoft.symbol.area.Se_Stroke se_Stroke = se_PolygonSymbolizer.getSe_Stroke();
@@ -326,7 +326,7 @@ class SymbolApplicationTests {
                                 break;
                         }
                         areas.add(area);
-                    areaRepository.save(area);
+                        areaRepository.save(area);
                     });
                 });
 

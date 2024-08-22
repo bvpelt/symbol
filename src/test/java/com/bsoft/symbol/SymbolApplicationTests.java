@@ -1,8 +1,7 @@
 package com.bsoft.symbol;
 
 
-import com.bsoft.symbol.area.AreaSld;
-import com.bsoft.symbol.area.Se_PolygonSymbolizer;
+import com.bsoft.symbol.area.*;
 import com.bsoft.symbol.line.Se_FeatureTypeStyle;
 import com.bsoft.symbol.line.Se_Rule;
 import com.bsoft.symbol.line.Se_Stroke;
@@ -11,8 +10,11 @@ import com.bsoft.symbol.line.Sld_NamedLayer;
 import com.bsoft.symbol.line.Sld_StyledLayerDescriptor;
 import com.bsoft.symbol.line.Sld_UserStyle;
 import com.bsoft.symbol.line.*;
+import com.bsoft.symbol.model.Area;
 import com.bsoft.symbol.model.Graphic;
 import com.bsoft.symbol.model.Line;
+import com.bsoft.symbol.point.Se_Fill;
+import com.bsoft.symbol.point.Se_Graphic;
 import com.bsoft.symbol.point.*;
 import com.bsoft.symbol.repository.AreaRepository;
 import com.bsoft.symbol.repository.GrapphicRepository;
@@ -253,21 +255,69 @@ class SymbolApplicationTests {
             com.bsoft.symbol.area.Sld_StyledLayerDescriptor styledLayerDescriptor = areaSld.getSld_StyledLayerDescriptor();
             com.bsoft.symbol.area.Sld_NamedLayer sld_NamedLayer = styledLayerDescriptor.getSld_NamedLayer();
             com.bsoft.symbol.area.Sld_UserStyle sld_UserStyle = sld_NamedLayer.getSld_UserStyle();
+            String type = sld_UserStyle.getSe_Name();
             ArrayList<com.bsoft.symbol.area.Se_FeatureTypeStyle> se_FeatureTypeStyle = sld_UserStyle.getSe_FeatureTypeStyle();
             se_FeatureTypeStyle.forEach(featureType -> {
                 ArrayList<com.bsoft.symbol.area.Se_Rule> se_Rule = featureType.getSe_Rule();
                 se_Rule.forEach(rule -> {
+                    Area area = new Area();
+                    area.setType(type);
                     Se_PolygonSymbolizer se_PolygonSymbolizer = rule.getSe_PolygonSymbolizer();
+                    String name = se_PolygonSymbolizer.getSe_Name();
+                    area.setName(name);
                     com.bsoft.symbol.area.Se_Fill se_Fill = se_PolygonSymbolizer.getSe_Fill();
                     ArrayList<com.bsoft.symbol.area.Se_SvgParameter> se_SvgParameters_Fill = se_Fill.getSe_SvgParameter();
                     se_SvgParameters_Fill.forEach(fill_parameter -> {
-                        String name = fill_parameter.getName();
+                        switch (fill_parameter.getName()) {
+                            case "fill":
+                                area.setFill(fill_parameter.getContent());
+                                break;
+                            case "fill-opacity":
+                                area.setFillopacity(Float.parseFloat(fill_parameter.getContent()));
+                                break;
+                            case "stroke-linejoin":
+                                area.setStrokelinejoinfill(fill_parameter.getContent());
+                                break;
+                            default:
+                                log.error("Unexpected fill parameter: {}", fill_parameter.getName());
+                                break;
+                        }
                     });
+
+                    Se_GraphicFill se_graphicFill = se_Fill.getSe_GraphicFill();
+                    if (se_graphicFill != null) {
+                        com.bsoft.symbol.area.Se_Graphic se_Graphic = se_graphicFill.getSe_Graphic();
+                        Se_ExternalGraphic se_ExternalGraphic = se_Graphic.getSe_ExternalGraphic();
+                        Se_OnlineResource se_OnlineResource = se_ExternalGraphic.getSe_OnlineResource();
+                        String xlinkhref = se_OnlineResource.getXlink_href();
+
+                        area.setSymbol(xlinkhref.replace("./symbols/",""));
+                    }
 
                     com.bsoft.symbol.area.Se_Stroke se_Stroke = se_PolygonSymbolizer.getSe_Stroke();
                     ArrayList<com.bsoft.symbol.area.Se_SvgParameter> se_SvgParameter_Stroke = se_Stroke.getSe_SvgParameter();
                     se_SvgParameter_Stroke.forEach(stroke_parameter -> {
-                        String name = stroke_parameter.getName();
+                        switch (stroke_parameter.getName()) {
+                            case "stroke":
+                                area.setStroke(stroke_parameter.getContent());
+                                break;
+                            case "stroke-opacity":
+                                area.setStrokeopacity(Integer.parseInt(stroke_parameter.getContent()));
+                                break;
+                            case "stroke-width":
+                                area.setStrokewidth(Integer.parseInt(stroke_parameter.getContent()));
+                                break;
+                            case "stroke-linejoin":
+                                area.setStrokelinejoinstroke(stroke_parameter.getContent());
+                                break;
+                            case "stroke-dasharray":
+                                area.setStrokedasharray(stroke_parameter.getContent());
+                                break;
+                            default:
+                                log.error("Unexpected stroke parameter: {}", stroke_parameter.getName());
+                                break;
+                        }
+                    areaRepository.save(area);
                     });
                 });
 

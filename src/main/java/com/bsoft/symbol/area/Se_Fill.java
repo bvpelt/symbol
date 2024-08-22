@@ -8,5 +8,7 @@ import java.util.ArrayList;
 @Getter
 @Setter
 public class Se_Fill {
-    ArrayList<Se_SvgParameter> se_SvgParameter = new ArrayList<Se_SvgParameter>();
+    private ArrayList<Se_SvgParameter> se_SvgParameter = new ArrayList<Se_SvgParameter>();
+    private Se_GraphicFill se_GraphicFill;
+
 }

@@ -106,6 +106,15 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.vaadin.external.google</groupId>
+                    <artifactId>android-json</artifactId>
+                    <!--
+                    com.vaadin.external.google:android-json:jar:0.0.20131108.vaadin1
+                    -->
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 

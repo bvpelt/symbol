@@ -11,13 +11,11 @@ Revision: 2001/07/31
 
 Schema for the RepeatTiming module namespace,
 -->
-<schema xmlns="http://www.w3.org/2001/XMLSchema"
-        xmlns:smil20="http://www.w3.org/2001/SMIL20/"
-        xmlns:smil20lang="http://www.w3.org/2001/SMIL20/Language"        
-        xmlns:RepeatTiming="http://www.w3.org/2001/SMIL20/RepeatTiming"
+<schema xmlns:smil20="http://www.w3.org/2001/SMIL20/"
+        xmlns="http://www.w3.org/2001/XMLSchema"
         targetNamespace="http://www.w3.org/2001/SMIL20/RepeatTiming"
         elementFormDefault="qualified">
-    
+
     <!-- these URL's will have to be expanded to their full and proper locations -->
 
     <!-- import the definitions in the smil20 namespace -->
@@ -25,10 +23,10 @@ Schema for the RepeatTiming module namespace,
 
     <!-- declare global elements in this module -->
     <!-- (none) -->
-    
+
     <!-- declare global attributes in this module -->
     <attribute name="repeatDur" type="string"/>
     <attribute name="repeatCount" type="smil20:nonNegativeDecimalType"/>
     <attribute name="repeat" type="nonNegativeInteger"/>
-    
+
 </schema>

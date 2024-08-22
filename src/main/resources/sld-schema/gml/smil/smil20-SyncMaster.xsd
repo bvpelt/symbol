@@ -12,12 +12,9 @@ Revision: 2001/07/31
 Schema for the SyncMaster module namespace,
 -->
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-        xmlns:smil20="http://www.w3.org/2001/SMIL20/"
-        xmlns:smil20lang="http://www.w3.org/2001/SMIL20/Language"        
-        xmlns:SyncMaster="http://www.w3.org/2001/SMIL20/SyncMaster"
         targetNamespace="http://www.w3.org/2001/SMIL20/SyncMaster"
         elementFormDefault="qualified">
-    
+
     <!-- these URL's will have to be expanded to their full and proper locations -->
 
     <!-- import the definitions in the smil20 namespace -->
@@ -25,7 +22,7 @@ Schema for the SyncMaster module namespace,
 
     <!-- declare global elements in this module -->
     <!-- (none) -->
-    
+
     <!-- declare global attributes in this module -->
     <attribute name="syncMaster" type="boolean"/>
 

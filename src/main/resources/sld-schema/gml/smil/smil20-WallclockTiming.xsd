@@ -12,12 +12,9 @@ Revision: 2001/07/31
 Schema for the WallclockTiming module namespace,
 -->
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-        xmlns:smil20="http://www.w3.org/2001/SMIL20/"
-        xmlns:smil20lang="http://www.w3.org/2001/SMIL20/Language"        
-        xmlns:WallclockTiming="http://www.w3.org/2001/SMIL20/WallclockTiming"
         targetNamespace="http://www.w3.org/2001/SMIL20/WallclockTiming"
         elementFormDefault="qualified">
-    
+
     <!-- these URL's will have to be expanded to their full and proper locations -->
 
     <!-- import the definitions in the smil20 namespace -->
@@ -25,7 +22,7 @@ Schema for the WallclockTiming module namespace,
 
     <!-- declare global elements in this module -->
     <!-- (none) -->
-    
+
     <!-- declare global attributes in this module -->
     <attribute name="begin" type="string"/>
     <attribute name="end" type="string"/>

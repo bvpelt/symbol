@@ -11,13 +11,12 @@ Revision: 2001/07/31
 
 Schema for the TransitionModifiers module namespace.
 -->
-<schema xmlns="http://www.w3.org/2001/XMLSchema"
-        xmlns:smil20="http://www.w3.org/2001/SMIL20/"
-        xmlns:smil20lang="http://www.w3.org/2001/SMIL20/Language"        
-        xmlns:TransitionModifiers="http://www.w3.org/2001/SMIL20/TransitionModifiers"
+<schema xmlns:smil20="http://www.w3.org/2001/SMIL20/"
+        xmlns:smil20lang="http://www.w3.org/2001/SMIL20/Language"
+        xmlns="http://www.w3.org/2001/XMLSchema"
         targetNamespace="http://www.w3.org/2001/SMIL20/TransitionModifiers"
         elementFormDefault="qualified">
-    
+
     <!-- these URL's will have to be expanded to their full and proper locations -->
 
     <!-- import the definitions in the smil20 namespace -->
@@ -29,7 +28,7 @@ Schema for the TransitionModifiers module namespace.
     <!-- declare global elements in this module -->
     <element name="transitionFilter" type="smil20:transitionFilterType" substitutionGroup="smil20:transitionFilter"/>
     <element name="transition" type="smil20lang:transitionType" substitutionGroup="smil20lang:transition"/>
-    
+
     <!-- declare global attributes in this module -->
     <attribute name="transIn" type="string"/>
     <attribute name="transOut" type="string"/>

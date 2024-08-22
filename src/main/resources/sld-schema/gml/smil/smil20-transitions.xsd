@@ -9,9 +9,9 @@ Public URI: http://www.w3.org/2001/SMIL20/smil20-transitions.xsd
 Author: Aaron Michael Cohen (Intel)
 Revision: 2001/07/31
 -->
-<schema xmlns="http://www.w3.org/2001/XMLSchema"
-        xmlns:smil20="http://www.w3.org/2001/SMIL20/"
-        xmlns:smil20lang="http://www.w3.org/2001/SMIL20/Language"        
+<schema xmlns:smil20="http://www.w3.org/2001/SMIL20/"
+        xmlns:smil20lang="http://www.w3.org/2001/SMIL20/Language"
+        xmlns="http://www.w3.org/2001/XMLSchema"
         targetNamespace="http://www.w3.org/2001/SMIL20/"
         elementFormDefault="qualified">
 
@@ -27,18 +27,18 @@ Revision: 2001/07/31
 
     <!-- define the transitionModifiers attribute group -->
     <attributeGroup name="transitionModifiersAttrs">
-        <attribute name="horzRepeat" type="decimal" use="optional"  default="1.0"/>
-        <attribute name="vertRepeat" type="decimal" use="optional"  default="1.0"/>
-        <attribute name="borderWidth" type="nonNegativeInteger" use="optional"  default="0"/>
-        <attribute name="borderColor" type="string" use="optional"  default="black"/>
+        <attribute name="horzRepeat" type="decimal" use="optional" default="1.0"/>
+        <attribute name="vertRepeat" type="decimal" use="optional" default="1.0"/>
+        <attribute name="borderWidth" type="nonNegativeInteger" use="optional" default="0"/>
+        <attribute name="borderColor" type="string" use="optional" default="black"/>
     </attributeGroup>
-        
+
     <!-- define transition element prototype -->
     <complexType name="transitionPrototype">
         <attribute name="type" type="string" use="required"/>
         <attribute name="subtype" type="string" use="optional"/>
-        
-        <attribute name="mode" use="optional"  default="in">
+
+        <attribute name="mode" use="optional" default="in">
             <simpleType>
                 <restriction base="string">
                     <enumeration value="in"/>
@@ -46,12 +46,12 @@ Revision: 2001/07/31
                 </restriction>
             </simpleType>
         </attribute>
-        
+
         <attribute name="dur" type="string" use="optional"/>
-        <attribute name="startProgress" type="smil20:zeroToOneDecimalType" use="optional"  default="0.0"/>
-        <attribute name="endProgress" type="smil20:zeroToOneDecimalType" use="optional"  default="1.0"/>
-        
-        <attribute name="direction" use="optional"  default="forward">
+        <attribute name="startProgress" type="smil20:zeroToOneDecimalType" use="optional" default="0.0"/>
+        <attribute name="endProgress" type="smil20:zeroToOneDecimalType" use="optional" default="1.0"/>
+
+        <attribute name="direction" use="optional" default="forward">
             <simpleType>
                 <restriction base="string">
                     <enumeration value="forward"/>
@@ -59,21 +59,21 @@ Revision: 2001/07/31
                 </restriction>
             </simpleType>
         </attribute>
-        
-        <attribute name="fadeColor" type="string" use="optional"  default="black"/>        
+
+        <attribute name="fadeColor" type="string" use="optional" default="black"/>
     </complexType>
 
     <!-- define transitionFilter element prototype -->
     <complexType name="transitionFilterPrototype">
-        <attribute name="targetElement" type="IDREF" use="optional"/>            
+        <attribute name="targetElement" type="IDREF" use="optional"/>
         <attribute name="href" type="anyURI" use="optional"/>
 
         <attribute name="type" type="string" use="required"/>
         <attribute name="subtype" type="string" use="optional"/>
         <attribute name="dur" type="string" use="optional"/>
-        <attribute name="startProgress" type="smil20:zeroToOneDecimalType" use="optional"  default="0.0"/>
-        <attribute name="endProgress" type="smil20:zeroToOneDecimalType" use="optional"  default="1.0"/>
-        
+        <attribute name="startProgress" type="smil20:zeroToOneDecimalType" use="optional" default="0.0"/>
+        <attribute name="endProgress" type="smil20:zeroToOneDecimalType" use="optional" default="1.0"/>
+
         <attribute name="direction">
             <simpleType>
                 <restriction base="string">
@@ -82,15 +82,15 @@ Revision: 2001/07/31
                 </restriction>
             </simpleType>
         </attribute>
-        
-        <attribute name="fadeColor" type="string" use="optional"  default="black"/>
-        
-        <attribute name="from" type="smil20:zeroToOneDecimalType" use="optional"  default="0.0"/>
-        <attribute name="to" type="smil20:zeroToOneDecimalType" use="optional"  default="1.0"/>
+
+        <attribute name="fadeColor" type="string" use="optional" default="black"/>
+
+        <attribute name="from" type="smil20:zeroToOneDecimalType" use="optional" default="0.0"/>
+        <attribute name="to" type="smil20:zeroToOneDecimalType" use="optional" default="1.0"/>
         <attribute name="by" type="smil20:zeroToOneDecimalType" use="optional"/>
         <attribute name="values" type="string" use="optional"/>
 
-        <attribute name="calcMode" use="optional"  default="linear">   
+        <attribute name="calcMode" use="optional" default="linear">
             <simpleType>
                 <restriction base="string">
                     <enumeration value="discrete"/>
@@ -98,7 +98,7 @@ Revision: 2001/07/31
                     <enumeration value="paced"/>
                 </restriction>
             </simpleType>
-        </attribute>        
+        </attribute>
     </complexType>
 
     <!-- define the global transitionFilter element -->
@@ -106,11 +106,11 @@ Revision: 2001/07/31
     <element name="transitionFilter" type="smil20:transitionFilterType"/>
     <complexType name="transitionFilterType">
         <complexContent>
-            <extension base="smil20:transitionFilterPrototype">                
+            <extension base="smil20:transitionFilterPrototype">
                 <choice minOccurs="0" maxOccurs="unbounded">
                     <any namespace="##other" processContents="lax"/>
                 </choice>
-                <attributeGroup ref="smil20lang:CoreAttrs"/>            
+                <attributeGroup ref="smil20lang:CoreAttrs"/>
                 <attributeGroup ref="smil20:skipContentAttrs"/>
                 <attributeGroup ref="smil20:transitionModifiersAttrs"/>
                 <anyAttribute namespace="##any" processContents="strict"/>
@@ -123,16 +123,16 @@ Revision: 2001/07/31
     <element name="transition" type="smil20:transitionType"/>
     <complexType name="transitionType">
         <complexContent>
-            <extension base="smil20:transitionPrototype">                
+            <extension base="smil20:transitionPrototype">
                 <choice minOccurs="0" maxOccurs="unbounded">
                     <any namespace="##other" processContents="lax"/>
                 </choice>
-                <attributeGroup ref="smil20lang:CoreAttrs"/>            
+                <attributeGroup ref="smil20lang:CoreAttrs"/>
                 <attributeGroup ref="smil20:skipContentAttrs"/>
                 <attributeGroup ref="smil20:transitionModifiersAttrs"/>
                 <anyAttribute namespace="##any" processContents="strict"/>
             </extension>
         </complexContent>
     </complexType>
-                       
-</schema>        
+
+</schema>

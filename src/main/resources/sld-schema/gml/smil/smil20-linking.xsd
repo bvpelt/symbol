@@ -13,12 +13,12 @@ see (http://www.w3.org/2001/07/REC-SMIL20-20010731-errata#E26)
 
 Defines both the local and global smil20 linking attributes.
 -->
-<schema xmlns="http://www.w3.org/2001/XMLSchema"
-        xmlns:smil20="http://www.w3.org/2001/SMIL20/"
+<schema xmlns:smil20="http://www.w3.org/2001/SMIL20/"
         xmlns:smil20lang="http://www.w3.org/2001/SMIL20/Language"
+        xmlns="http://www.w3.org/2001/XMLSchema"
         targetNamespace="http://www.w3.org/2001/SMIL20/"
         elementFormDefault="qualified">
-    
+
     <!-- linking attribute types -->
     <simpleType name="sourcePlaystateType">
         <restriction base="string">
@@ -53,7 +53,7 @@ Defines both the local and global smil20 linking attributes.
     <!-- global linking attributes -->
     <attribute name="sourceLevel" type="smil20:positivePercentageType"/>
     <attribute name="destinationLevel" type="smil20:positivePercentageType"/>
-    <attribute name="sourcePlaystate" type="smil20:sourcePlaystateType"/>      
+    <attribute name="sourcePlaystate" type="smil20:sourcePlaystateType"/>
     <attribute name="destinationPlaystate" type="smil20:destinationPlaystateType"/>
     <attribute name="show" type="smil20:showType"/>
     <attribute name="external" type="boolean"/>
@@ -65,11 +65,11 @@ Defines both the local and global smil20 linking attributes.
     <attributeGroup name="linkingAttrs">
         <attribute name="sourceLevel" type="smil20:positivePercentageType" use="optional"/>
         <attribute name="destinationLevel" type="smil20:positivePercentageType" use="optional"/>
-        <attribute name="sourcePlaystate" type="smil20:sourcePlaystateType" use="optional"/>      
+        <attribute name="sourcePlaystate" type="smil20:sourcePlaystateType" use="optional"/>
         <attribute name="destinationPlaystate" type="smil20:destinationPlaystateType" use="optional"/>
-        <attribute name="show" type="smil20:showType" use="optional"  default="replace"/>
-        <attribute name="external" type="boolean" use="optional"  default="false"/>
-        <attribute name="actuate" type="smil20:actuateType" use="optional"  default="onRequest"/>
+        <attribute name="show" type="smil20:showType" use="optional" default="replace"/>
+        <attribute name="external" type="boolean" use="optional" default="false"/>
+        <attribute name="actuate" type="smil20:actuateType" use="optional" default="onRequest"/>
         <attribute name="accesskey" type="string" use="optional"/>
         <attribute name="target" type="string" use="optional"/>
         <attributeGroup ref="smil20:tabindexAttrs"/>
@@ -92,26 +92,26 @@ Defines both the local and global smil20 linking attributes.
     <complexType name="aPrototype">
         <attributeGroup ref="smil20:linkingAttrs"/>
         <attribute name="href" type="anyURI" use="required"/>
-    </complexType>        
+    </complexType>
 
     <!-- define the area element prototype -->
     <complexType name="areaPrototype">
         <attributeGroup ref="smil20:linkingAttrs"/>
         <attribute name="href" type="anyURI" use="optional"/>
-        <attribute name="nohref" use="optional">    
-           <simpleType>
-             <restriction base="string"> 
-               <enumeration value="nohref"/>
-             </restriction>
-           </simpleType>  
-         </attribute>
+        <attribute name="nohref" use="optional">
+            <simpleType>
+                <restriction base="string">
+                    <enumeration value="nohref"/>
+                </restriction>
+            </simpleType>
+        </attribute>
         <attribute name="shape" type="string" use="optional"/>
         <attribute name="coords" type="string" use="optional"/>
-    </complexType>        
+    </complexType>
 
     <!-- global linking elements -->
-    <element name="a" type="smil20lang:aType" substitutionGroup="smil20lang:a"/>    
-    <element name="area" type="smil20lang:areaType" substitutionGroup="smil20lang:area"/>    
-    <element name="anchor" type="smil20lang:anchorType" substitutionGroup="smil20lang:anchor"/>    
+    <element name="a" type="smil20lang:aType" substitutionGroup="smil20lang:a"/>
+    <element name="area" type="smil20lang:areaType" substitutionGroup="smil20lang:area"/>
+    <element name="anchor" type="smil20lang:anchorType" substitutionGroup="smil20lang:anchor"/>
 
 </schema>

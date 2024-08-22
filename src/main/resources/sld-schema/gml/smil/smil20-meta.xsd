@@ -9,13 +9,11 @@ Public URI: http://www.w3.org/2001/SMIL20/smil20-meta.xsd
 Author: Aaron Michael Cohen (Intel)
 Revision: 2001/07/31
 -->
-<schema xmlns="http://www.w3.org/2001/XMLSchema"
-        xmlns:smil20="http://www.w3.org/2001/SMIL20/"
-        xmlns:smil20lang="http://www.w3.org/2001/SMIL20/Language"
-        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+<schema xmlns:smil20lang="http://www.w3.org/2001/SMIL20/Language"
+        xmlns="http://www.w3.org/2001/XMLSchema"
         targetNamespace="http://www.w3.org/2001/SMIL20/"
         elementFormDefault="qualified">
-        
+
     <!-- the RDF namespace needs to be verified -->
 
     <!-- import rdf:RDF -->
@@ -26,16 +24,16 @@ Revision: 2001/07/31
     <complexType name="metaPrototype">
         <attribute name="content" type="string" use="required"/>
         <attribute name="name" type="string" use="required"/>
-    </complexType>        
+    </complexType>
 
-   
+
     <!-- define the metadata element prototype -->
     <complexType name="metadataPrototype">
-      <choice minOccurs="0" maxOccurs="unbounded">
-         <any namespace="##other" processContents="lax"/>
-      </choice>
+        <choice minOccurs="0" maxOccurs="unbounded">
+            <any namespace="##other" processContents="lax"/>
+        </choice>
     </complexType>
-        
+
 
     <!-- define the global metainformation elements -->
     <element name="metadata" type="smil20lang:metadataType" substitutionGroup="smil20lang:metadata"/>

@@ -118,6 +118,7 @@ class SymbolApplicationTests {
     @Test
     void readPointSLD() {
         JsonToJava json = new JsonToJava(objectMapper);
+        ArrayList<Graphic> graphics = new ArrayList<Graphic>();
 
         try {
             graphicRepository.deleteAll();
@@ -136,7 +137,7 @@ class SymbolApplicationTests {
                     graphic.setType(type);
                     String name = rule.getSe_Name();
                     graphic.setName(name);
-                    log.info("Rule name: {}", name);
+                    log.trace("Rule name: {}", name);
                     Se_PointSymbolizer se_PointSymbolizer = rule.getSe_PointSymbolizer();
                     Se_Graphic se_Graphic = se_PointSymbolizer.getSe_Graphic();
                     int size = se_Graphic.getSe_Size();
@@ -177,10 +178,13 @@ class SymbolApplicationTests {
                                 break;
                         }
                     });
+                    graphics.add(graphic);
                     graphicRepository.save(graphic);
                 });
             });
+            log.info("Converted {} graphics", graphics.size());
 
+            log.trace("Graphics:\n{}", graphics);
         } catch (Exception e) {
             log.error(e.getMessage());
         }
@@ -199,13 +203,13 @@ class SymbolApplicationTests {
             Sld_NamedLayer sldNamedLayer = styledLayerDescriptor.getSld_NamedLayer();
             Sld_UserStyle sldUserStyle = sldNamedLayer.getSld_UserStyle();
             String type = sldUserStyle.getSe_Name();
-            log.info("Processing {}", sldUserStyle.getSe_Name());
+            log.trace("Processing {}", sldUserStyle.getSe_Name());
             ArrayList<Se_FeatureTypeStyle> seFeatureTypeStyles = sldUserStyle.getSe_FeatureTypeStyle();
             seFeatureTypeStyles.forEach(featuretype -> {
-                log.info("Processing {}", featuretype.getSe_Description().getSe_Title());
+                log.trace("Processing {}", featuretype.getSe_Description().getSe_Title());
                 ArrayList<Se_Rule> seRules = featuretype.getSe_Rule();
                 seRules.forEach(rule -> {
-                    log.info("Processing {}", rule.getSe_Name());
+                    log.trace("Processing {}", rule.getSe_Name());
                     Line line = new Line();
                     line.setType(type);
                     line.setName(rule.getSe_Name());
@@ -241,7 +245,7 @@ class SymbolApplicationTests {
             });
             log.info("Converted {} line symbols", lines.size());
 
-            log.info("Line symbols:\n{}", lines);
+            log.trace("Line symbols:\n{}", lines);
         } catch (Exception e) {
             log.error(e.getMessage());
         }
@@ -251,7 +255,7 @@ class SymbolApplicationTests {
     @Test
     void readAreaSld() {
         JsonToJava json = new JsonToJava(objectMapper);
-
+        ArrayList<Area> areas = new ArrayList<Area>();
         try {
             areaRepository.deleteAll();
             AreaSld areaSld = json.readAreasFromJson("src/main/resources/Vlaksymbolen_v1.1.0.json");
@@ -321,12 +325,15 @@ class SymbolApplicationTests {
                                 log.error("Unexpected stroke parameter: {}", stroke_parameter.getName());
                                 break;
                         }
+                        areas.add(area);
                     areaRepository.save(area);
                     });
                 });
 
             });
+            log.info("Converted {} areas", areas.size());
 
+            log.trace("Areas:\n{}", areas);
         } catch (Exception e) {
             log.error(e.getMessage());
         }

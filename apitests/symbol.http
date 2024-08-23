@@ -28,3 +28,5 @@ GET http://localhost:8080/symbols/lookup/ls
 Accept: application/json
 
 ###
+GET http://localhost:8080/symbols/lookup/%5Cnlt
+Accept: application/json

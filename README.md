@@ -23,7 +23,18 @@ select * from line where substring(name,1,2) <> 'lt' and substring(name,1,2) <> 
 -- lookup symbol by name
 select * from symbol where name like 'vag%' order by name  limit 10;
 ```
+
+## Swagger
+See http://localhost:8080/swagger-ui/index.html
+
+## Actuator
+See 
+- http://localhost:8081/actuator
+- http://localhost:8081/actuator/app-health
+- http://localhost:8081/actuator/app-info
+
 ## References
+- [spring doc](https://springdoc.org/)
 - [jaxb tutorial](https://www.baeldung.com/jaxb)
 - [example binding.xjb](https://github.com/orbisgis/ogc-custom-jaxb/blob/master/ogc-custom-model/src/main/resources/binding.xjb)
 - [example xml to json](https://www.javatpoint.com/convert-xml-to-json-in-java)

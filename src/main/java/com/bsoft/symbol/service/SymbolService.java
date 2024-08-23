@@ -35,4 +35,14 @@ public class SymbolService {
 
         return symbolList;
     }
+
+    public Symbol findSymbolById(Long id) {
+        Symbol symbol = null;
+        Optional<Symbol> symbolOptional = symbolRepository.findById(id);
+
+        if (symbolOptional.isPresent()) {
+            symbol = symbolOptional.get();
+        }
+        return symbol;
+    }
 }

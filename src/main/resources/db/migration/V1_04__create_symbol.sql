@@ -3,7 +3,6 @@
 create table symbol
 (
     id                   bigint not null primary key,
-
     type                 text,
     size                 int,
     rotation             int,
@@ -21,6 +20,7 @@ create table symbol
 );
 
 create unique index symbol_name_ix on symbol (name);
+create index symbol_type_ix on symbol (type);
 
 ALTER TABLE symbol
 ALTER

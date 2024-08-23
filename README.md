@@ -14,6 +14,15 @@ This will generate json files and load the json files into the database.
 
 When the convert.bash script is restarted, all saved database content will be deleted and loaded again.
 
+## Queries
+
+```sql
+-- get lines
+select * from line where substring(name,1,2) <> 'lt' and substring(name,1,2) <> 'lm' and substring(name,1,2) <> 'ls';
+
+-- lookup symbol by name
+select * from symbol where name like 'vag%' order by name  limit 10;
+```
 ## References
 - [jaxb tutorial](https://www.baeldung.com/jaxb)
 - [example binding.xjb](https://github.com/orbisgis/ogc-custom-jaxb/blob/master/ogc-custom-model/src/main/resources/binding.xjb)

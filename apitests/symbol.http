@@ -1,0 +1,30 @@
+GET http://localhost:8080/symbols/pk007
+Accept: application/json
+
+###
+GET http://localhost:8080/symbols/lt007
+Accept: application/json
+
+###
+GET http://localhost:8080/symbols/vag502
+Accept: application/json
+
+###
+GET http://localhost:8080/symbols/lookup/vag
+Accept: application/json
+
+###
+
+GET http://localhost:8080/symbols/lookup/lt
+Accept: application/json
+
+###
+
+GET http://localhost:8080/symbols/lookup/lm
+Accept: application/json
+
+###
+GET http://localhost:8080/symbols/lookup/ls
+Accept: application/json
+
+###

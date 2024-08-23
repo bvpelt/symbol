@@ -154,6 +154,7 @@ class SymbolApplicationTests {
                     symbol.setType(type);
                     String name = rule.getSe_Name();
                     graphic.setName(name);
+                    symbol.setName(name);
                     log.trace("Rule name: {}", name);
                     Se_PointSymbolizer se_PointSymbolizer = rule.getSe_PointSymbolizer();
                     Se_Graphic se_Graphic = se_PointSymbolizer.getSe_Graphic();
@@ -239,6 +240,7 @@ class SymbolApplicationTests {
                     Symbol symbol = new Symbol();
                     symbol.setType(type);
                     line.setName(rule.getSe_Name());
+                    symbol.setName(rule.getSe_Name());
                     Se_LineSymbolyzer seLineSymbolyzer = rule.getSe_LineSymbolizer();
                     Se_Stroke seStroke = seLineSymbolyzer.getSe_Stroke();
                     ArrayList<Se_SvgParameter> seSvgParameter = seStroke.getSe_SvgParameter();
@@ -308,6 +310,7 @@ class SymbolApplicationTests {
                     Se_PolygonSymbolizer se_PolygonSymbolizer = rule.getSe_PolygonSymbolizer();
                     String name = se_PolygonSymbolizer.getSe_Name();
                     area.setName(name);
+                    symbol.setName(name);
                     com.bsoft.symbol.area.Se_Fill se_Fill = se_PolygonSymbolizer.getSe_Fill();
                     ArrayList<com.bsoft.symbol.area.Se_SvgParameter> se_SvgParameters_Fill = se_Fill.getSe_SvgParameter();
                     se_SvgParameters_Fill.forEach(fill_parameter -> {

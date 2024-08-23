@@ -1,12 +1,24 @@
-GET http://localhost:8080/symbols/pk007
+GET http://localhost:8080/symbols/name/pk007
 Accept: application/json
 
 ###
-GET http://localhost:8080/symbols/lt007
+GET http://localhost:8080/symbols/name/lt007
 Accept: application/json
 
 ###
-GET http://localhost:8080/symbols/vag502
+GET http://localhost:8080/symbols/name/vag502
+Accept: application/json
+
+###
+GET http://localhost:8080/symbols/1
+Accept: application/json
+
+###
+GET http://localhost:8080/symbols/15
+Accept: application/json
+
+###
+GET http://localhost:8080/symbols/186
 Accept: application/json
 
 ###

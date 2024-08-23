@@ -25,7 +25,9 @@ select * from symbol where name like 'vag%' order by name  limit 10;
 ```
 
 ## Swagger
-See http://localhost:8080/swagger-ui/index.html
+See 
+- http://localhost:8080/swagger-ui/index.html
+- https://www.baeldung.com/java-swagger-set-list-response 
 
 ## Actuator
 See 

@@ -10,7 +10,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,25 +33,23 @@ public class SymbolController {
     /**
      * GET /symbols/name/{name}
      *
-     * @param name  (required)
+     * @param name (required)
      * @return Resultaat van symbol bevraging (status code 200)
-     *         or Not found (status code 404)
-     *         or Unexpected problem (status code 500)
+     * or Not found (status code 404)
+     * or Unexpected problem (status code 500)
      */
     @Operation(
             operationId = "getSymbol",
-            tags = { "Symbol" },
+            tags = {"Symbol"},
             responses = {
                     @ApiResponse(responseCode = "200", description = "Resultaat van symbol bevraging", content = {
                             @Content(mediaType = "application/json", schema = @Schema(implementation = Symbol.class)),
                             @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Problem.class))
                     }),
                     @ApiResponse(responseCode = "404", description = "Not found", content = {
-                            //@Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class)),
                             @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Problem.class))
                     }),
                     @ApiResponse(responseCode = "default", description = "Unexpected problem", content = {
-                            //@Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class)),
                             @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Problem.class))
                     })
             },
@@ -63,7 +60,7 @@ public class SymbolController {
     @RequestMapping(
             method = RequestMethod.GET,
             value = "/symbols/name/{name}",
-            produces = { "application/json", "application/problem+json" }
+            produces = {"application/json", "application/problem+json"}
     )
     public ResponseEntity<?> getSymbol(@PathVariable("name") String name) {
         log.info("Start get: {}", name);
@@ -91,25 +88,23 @@ public class SymbolController {
     /**
      * GET /symbols/{id}
      *
-     * @param id  (required)
+     * @param id (required)
      * @return Resultaat van symbol bevraging (status code 200)
-     *         or Not found (status code 404)
-     *         or Unexpected problem (status code 500)
+     * or Not found (status code 404)
+     * or Unexpected problem (status code 500)
      */
     @Operation(
             operationId = "getSymbolById",
-            tags = { "Symbol" },
+            tags = {"Symbol"},
             responses = {
                     @ApiResponse(responseCode = "200", description = "Resultaat van symbol bevraging", content = {
                             @Content(mediaType = "application/json", schema = @Schema(implementation = Symbol.class)),
                             @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Problem.class))
                     }),
                     @ApiResponse(responseCode = "404", description = "Not found", content = {
-                            //@Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class)),
                             @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Problem.class))
                     }),
                     @ApiResponse(responseCode = "default", description = "Unexpected problem", content = {
-                            //@Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class)),
                             @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Problem.class))
                     })
             },
@@ -120,7 +115,7 @@ public class SymbolController {
     @RequestMapping(
             method = RequestMethod.GET,
             value = "/symbols/{id}",
-            produces = { "application/json", "application/problem+json" }
+            produces = {"application/json", "application/problem+json"}
     )
     public ResponseEntity<?> getSymbolById(@PathVariable("id") Long id) {
         log.info("Start get by id: {}", id);
@@ -148,26 +143,23 @@ public class SymbolController {
     /**
      * GET /symbols/lookup/{name}
      *
-     * @param name  (required)
+     * @param name (required)
      * @return Resultaat van symbol bevraging (status code 200)
-     *         or Not found (status code 404)
-     *         or Unexpected problem (status code 500)
+     * or Not found (status code 404)
+     * or Unexpected problem (status code 500)
      */
     @Operation(
             operationId = "lookupSymbol",
-            tags = { "Symbol" },
+            tags = {"Symbol"},
             responses = {
                     @ApiResponse(responseCode = "200", description = "Resultaat van symbol bevraging", content = {
-                            //@Content(mediaType = "application/json", schema = @Schema(implementation = Symbol.class, array = @ArraySchema(minItems = 0))),
-                           @Content(mediaType = "application/json", schema = @Schema(name = "SymbolList")),
+                            @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Symbol.class))),
                             @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Problem.class))
                     }),
                     @ApiResponse(responseCode = "404", description = "Not found", content = {
-                            //@Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class)),
                             @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Problem.class))
                     }),
                     @ApiResponse(responseCode = "default", description = "Unexpected problem", content = {
-                            //@Content(mediaType = "application/json", schema = @Schema(implementation = Problem.class)),
                             @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Problem.class))
                     })
             },
@@ -178,7 +170,7 @@ public class SymbolController {
     @RequestMapping(
             method = RequestMethod.GET,
             value = "/symbols/lookup/{name}",
-            produces = { "application/json", "application/problem+json" }
+            produces = {"application/json", "application/problem+json"}
     )
     //@RequestMapping("/symbols/lookup/{name}")
     public ResponseEntity<?> lookupSymbol(@PathVariable("name") String name) {

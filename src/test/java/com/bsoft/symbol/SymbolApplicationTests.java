@@ -13,18 +13,23 @@ import com.bsoft.symbol.line.*;
 import com.bsoft.symbol.model.Area;
 import com.bsoft.symbol.model.Graphic;
 import com.bsoft.symbol.model.Line;
+import com.bsoft.symbol.model.Symbol;
 import com.bsoft.symbol.point.Se_Fill;
 import com.bsoft.symbol.point.Se_Graphic;
 import com.bsoft.symbol.point.*;
 import com.bsoft.symbol.repository.AreaRepository;
 import com.bsoft.symbol.repository.GrapphicRepository;
 import com.bsoft.symbol.repository.LineRepository;
+import com.bsoft.symbol.repository.SymbolRepository;
 import com.bsoft.symbol.services.JsonToJava;
 import com.bsoft.symbol.services.SLDService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -33,6 +38,7 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 
 @Slf4j
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest
 class SymbolApplicationTests {
 
@@ -48,11 +54,16 @@ class SymbolApplicationTests {
     @Autowired
     AreaRepository areaRepository;
 
+    @Autowired
+    SymbolRepository symbolRepository;
+
     @Test
     void contextLoads() {
     }
 
+    /*
     @Test
+    @Order(1)
     void genPointSLD() {
         SLDService sldService = new SLDService();
 
@@ -74,6 +85,7 @@ class SymbolApplicationTests {
     }
 
     @Test
+    @Order(2)
     void genLineSLD() {
         SLDService sldService = new SLDService();
 
@@ -95,6 +107,7 @@ class SymbolApplicationTests {
     }
 
     @Test
+    @Order(3)
     void genVlakSLD() {
         SLDService sldService = new SLDService();
 
@@ -114,14 +127,16 @@ class SymbolApplicationTests {
             log.error(e.getMessage());
         }
     }
-
+*/
     @Test
+    @Order(4)
     void readPointSLD() {
         JsonToJava json = new JsonToJava(objectMapper);
         ArrayList<Graphic> graphics = new ArrayList<Graphic>();
 
         try {
             graphicRepository.deleteAll();
+            symbolRepository.deleteAll();
             PointSld pointSld = json.readPointsFromJson("src/main/resources/Puntsymbolen_v1.0.1.json");
 
             com.bsoft.symbol.point.Sld_StyledLayerDescriptor sld_StyledLayerDescriptor = pointSld.getSld_StyledLayerDescriptor();
@@ -135,6 +150,8 @@ class SymbolApplicationTests {
                 se_Rule.forEach(rule -> {
                     Graphic graphic = new Graphic();
                     graphic.setType(type);
+                    Symbol symbol = new Symbol();
+                    symbol.setType(type);
                     String name = rule.getSe_Name();
                     graphic.setName(name);
                     log.trace("Rule name: {}", name);
@@ -151,9 +168,11 @@ class SymbolApplicationTests {
                         switch (parameter.getName()) {
                             case "fill":
                                 graphic.setFill(parameter.getContent());
+                                symbol.setFill(parameter.getContent());
                                 break;
                             case "fill-opacity":
                                 graphic.setFillopacity(parameter.getContent());
+                                symbol.setFillopacity(Float.parseFloat(parameter.getContent()));
                                 break;
                             default:
                                 log.error("Unknown fill parameter: {}", parameter.getName());
@@ -166,12 +185,15 @@ class SymbolApplicationTests {
                         switch (parameter.getName()) {
                             case "stroke":
                                 graphic.setStroke(parameter.getContent());
+                                symbol.setStroke(parameter.getContent());
                                 break;
                             case "stroke-opacity":
                                 graphic.setStrokeopacity(Integer.parseInt(parameter.getContent()));
+                                symbol.setStrokeopacity(Integer.parseInt(parameter.getContent()));
                                 break;
                             case "stroke-width":
                                 graphic.setStrokewidth(Integer.parseInt(parameter.getContent()));
+                                symbol.setStrokewidth(Integer.parseInt(parameter.getContent()));
                                 break;
                             default:
                                 log.error("Unknown stroke parameter: {}", parameter.getName());
@@ -180,6 +202,7 @@ class SymbolApplicationTests {
                     });
                     graphics.add(graphic);
                     graphicRepository.save(graphic);
+                    symbolRepository.save(symbol);
                 });
             });
             log.info("Converted {} graphics", graphics.size());
@@ -191,6 +214,7 @@ class SymbolApplicationTests {
     }
 
     @Test
+    @Order(5)
     void readLineSLD() {
         JsonToJava json = new JsonToJava(objectMapper);
 
@@ -212,6 +236,8 @@ class SymbolApplicationTests {
                     log.trace("Processing {}", rule.getSe_Name());
                     Line line = new Line();
                     line.setType(type);
+                    Symbol symbol = new Symbol();
+                    symbol.setType(type);
                     line.setName(rule.getSe_Name());
                     Se_LineSymbolyzer seLineSymbolyzer = rule.getSe_LineSymbolizer();
                     Se_Stroke seStroke = seLineSymbolyzer.getSe_Stroke();
@@ -221,18 +247,23 @@ class SymbolApplicationTests {
                         switch (parameter.getName()) {
                             case "stroke":
                                 line.setStroke(parameter.getContent());
+                                symbol.setStroke(parameter.getContent());
                                 break;
                             case "stroke-opacity":
                                 line.setOpacity(Integer.parseInt(parameter.getContent()));
+                                symbol.setStrokeopacity(Integer.parseInt(parameter.getContent()));
                                 break;
                             case "stroke-width":
                                 line.setWidth(Integer.parseInt(parameter.getContent()));
+                                symbol.setStrokewidth(Integer.parseInt(parameter.getContent()));
                                 break;
                             case "stroke-linecap":
                                 line.setLinecap(parameter.getContent());
+                                symbol.setStokelinecap(parameter.getContent());
                                 break;
                             case "stroke-dasharray":
                                 line.setDasharray(parameter.getContent());
+                                symbol.setStrokedasharray(parameter.getContent());
                                 break;
                             default:
                                 log.error("Unexpected parameter name: {}", parameter.getName());
@@ -241,6 +272,7 @@ class SymbolApplicationTests {
                     });
                     lines.add(line);
                     lineRepository.save(line);
+                    symbolRepository.save(symbol);
                 });
             });
             log.info("Converted {} line symbols", lines.size());
@@ -253,6 +285,7 @@ class SymbolApplicationTests {
 
 
     @Test
+    @Order(6)
     void readAreaSld() {
         JsonToJava json = new JsonToJava(objectMapper);
         ArrayList<Area> areas = new ArrayList<Area>();
@@ -270,6 +303,8 @@ class SymbolApplicationTests {
                 se_Rule.forEach(rule -> {
                     Area area = new Area();
                     area.setType(type);
+                    Symbol symbol = new Symbol();
+                    symbol.setType(type);
                     Se_PolygonSymbolizer se_PolygonSymbolizer = rule.getSe_PolygonSymbolizer();
                     String name = se_PolygonSymbolizer.getSe_Name();
                     area.setName(name);
@@ -279,12 +314,15 @@ class SymbolApplicationTests {
                         switch (fill_parameter.getName()) {
                             case "fill":
                                 area.setFill(fill_parameter.getContent());
+                                symbol.setFill(fill_parameter.getContent());
                                 break;
                             case "fill-opacity":
                                 area.setFillopacity(Float.parseFloat(fill_parameter.getContent()));
+                                symbol.setFillopacity(Float.parseFloat(fill_parameter.getContent()));
                                 break;
                             case "stroke-linejoin":
                                 area.setStrokelinejoinfill(fill_parameter.getContent());
+                                symbol.setStrokelinejoinfill(fill_parameter.getContent());
                                 break;
                             default:
                                 log.error("Unexpected fill parameter: {}", fill_parameter.getName());
@@ -300,6 +338,7 @@ class SymbolApplicationTests {
                         String xlinkhref = se_OnlineResource.getXlink_href();
 
                         area.setSymbol(xlinkhref.replace("./symbols/", ""));
+                        symbol.setSymbol(xlinkhref.replace("./symbols/", ""));
                     }
 
                     com.bsoft.symbol.area.Se_Stroke se_Stroke = se_PolygonSymbolizer.getSe_Stroke();
@@ -308,18 +347,23 @@ class SymbolApplicationTests {
                         switch (stroke_parameter.getName()) {
                             case "stroke":
                                 area.setStroke(stroke_parameter.getContent());
+                                symbol.setStroke(stroke_parameter.getContent());
                                 break;
                             case "stroke-opacity":
                                 area.setStrokeopacity(Integer.parseInt(stroke_parameter.getContent()));
+                                symbol.setStrokeopacity(Integer.parseInt(stroke_parameter.getContent()));
                                 break;
                             case "stroke-width":
                                 area.setStrokewidth(Integer.parseInt(stroke_parameter.getContent()));
+                                symbol.setStrokewidth(Integer.parseInt(stroke_parameter.getContent()));
                                 break;
                             case "stroke-linejoin":
                                 area.setStrokelinejoinstroke(stroke_parameter.getContent());
+                                symbol.setStrokelinejoinstroke(stroke_parameter.getContent());
                                 break;
                             case "stroke-dasharray":
                                 area.setStrokedasharray(stroke_parameter.getContent());
+                                symbol.setStrokedasharray(stroke_parameter.getContent());
                                 break;
                             default:
                                 log.error("Unexpected stroke parameter: {}", stroke_parameter.getName());
@@ -327,6 +371,7 @@ class SymbolApplicationTests {
                         }
                         areas.add(area);
                         areaRepository.save(area);
+                        symbolRepository.save(symbol);
                     });
                 });
 

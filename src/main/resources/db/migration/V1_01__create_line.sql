@@ -1,4 +1,4 @@
--- create table symbol
+-- create table line
 
 create table line
 (

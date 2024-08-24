@@ -3,14 +3,15 @@ export interface Symbol {
   type: string;
   size?: number;
   rotation?: number;
-  fill?: string;
+  fill?: string | null;
   fillopacity?: number;
-  stroke?: string;
+  stroke?: string | null;
   strokeopacity?: number;
   strokewidth?: number;
-  strokelinecap?: string;
-  strokedasharray?: string;
-  strokelinejoinfill?: string;
-  symbol?: string;
+  stokelinecap?: CanvasLineCap | null;
+  strokedasharray?: string | null;
+  strokelinejoinfill?: string | null;
+  strokelinejoinstroke?: string | null;
+  symbol?: string | null;
   name: string;
 }

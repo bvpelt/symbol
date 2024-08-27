@@ -163,6 +163,7 @@ class SymbolApplicationTests {
                     graphic.setSize(size);
                     graphic.setRotation(rotation);
                     Se_Mark se_Mark = se_Graphic.getSe_Mark();
+                    graphic.setWelknownname(se_Mark.getSe_WellKnownName());
                     Se_Fill se_Fill = se_Mark.getSe_Fill();
                     ArrayList<com.bsoft.symbol.point.Se_SvgParameter> se_svgParameter_Fill = se_Fill.getSe_SvgParameter();
                     se_svgParameter_Fill.forEach(parameter -> {

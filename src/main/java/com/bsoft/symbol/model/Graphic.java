@@ -28,4 +28,5 @@ public class Graphic implements Serializable {
     private int strokeopacity;
     private int strokewidth;
     private String name;
+    private String welknownname;
 }

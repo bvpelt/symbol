@@ -37,4 +37,5 @@ public class Symbol implements Serializable {
     private String strokelinejoinstroke;
     private String symbol;
     private String name;
+    private String welknownname;
 }

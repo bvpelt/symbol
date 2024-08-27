@@ -217,7 +217,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 [
   {
-    "id": 1944,
+    "id": 5458,
     "type": "Punt",
     "size": 0,
     "rotation": 0,
@@ -231,10 +231,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     "strokelinejoinfill": null,
     "strokelinejoinstroke": null,
     "symbol": null,
-    "name": "pc000"
+    "name": "pc000",
+    "welknownname": "circle"
   },
   {
-    "id": 1945,
+    "id": 5459,
     "type": "Punt",
     "size": 0,
     "rotation": 0,
@@ -248,10 +249,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     "strokelinejoinfill": null,
     "strokelinejoinstroke": null,
     "symbol": null,
-    "name": "pc001"
+    "name": "pc001",
+    "welknownname": "circle"
   },
   {
-    "id": 1946,
+    "id": 5460,
     "type": "Punt",
     "size": 0,
     "rotation": 0,
@@ -265,10 +267,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     "strokelinejoinfill": null,
     "strokelinejoinstroke": null,
     "symbol": null,
-    "name": "pc002"
+    "name": "pc002",
+    "welknownname": "circle"
   },
   {
-    "id": 1947,
+    "id": 5461,
     "type": "Punt",
     "size": 0,
     "rotation": 0,
@@ -282,10 +285,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     "strokelinejoinfill": null,
     "strokelinejoinstroke": null,
     "symbol": null,
-    "name": "pc003"
+    "name": "pc003",
+    "welknownname": "circle"
   },
   {
-    "id": 1948,
+    "id": 5462,
     "type": "Punt",
     "size": 0,
     "rotation": 0,
@@ -299,10 +303,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     "strokelinejoinfill": null,
     "strokelinejoinstroke": null,
     "symbol": null,
-    "name": "pc004"
+    "name": "pc004",
+    "welknownname": "circle"
   },
   {
-    "id": 1949,
+    "id": 5463,
     "type": "Punt",
     "size": 0,
     "rotation": 0,
@@ -316,10 +321,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     "strokelinejoinfill": null,
     "strokelinejoinstroke": null,
     "symbol": null,
-    "name": "pc005"
+    "name": "pc005",
+    "welknownname": "circle"
   },
   {
-    "id": 1950,
+    "id": 5464,
     "type": "Punt",
     "size": 0,
     "rotation": 0,
@@ -333,10 +339,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     "strokelinejoinfill": null,
     "strokelinejoinstroke": null,
     "symbol": null,
-    "name": "pc006"
+    "name": "pc006",
+    "welknownname": "circle"
   },
   {
-    "id": 1951,
+    "id": 5465,
     "type": "Punt",
     "size": 0,
     "rotation": 0,
@@ -350,10 +357,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     "strokelinejoinfill": null,
     "strokelinejoinstroke": null,
     "symbol": null,
-    "name": "pc007"
+    "name": "pc007",
+    "welknownname": "circle"
   },
   {
-    "id": 1952,
+    "id": 5466,
     "type": "Punt",
     "size": 0,
     "rotation": 0,
@@ -367,10 +375,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     "strokelinejoinfill": null,
     "strokelinejoinstroke": null,
     "symbol": null,
-    "name": "pc008"
+    "name": "pc008",
+    "welknownname": "circle"
   },
   {
-    "id": 1953,
+    "id": 5467,
     "type": "Punt",
     "size": 0,
     "rotation": 0,
@@ -384,10 +393,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     "strokelinejoinfill": null,
     "strokelinejoinstroke": null,
     "symbol": null,
-    "name": "pc009"
+    "name": "pc009",
+    "welknownname": "circle"
   }
 ]
-
 ### Vlakken
 
 [

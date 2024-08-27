@@ -14,4 +14,5 @@ export interface Symbol {
   strokelinejoinstroke?: string | null;
   symbol?: string | null;
   name: string;
+  welknownname?: string;
 }

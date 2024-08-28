@@ -82,7 +82,7 @@ export class SymbolsComponent implements OnInit {
     }
   }
 
-  drawCircle(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
+  private drawCircle(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
     ctx.beginPath();
     ctx.arc(canvas.width / 2, canvas.height / 2, Math.min(canvas.width / 2, canvas.height / 2) * 0.8, 0, 2 * Math.PI);
     if (this.symbol.fill) ctx.fillStyle = this.symbol.fill!;
@@ -94,7 +94,7 @@ export class SymbolsComponent implements OnInit {
     ctx.closePath();
   }
 
-  drawSquare(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
+  private drawSquare(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
     ctx.beginPath();
     ctx.rect(0, 0, canvas.width, canvas.height);
     if (this.symbol.fill) ctx.fillStyle = this.symbol.fill!;
@@ -106,7 +106,7 @@ export class SymbolsComponent implements OnInit {
     ctx.closePath();
   }
 
-  drawCross(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
+  private drawCross(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
     ctx.beginPath();
     if (this.symbol.fill) ctx.fillStyle = this.symbol.fill!;
     if (this.symbol.fillopacity) ctx.globalAlpha = this.symbol.fillopacity!;
@@ -120,7 +120,7 @@ export class SymbolsComponent implements OnInit {
     ctx.closePath();
   }
 
-  drawTriangle(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
+  private drawTriangle(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
     ctx.beginPath();
     if (this.symbol.fill) ctx.fillStyle = this.symbol.fill!;
     if (this.symbol.fillopacity) ctx.globalAlpha = this.symbol.fillopacity!;
@@ -137,39 +137,44 @@ export class SymbolsComponent implements OnInit {
     ctx.closePath();
   }
 
-  drawStar(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
+  /*
+  see https://math.stackexchange.com/questions/3582342/coordinates-of-the-vertices-of-a-five-pointed-star
+  */
+  private drawStar(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
     ctx.beginPath();
     if (this.symbol.fill) ctx.fillStyle = this.symbol.fill!;
     if (this.symbol.fillopacity) ctx.globalAlpha = this.symbol.fillopacity!;
     if (this.symbol.stroke) ctx.strokeStyle = this.symbol.stroke!;
     if ((typeof (this.symbol.strokewidth) != "undefined") && (this.symbol.strokewidth > 0)) ctx.lineWidth = this.symbol.strokewidth!;
 
-    var x = canvas.width / 2;
-    var y = canvas.height / 2;
     var radius_outside = Math.min(canvas.width / 2, canvas.height / 2);
     var radius_inside = radius_outside * 0.5;
-
     var path1 = new Path2D();
 
-    var angle: number;
-    var angles: number[] = [18, 54, 90, 126, 162, 198, 234, 270, 306, 342];
-    var index = 0;
     var r = 0;
-    path1.moveTo(x + radius_outside * Math.cos(angles[0]), y + radius_outside * Math.sin(angles[0]));
-    angles.forEach(angle => {
-      if (index % 2 === 0) {
-        r = radius_outside
+    var [x, y] = [0, 0];
+    var [xstart, ystart] = [canvas.width / 2, canvas.height / 2];
+
+    for (let i = 0; i < 5; i++) {
+      // big ring
+      [x, y] = this.starCoordsOut(i, radius_outside);
+      if (i == 0) {
+        path1.moveTo(x + xstart, y + ystart);
       } else {
-        r = radius_inside;
+        path1.lineTo(x + xstart, y + ystart);
       }
-      angle = this.angleToRadians(45);
-      path1.lineTo(x + r * Math.cos(angle), y + r * Math.sin(angle));
-    })
+      // small ring
+      [x, y] = this.starCoordsIn(i, radius_inside);
+      path1.lineTo(x + xstart, y + ystart);
+    }
+    [x, y] = this.starCoordsOut(0, radius_outside);
+    path1.lineTo(x + xstart, y + ystart);
+
     ctx.fill(path1);
     ctx.closePath();
   }
 
-  drawLijn(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
+  private drawLijn(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
     if (this.symbol.fillopacity) ctx.globalAlpha = this.symbol.fillopacity!;
     if (this.symbol.stroke) ctx.strokeStyle = this.symbol.stroke!;
     if (this.symbol.strokeopacity) ctx.globalAlpha = this.symbol.strokeopacity!;
@@ -181,8 +186,32 @@ export class SymbolsComponent implements OnInit {
     ctx.stroke();
   }
 
-  angleToRadians(angle: number): number {
-    return Math.PI * angle / 360;
+  private starCoordsOut(index: number, radius: number): [x: number, y: number] {
+    var x: number;
+    var y: number;
+    var angle: number;
+
+    angle = 2 * Math.PI * index / 5 - Math.PI/10;
+
+    x = radius * Math.cos(angle);
+    y = radius * Math.sin(angle);
+
+    console.log("out - index: " + index + " x: " + x + " y: " + y);
+    return [x, y];
+  }
+
+  private starCoordsIn(index: number, radius: number): [x: number, y: number] {
+    var x: number;
+    var y: number;
+    var angle: number;
+
+    angle = 4 * Math.PI * (index + 0.5) / 10 - Math.PI/10;
+
+    x = radius * Math.cos(angle);
+    y = radius * Math.sin(angle);
+
+    console.log("in  - index: " + index + " x: " + x + " y: " + y);
+    return [x, y];
   }
 
 }

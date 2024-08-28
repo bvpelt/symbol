@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+//import { SymbolsModule } from './symbols/symbols.module';
 import { SymbolsComponent } from './symbols/symbols.component';
 
 @NgModule({
@@ -12,7 +13,8 @@ import { SymbolsComponent } from './symbols/symbols.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+  //  SymbolsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

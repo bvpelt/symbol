@@ -1,16 +1,17 @@
-
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Symbol } from '../symbol';
-//import { Canvas } from '@angular/cdk/platform'; // Import Canvas class
-//import { Canvas } from '@angular/cdk/platform';
+import { SYMBOLS } from '../mock-symbols';
 
 @Component({
+  //standalone: true,
   selector: 'app-symbols',
   templateUrl: './symbols.component.html',
-  styleUrls: ['./symbols.component.css']
+  styleUrls: ['./symbols.component.css'],
 })
 export class SymbolsComponent implements OnInit {
-  @ViewChild('canvas') canvasRef: any; // Use ViewChild to get reference
+  symbols = SYMBOLS;
+  selectedSymbol?: Symbol;
+
   /*
     symbol: Symbol = {
       id: 2321,
@@ -24,28 +25,32 @@ export class SymbolsComponent implements OnInit {
       strokewidth: 1,
       name: "px005"
     };
-  */
+ */
   symbol: Symbol = {
-    "id": 7962,
-    "type": "Punt",
-    "size": 24,
+    "id": 8425,
+    "type": "Lijn",
+    "size": 0,
     "rotation": 0,
-    "fill": "#b45fd2",
-    "fillopacity": 1,
-    "stroke": "#999999",
-    "strokeopacity": 0,
-    "strokewidth": 1,
-    "stokelinecap": null,
-    "strokedasharray": null,
+    "fill": null,
+    "fillopacity": 0,
+    "stroke": "#ebf0d2",
+    "strokeopacity": 1,
+    "strokewidth": 8,
+    "stokelinecap": "butt",
+    "strokedasharray": "7 5",
     "strokelinejoinfill": null,
     "strokelinejoinstroke": null,
     "symbol": null,
-    "name": "ps003",
-    "welknownname": "star"
+    "name": "lth001"
   }
+
 
   ngOnInit() {
 
+  }
+
+  onSelect(symbol: Symbol): void {
+    this.selectedSymbol = symbol;
   }
 
   ngAfterViewInit() {
@@ -175,11 +180,22 @@ export class SymbolsComponent implements OnInit {
   }
 
   private drawLijn(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
-    if (this.symbol.fillopacity) ctx.globalAlpha = this.symbol.fillopacity!;
-    if (this.symbol.stroke) ctx.strokeStyle = this.symbol.stroke!;
-    if (this.symbol.strokeopacity) ctx.globalAlpha = this.symbol.strokeopacity!;
-    if (this.symbol.stokelinecap) ctx.lineCap = this.symbol.stokelinecap;
-    //   if (this.symbol.strokedasharray)  ctx.setLineDash = this.symbol.strokedasharray!;
+    if ((typeof (this.symbol.fillopacity) != "undefined") && this.symbol.fillopacity) ctx.globalAlpha = this.symbol.fillopacity!;
+    if ((typeof (this.symbol.stroke) != "undefined") && this.symbol.stroke) ctx.strokeStyle = this.symbol.stroke!;
+    if ((typeof (this.symbol.strokeopacity) != "undefined") && this.symbol.strokeopacity) ctx.globalAlpha = this.symbol.strokeopacity!;
+    if ((typeof (this.symbol.stokelinecap) != "undefined") && this.symbol.stokelinecap) ctx.lineCap = this.symbol.stokelinecap;
+    if ((typeof (this.symbol.strokewidth) != "undefined") && this.symbol.strokewidth! > 0) {
+      ctx.lineWidth = this.symbol.strokewidth!;
+    }
+    if ((typeof (this.symbol.strokedasharray) != "undefined") && this.symbol.strokedasharray!.length > 0) {
+      var dasharray: number[] = [];
+      var dashstrings: string[] = this.symbol.strokedasharray!.split(/\s/);
+
+      dashstrings.forEach(dash => {
+        dasharray.push(Number(dash));
+      });
+      ctx.setLineDash(dasharray);
+    }
     ctx.beginPath();
     ctx.moveTo(10, 50);
     ctx.lineTo(canvas.width - 20, 50);
@@ -191,12 +207,11 @@ export class SymbolsComponent implements OnInit {
     var y: number;
     var angle: number;
 
-    angle = 2 * Math.PI * index / 5 - Math.PI/10;
+    angle = 2 * Math.PI * index / 5 - Math.PI / 10;
 
     x = radius * Math.cos(angle);
     y = radius * Math.sin(angle);
 
-    console.log("out - index: " + index + " x: " + x + " y: " + y);
     return [x, y];
   }
 
@@ -205,12 +220,11 @@ export class SymbolsComponent implements OnInit {
     var y: number;
     var angle: number;
 
-    angle = 4 * Math.PI * (index + 0.5) / 10 - Math.PI/10;
+    angle = 4 * Math.PI * (index + 0.5) / 10 - Math.PI / 10;
 
     x = radius * Math.cos(angle);
     y = radius * Math.sin(angle);
 
-    console.log("in  - index: " + index + " x: " + x + " y: " + y);
     return [x, y];
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Symbol } from '../symbol';
 import { SYMBOLS } from '../mock-symbols';
 
@@ -11,112 +11,96 @@ import { SYMBOLS } from '../mock-symbols';
 export class SymbolsComponent implements OnInit {
   symbols = SYMBOLS;
   selectedSymbol?: Symbol;
-
-  /*
-    symbol: Symbol = {
-      id: 2321,
-      type: "Punt",
-      size: 0,
-      rotation: 0,
-      fill: "#ffc8be",
-      fillopacity: 1,
-      stroke: "#999999",
-      strokeopacity: 0,
-      strokewidth: 1,
-      name: "px005"
-    };
- */
-  symbol: Symbol = {
-    "id": 8425,
-    "type": "Lijn",
-    "size": 0,
-    "rotation": 0,
-    "fill": null,
-    "fillopacity": 0,
-    "stroke": "#ebf0d2",
-    "strokeopacity": 1,
-    "strokewidth": 8,
-    "stokelinecap": "butt",
-    "strokedasharray": "7 5",
-    "strokelinejoinfill": null,
-    "strokelinejoinstroke": null,
-    "symbol": null,
-    "name": "lth001"
-  }
-
+  canvas?: HTMLCanvasElement;
+  ctx?: CanvasRenderingContext2D | null;
 
   ngOnInit() {
-
+    this.canvas = document.getElementById('canvas1') as HTMLCanvasElement;
   }
 
   onSelect(symbol: Symbol): void {
     this.selectedSymbol = symbol;
-  }
+    if (this.ctx != null) {
+      this.ctx.save();
+      this.ctx.clearRect(0, 0, this.canvas!.width, this.canvas!.height);
 
-  ngAfterViewInit() {
-    const canvas = document.getElementById('canvas1') as HTMLCanvasElement;
-    var ctx: CanvasRenderingContext2D | null = canvas.getContext('2d');
+      // setup context
+      if ((typeof (symbol.fill) != "undefined") && symbol.fill) this.ctx.fillStyle = symbol.fill!;
+      if ((typeof (symbol.fillopacity) != "undefined") && symbol.fillopacity) this.ctx.globalAlpha = symbol.fillopacity!;
+      if ((typeof (symbol.stroke) != "undefined") && symbol.stroke) this.ctx.strokeStyle = symbol.stroke!;
+      if ((typeof (symbol.strokeopacity) != "undefined") && symbol.strokeopacity) this.ctx.globalAlpha = symbol.strokeopacity!;
+      if ((typeof (symbol.strokewidth) != "undefined") && symbol.strokewidth! > 0) {
+        this.ctx.lineWidth = symbol.strokewidth!;
+      }
+      if ((typeof (symbol.stokelinecap) != "undefined") && symbol.stokelinecap) this.ctx.lineCap = symbol.stokelinecap;
+      if ((typeof (symbol.strokedasharray) != "undefined") && symbol.strokedasharray) {
+        var dasharray: number[] = [];
+        var dashstrings: string[] = symbol.strokedasharray!.split(/\s/);
 
-    canvas.width = 100;
-    canvas.height = 100;
+        dashstrings.forEach(dash => {
+          dasharray.push(Number(dash));
+        });
+        this.ctx.setLineDash(dasharray);
+      }
+      // setup context
 
-
-    if (ctx != null) {
-      if (this.symbol.type === "Punt") this.drawPoint(canvas, ctx);
-      if (this.symbol.type === "Lijn") this.drawLijn(canvas, ctx);
+      // draw symbol
+      if (this.selectedSymbol.type === "Punt") this.drawPoint(this.selectedSymbol, this.canvas!, this.ctx);
+      if (this.selectedSymbol.type === "Lijn") this.drawLijn(this.selectedSymbol, this.canvas!, this.ctx);
+      if (this.selectedSymbol.type === "Vlak") this.drawVlak(this.selectedSymbol, this.canvas!, this.ctx);
+      // draw symbol
+      this.ctx.restore();
     } else {
       console.log('ctx is null');
     }
   }
 
-  drawPoint(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
-    if (this.symbol.welknownname === "circle") {
-      this.drawCircle(canvas, ctx);
+  ngAfterViewInit() {
+    this.canvas = document.getElementById('canvas1') as HTMLCanvasElement;
+    this.ctx = this.canvas.getContext('2d');
+
+    this.canvas.width = 100;
+    this.canvas.height = 100;
+
+
+  }
+
+  drawPoint(symbol: Symbol, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
+    if (symbol.welknownname === "circle") {
+      this.drawCircle(symbol, canvas, ctx);
     }
-    if (this.symbol.welknownname === "square") {
-      this.drawSquare(canvas, ctx);
+    if (symbol.welknownname === "square") {
+      this.drawSquare(symbol, canvas, ctx);
     }
-    if (this.symbol.welknownname === "cross_fill") {
-      this.drawCross(canvas, ctx);
+    if (symbol.welknownname === "cross_fill") {
+      this.drawCross(symbol, canvas, ctx);
     }
-    if (this.symbol.welknownname === "triangle") {
-      this.drawTriangle(canvas, ctx);
+    if (symbol.welknownname === "triangle") {
+      this.drawTriangle(symbol, canvas, ctx);
     }
-    if (this.symbol.welknownname === "star") {
-      this.drawStar(canvas, ctx);
+    if (symbol.welknownname === "star") {
+      this.drawStar(symbol, canvas, ctx);
     }
   }
 
-  private drawCircle(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
+  private drawCircle(symbol: Symbol, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
     ctx.beginPath();
     ctx.arc(canvas.width / 2, canvas.height / 2, Math.min(canvas.width / 2, canvas.height / 2) * 0.8, 0, 2 * Math.PI);
-    if (this.symbol.fill) ctx.fillStyle = this.symbol.fill!;
-    if (this.symbol.fillopacity) ctx.globalAlpha = this.symbol.fillopacity!;
-    if (this.symbol.stroke) ctx.strokeStyle = this.symbol.stroke!;
-    if ((typeof (this.symbol.strokewidth) != "undefined") && (this.symbol.strokewidth > 0)) ctx.lineWidth = this.symbol.strokewidth!;
     ctx.stroke();
     ctx.fill();
     ctx.closePath();
   }
 
-  private drawSquare(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
+  private drawSquare(symbol: Symbol, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
     ctx.beginPath();
     ctx.rect(0, 0, canvas.width, canvas.height);
-    if (this.symbol.fill) ctx.fillStyle = this.symbol.fill!;
-    if (this.symbol.fillopacity) ctx.globalAlpha = this.symbol.fillopacity!;
-    if (this.symbol.stroke) ctx.strokeStyle = this.symbol.stroke!;
-    if ((typeof (this.symbol.strokewidth) != "undefined") && (this.symbol.strokewidth > 0)) ctx.lineWidth = this.symbol.strokewidth!;
     ctx.stroke();
     ctx.fill();
     ctx.closePath();
   }
 
-  private drawCross(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
+  private drawCross(symbol: Symbol, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
     ctx.beginPath();
-    if (this.symbol.fill) ctx.fillStyle = this.symbol.fill!;
-    if (this.symbol.fillopacity) ctx.globalAlpha = this.symbol.fillopacity!;
-    if (this.symbol.stroke) ctx.strokeStyle = this.symbol.stroke!;
-    if ((typeof (this.symbol.strokewidth) != "undefined") && (this.symbol.strokewidth > 0)) ctx.lineWidth = this.symbol.strokewidth!;
     ctx.moveTo(canvas.width / 2, 0);
     ctx.lineTo(canvas.width / 2, canvas.height);
     ctx.moveTo(0, canvas.height / 2);
@@ -125,14 +109,10 @@ export class SymbolsComponent implements OnInit {
     ctx.closePath();
   }
 
-  private drawTriangle(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
-    ctx.beginPath();
-    if (this.symbol.fill) ctx.fillStyle = this.symbol.fill!;
-    if (this.symbol.fillopacity) ctx.globalAlpha = this.symbol.fillopacity!;
-    if (this.symbol.stroke) ctx.strokeStyle = this.symbol.stroke!;
-    if ((typeof (this.symbol.strokewidth) != "undefined") && (this.symbol.strokewidth > 0)) ctx.lineWidth = this.symbol.strokewidth!;
-
+  private drawTriangle(symbol: Symbol, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
     var path1 = new Path2D();
+
+    ctx.beginPath();
     path1.moveTo(canvas.width / 2, 0);
     path1.lineTo(canvas.width, canvas.height);
     path1.lineTo(0, canvas.height);
@@ -145,13 +125,7 @@ export class SymbolsComponent implements OnInit {
   /*
   see https://math.stackexchange.com/questions/3582342/coordinates-of-the-vertices-of-a-five-pointed-star
   */
-  private drawStar(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
-    ctx.beginPath();
-    if (this.symbol.fill) ctx.fillStyle = this.symbol.fill!;
-    if (this.symbol.fillopacity) ctx.globalAlpha = this.symbol.fillopacity!;
-    if (this.symbol.stroke) ctx.strokeStyle = this.symbol.stroke!;
-    if ((typeof (this.symbol.strokewidth) != "undefined") && (this.symbol.strokewidth > 0)) ctx.lineWidth = this.symbol.strokewidth!;
-
+  private drawStar(symbol: Symbol, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
     var radius_outside = Math.min(canvas.width / 2, canvas.height / 2);
     var radius_inside = radius_outside * 0.5;
     var path1 = new Path2D();
@@ -160,6 +134,7 @@ export class SymbolsComponent implements OnInit {
     var [x, y] = [0, 0];
     var [xstart, ystart] = [canvas.width / 2, canvas.height / 2];
 
+    ctx.beginPath();
     for (let i = 0; i < 5; i++) {
       // big ring
       [x, y] = this.starCoordsOut(i, radius_outside);
@@ -179,27 +154,22 @@ export class SymbolsComponent implements OnInit {
     ctx.closePath();
   }
 
-  private drawLijn(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
-    if ((typeof (this.symbol.fillopacity) != "undefined") && this.symbol.fillopacity) ctx.globalAlpha = this.symbol.fillopacity!;
-    if ((typeof (this.symbol.stroke) != "undefined") && this.symbol.stroke) ctx.strokeStyle = this.symbol.stroke!;
-    if ((typeof (this.symbol.strokeopacity) != "undefined") && this.symbol.strokeopacity) ctx.globalAlpha = this.symbol.strokeopacity!;
-    if ((typeof (this.symbol.stokelinecap) != "undefined") && this.symbol.stokelinecap) ctx.lineCap = this.symbol.stokelinecap;
-    if ((typeof (this.symbol.strokewidth) != "undefined") && this.symbol.strokewidth! > 0) {
-      ctx.lineWidth = this.symbol.strokewidth!;
-    }
-    if ((typeof (this.symbol.strokedasharray) != "undefined") && this.symbol.strokedasharray!.length > 0) {
-      var dasharray: number[] = [];
-      var dashstrings: string[] = this.symbol.strokedasharray!.split(/\s/);
-
-      dashstrings.forEach(dash => {
-        dasharray.push(Number(dash));
-      });
-      ctx.setLineDash(dasharray);
-    }
+  private drawLijn(symbol: Symbol, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
     ctx.beginPath();
     ctx.moveTo(10, 50);
     ctx.lineTo(canvas.width - 20, 50);
     ctx.stroke();
+  }
+
+  private drawVlak(symbol: Symbol, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
+
+    if ((typeof (symbol.stroke) != "undefined") && symbol.stroke) ctx.fillStyle = symbol.stroke!;
+
+    ctx.beginPath();
+    ctx.rect(0, 0, canvas.width, canvas.height);
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.stroke();
+    ctx.fill();
   }
 
   private starCoordsOut(index: number, radius: number): [x: number, y: number] {

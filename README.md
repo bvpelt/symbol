@@ -41,6 +41,7 @@ See
 - [example binding.xjb](https://github.com/orbisgis/ogc-custom-jaxb/blob/master/ogc-custom-model/src/main/resources/binding.xjb)
 - [example xml to json](https://www.javatpoint.com/convert-xml-to-json-in-java)
 - [online json to java](https://codebeautify.org/json-to-java-converter#)
+- [web api](https://developer.mozilla.org/en-US/docs/Web/API)
 
 
 ## Maven package

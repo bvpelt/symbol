@@ -3,7 +3,6 @@ import { Symbol } from '../symbol';
 import { SYMBOLS } from '../mock-symbols';
 
 @Component({
-  //standalone: true,
   selector: 'app-symbols',
   templateUrl: './symbols.component.html',
   styleUrls: ['./symbols.component.css'],
@@ -11,15 +10,24 @@ import { SYMBOLS } from '../mock-symbols';
 export class SymbolsComponent implements OnInit {
   symbols = SYMBOLS;
   selectedSymbol?: Symbol;
-  canvas?: HTMLCanvasElement;
+ canvas?: HTMLCanvasElement;
   ctx?: CanvasRenderingContext2D | null;
 
   ngOnInit() {
     this.canvas = document.getElementById('canvas1') as HTMLCanvasElement;
   }
 
+  ngAfterViewInit() {
+    this.canvas = document.getElementById('canvas1') as HTMLCanvasElement;
+    this.ctx = this.canvas.getContext('2d');
+
+    this.canvas.width = 100;
+    this.canvas.height = 100;
+  }
+
   onSelect(symbol: Symbol): void {
     this.selectedSymbol = symbol;
+    
     if (this.ctx != null) {
       this.ctx.save();
       this.ctx.clearRect(0, 0, this.canvas!.width, this.canvas!.height);
@@ -50,37 +58,34 @@ export class SymbolsComponent implements OnInit {
       if (this.selectedSymbol.type === "Vlak") this.drawVlak(this.selectedSymbol, this.canvas!, this.ctx);
       // draw symbol
       this.ctx.restore();
+  
     } else {
       console.log('ctx is null');
     }
-  }
-
-  ngAfterViewInit() {
-    this.canvas = document.getElementById('canvas1') as HTMLCanvasElement;
-    this.ctx = this.canvas.getContext('2d');
-
-    this.canvas.width = 100;
-    this.canvas.height = 100;
-
-
+        
   }
 
   drawPoint(symbol: Symbol, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
-    if (symbol.welknownname === "circle") {
-      this.drawCircle(symbol, canvas, ctx);
-    }
-    if (symbol.welknownname === "square") {
-      this.drawSquare(symbol, canvas, ctx);
-    }
-    if (symbol.welknownname === "cross_fill") {
-      this.drawCross(symbol, canvas, ctx);
-    }
-    if (symbol.welknownname === "triangle") {
-      this.drawTriangle(symbol, canvas, ctx);
-    }
-    if (symbol.welknownname === "star") {
-      this.drawStar(symbol, canvas, ctx);
-    }
+    switch (symbol.welknownname) {
+      case "circle":
+        this.drawCircle(symbol, canvas, ctx);
+        break;
+      case "square":
+        this.drawSquare(symbol, canvas, ctx);
+        break;
+      case "cross_fill":
+        this.drawCross(symbol, canvas, ctx);
+        break;
+      case "triangle":
+        this.drawTriangle(symbol, canvas, ctx);
+        break;
+      case "star":
+        this.drawStar(symbol, canvas, ctx);
+        break;
+      default:
+        console.log("Unknown type");
+        break;
+    }   
   }
 
   private drawCircle(symbol: Symbol, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
@@ -125,6 +130,7 @@ export class SymbolsComponent implements OnInit {
   /*
   see https://math.stackexchange.com/questions/3582342/coordinates-of-the-vertices-of-a-five-pointed-star
   */
+ 
   private drawStar(symbol: Symbol, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
     var radius_outside = Math.min(canvas.width / 2, canvas.height / 2);
     var radius_inside = radius_outside * 0.5;

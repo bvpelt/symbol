@@ -93,3 +93,8 @@
 .symbols .name {
   align-self: center;
 }
+
+.symbols .type {
+  align-self: center;
+  margin-left: 10px;
+}

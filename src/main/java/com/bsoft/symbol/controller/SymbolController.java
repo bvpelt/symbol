@@ -12,10 +12,7 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +20,8 @@ import java.util.List;
 @Slf4j
 @RestController
 public class SymbolController {
+    private final int SYMBOL_LIMIT = 10;
     private final SymbolService symbolService;
-
     public SymbolController(SymbolService symbolService) {
         this.symbolService = symbolService;
     }
@@ -172,12 +169,22 @@ public class SymbolController {
             value = "/symbols/lookup/{name}",
             produces = {"application/json", "application/problem+json"}
     )
-    //@RequestMapping("/symbols/lookup/{name}")
-    public ResponseEntity<?> lookupSymbol(@PathVariable("name") String name) {
-        log.info("Lookup: {}", name);
+    public ResponseEntity<?> lookupSymbol(@PathVariable("name") String name, @RequestParam(required = false, name = "limit") String limit) {
+        log.trace("Lookup: {} limit: {}", name, limit);
         List<Symbol> symbol = new ArrayList<Symbol>();
+        int symbol_limit = 0;
+        if (limit != null) {
+            try {
+                symbol_limit = Integer.parseInt(limit);
+            } catch (NumberFormatException e) {
+                log.error("Invalid limit: {}, using default {}", limit, SYMBOL_LIMIT);
+                symbol_limit = SYMBOL_LIMIT;
+            }
+        } else {
+            symbol_limit = SYMBOL_LIMIT;
+        }
         try {
-            symbol = symbolService.lookupSymbol(name);
+            symbol = symbolService.lookupSymbol(name, symbol_limit);
             return ResponseEntity.ok(symbol);
         } catch (Exception e) {
             Problem problem = new Problem();

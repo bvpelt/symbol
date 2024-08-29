@@ -19,6 +19,6 @@ public interface SymbolRepository extends PagingAndSortingRepository<Symbol, Lon
     Optional<Symbol> findByName(final String name);
 
 
-    @Query(value = "SELECT * FROM Symbol s WHERE s.name like ?1 order by name limit 10", nativeQuery = true)
-    List<Symbol> lookUp(String name);
+    @Query(value = "SELECT * FROM Symbol s WHERE s.name like ?1 order by name limit ?2", nativeQuery = true)
+    List<Symbol> lookUp(String name, int limit);
 }

@@ -29,8 +29,8 @@ public class SymbolService {
         return symbol;
     }
 
-    public List<Symbol> lookupSymbol(String name) {
-        List<Symbol> symbolList = symbolRepository.lookUp(name + "%");
+    public List<Symbol> lookupSymbol(String name, int limit) {
+        List<Symbol> symbolList = symbolRepository.lookUp(name + "%", limit);
 
         return symbolList;
     }

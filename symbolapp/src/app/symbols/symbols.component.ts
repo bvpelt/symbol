@@ -9,7 +9,6 @@ import { SymbolService } from '../symbol.service';
   styleUrls: ['./symbols.component.css'],
 })
 export class SymbolsComponent implements OnInit {
-  //symbols = SYMBOLS;
   symbols: Symbol[] = [];
   selectedSymbol?: Symbol;
   canvas?: HTMLCanvasElement;
@@ -72,7 +71,8 @@ export class SymbolsComponent implements OnInit {
   }
 
   getSymbols(): void {
-    this.symbols = this.symbolService.getSymbols();
+    this.symbolService.getSymbols()
+      .subscribe(symbols => this.symbols = symbols);
   }
 
   drawPoint(symbol: Symbol, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
@@ -140,7 +140,6 @@ export class SymbolsComponent implements OnInit {
   /*
   see https://math.stackexchange.com/questions/3582342/coordinates-of-the-vertices-of-a-five-pointed-star
   */
-
   private drawStar(symbol: Symbol, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
     var radius_outside = Math.min(canvas.width / 2, canvas.height / 2);
     var radius_inside = radius_outside * 0.5;

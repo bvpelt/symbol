@@ -1,20 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { Symbol } from '../symbol';
 import { SYMBOLS } from '../mock-symbols';
-import { FormsModule } from '@angular/forms';
+import { SymbolService } from '../symbol.service';
 
 @Component({
   selector: 'app-symbols',
   templateUrl: './symbols.component.html',
-  styleUrls: ['./symbols.component.css'],  
+  styleUrls: ['./symbols.component.css'],
 })
 export class SymbolsComponent implements OnInit {
-  symbols = SYMBOLS;
+  //symbols = SYMBOLS;
+  symbols: Symbol[] = [];
   selectedSymbol?: Symbol;
- canvas?: HTMLCanvasElement;
+  canvas?: HTMLCanvasElement;
   ctx?: CanvasRenderingContext2D | null;
 
+  constructor(private symbolService: SymbolService) {
+
+  }
+
   ngOnInit() {
+    this.getSymbols();
     this.canvas = document.getElementById('canvas1') as HTMLCanvasElement;
   }
 
@@ -28,7 +34,7 @@ export class SymbolsComponent implements OnInit {
 
   onSelect(symbol: Symbol): void {
     this.selectedSymbol = symbol;
-    
+
     if (this.ctx != null) {
       this.ctx.save();
       this.ctx.clearRect(0, 0, this.canvas!.width, this.canvas!.height);
@@ -59,11 +65,14 @@ export class SymbolsComponent implements OnInit {
       if (this.selectedSymbol.type === "Vlak") this.drawVlak(this.selectedSymbol, this.canvas!, this.ctx);
       // draw symbol
       this.ctx.restore();
-  
+
     } else {
       console.log('ctx is null');
     }
-        
+  }
+
+  getSymbols(): void {
+    this.symbols = this.symbolService.getSymbols();
   }
 
   drawPoint(symbol: Symbol, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
@@ -86,7 +95,7 @@ export class SymbolsComponent implements OnInit {
       default:
         console.log("Unknown type");
         break;
-    }   
+    }
   }
 
   private drawCircle(symbol: Symbol, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
@@ -131,7 +140,7 @@ export class SymbolsComponent implements OnInit {
   /*
   see https://math.stackexchange.com/questions/3582342/coordinates-of-the-vertices-of-a-five-pointed-star
   */
- 
+
   private drawStar(symbol: Symbol, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
     var radius_outside = Math.min(canvas.width / 2, canvas.height / 2);
     var radius_inside = radius_outside * 0.5;

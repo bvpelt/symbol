@@ -8,5 +8,4 @@ import { Symbol } from '../symbol';
 })
 export class SymbolDetailComponent {
   @Input() symbol?: Symbol;
- 
 }

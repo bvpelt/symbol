@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-//import { SymbolsModule } from './symbols/symbols.module';
 import { SymbolsComponent } from './symbols/symbols.component';
 import { SymbolDetailComponent } from './symbol-detail/symbol-detail.component';
 
@@ -15,8 +13,10 @@ import { SymbolDetailComponent } from './symbol-detail/symbol-detail.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-  //  SymbolsModule
+    AppRoutingModule
+  ],
+  schemas: [
+
   ],
   providers: [],
   bootstrap: [AppComponent]

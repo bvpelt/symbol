@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Symbol } from '../symbol';
 import { SYMBOLS } from '../mock-symbols';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-symbols',
   templateUrl: './symbols.component.html',
-  styleUrls: ['./symbols.component.css'],
+  styleUrls: ['./symbols.component.css'],  
 })
 export class SymbolsComponent implements OnInit {
   symbols = SYMBOLS;

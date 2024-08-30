@@ -27,7 +27,7 @@ Accept: application/json
 
 ###
 
-GET http://localhost:8080/symbols/lookup/lt
+GET http://localhost:8080/symbols/lookup/lt?limit=20
 Accept: application/json
 
 ###

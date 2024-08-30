@@ -71,7 +71,7 @@ export class SymbolsComponent implements OnInit {
   }
 
   getSymbols(): void {
-    this.symbolService.getSymbols()
+    this.symbolService.getSymbols('lt', '40')
       .subscribe(symbols => this.symbols = symbols);
   }
 

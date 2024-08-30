@@ -29,6 +29,10 @@ See
 - http://localhost:8080/swagger-ui/index.html
 - https://www.baeldung.com/java-swagger-set-list-response 
 
+## Cors
+See
+- https://www.baeldung.com/spring-cors
+
 ## Actuator
 See 
 - http://localhost:8081/actuator

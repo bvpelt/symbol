@@ -19,6 +19,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
+@CrossOrigin("http://localhost:4200")
 public class SymbolController {
     private final int SYMBOL_LIMIT = 10;
     private final SymbolService symbolService;
@@ -170,7 +171,7 @@ public class SymbolController {
             produces = {"application/json", "application/problem+json"}
     )
     public ResponseEntity<?> lookupSymbol(@PathVariable("name") String name, @RequestParam(required = false, name = "limit") String limit) {
-        log.trace("Lookup: {} limit: {}", name, limit);
+        log.info("Lookup: {} limit: {}", name, limit);
         List<Symbol> symbol = new ArrayList<Symbol>();
         int symbol_limit = 0;
         if (limit != null) {

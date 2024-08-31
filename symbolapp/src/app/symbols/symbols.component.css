@@ -114,3 +114,21 @@
 .clearfix {
   clear: both;
 }
+
+#search-symbol {
+  margin-left: 10px;
+}
+
+#search {
+  color: white;
+  background-color: #405061;
+  margin: 0 0 0 20px;
+  padding: 2px 6px 2px 6px;
+}
+
+#prefix {
+  color: white;
+  background-color: #405061;
+  margin: 0 0 0 210px;
+  padding: 2px 6px 2px 6px;
+}

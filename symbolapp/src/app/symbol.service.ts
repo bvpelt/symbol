@@ -12,6 +12,7 @@ export class SymbolService {
   private apiEndpoint = 'http://localhost:8080/symbols/';  // URL to web api
   private apiName = this.apiEndpoint + 'name/';
   private apiLookup = this.apiEndpoint + 'lookup/';
+  private apiPrefix = this.apiEndpoint + 'prefix';
 
   constructor(private http: HttpClient) { }
 
@@ -37,4 +38,7 @@ export class SymbolService {
     return this.http.get<Symbol>(this.apiEndpoint + id);
   }
 
+  getPrefixes(): Observable<string[]> {
+    return this.http.get<string[]>(this.apiPrefix);
+  }
 }

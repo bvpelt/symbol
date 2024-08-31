@@ -24,9 +24,10 @@ export class SymbolsComponent implements OnInit {
 
   onSearch(search?: string): void {
     this.prefixes = [];
-    if ((typeof (search) != "undefined")) {
-      this.getSymbols(search, '40');
+    if ((typeof (search) == "undefined")) {
+      search = 'lt001';
     }
+    this.getSymbols(search, '40');
   }
 
   onHelp(): void {

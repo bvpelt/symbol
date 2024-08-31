@@ -25,9 +25,6 @@ export class SymbolDetailComponent implements OnInit {
   }
 
   ngOnChanges() {
-    console.log("New input: " + this.symbol?.name);
-
-
     if (this.ctx != null) {
       this.ctx.clearRect(0, 0, this.canvas!.width, this.canvas!.height);
 
@@ -60,11 +57,8 @@ export class SymbolDetailComponent implements OnInit {
         // draw symbol
         this.ctx.restore();
       }
-    } else {
-      console.log('ctx is null');
     }
   }
-
 
   drawPoint(symbol: Symbol, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
     switch (symbol.welknownname) {

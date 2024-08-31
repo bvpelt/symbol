@@ -44,4 +44,8 @@ public class SymbolService {
         }
         return symbol;
     }
+
+    public List<String> prefixSymbol() {
+        return symbolRepository.lookUpPrefix();
+    }
 }

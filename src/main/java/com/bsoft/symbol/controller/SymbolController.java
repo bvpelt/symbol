@@ -195,4 +195,51 @@ public class SymbolController {
             return new ResponseEntity<Problem>(problem, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+
+    /**
+     * GET /symbols/prefix
+     *
+     * @return Resultaat van symbol bevraging (status code 200)
+     * or Not found (status code 404)
+     * or Unexpected problem (status code 500)
+     */
+    @Operation(
+            operationId = "prefixSymbol",
+            tags = {"Symbol"},
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Resultaat van symbol bevraging", content = {
+                            @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Symbol.class))),
+                            @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Problem.class))
+                    }),
+                    @ApiResponse(responseCode = "404", description = "Not found", content = {
+                            @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Problem.class))
+                    }),
+                    @ApiResponse(responseCode = "default", description = "Unexpected problem", content = {
+                            @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Problem.class))
+                    })
+            },
+            security = {
+                    @SecurityRequirement(name = "api_key")
+            }
+    )
+    @RequestMapping(
+            method = RequestMethod.GET,
+            value = "/symbols/prefix",
+            produces = {"application/json", "application/problem+json"}
+    )
+    public ResponseEntity<?> prefixSymbol() {
+        log.info("prefix symbol");
+        List<String> prefix = new ArrayList<String>();
+        try {
+            prefix = symbolService.prefixSymbol();
+            return ResponseEntity.ok(prefix);
+        } catch (Exception e) {
+            Problem problem = new Problem();
+            problem.setStatus(500);
+            problem.setDetail("Unknown error");
+            problem.setDetail(e.getMessage());
+            return new ResponseEntity<Problem>(problem, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

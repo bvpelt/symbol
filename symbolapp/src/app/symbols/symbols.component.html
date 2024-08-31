@@ -13,7 +13,7 @@
 <div *ngIf="symbols.length > 0" class="symbolcontainer">
   <div class="symbollist">
     <ul class="symbols">
-      <li *ngFor="let symbol of symbols">
+      <li *ngFor="let symbol of symbols; let i = index" [class.button.selected]="i === selectedIndex">
         <button type="button" [class.selected]="symbol === selectedSymbol" (click)="onSelect(symbol)">
           <span class="badge">{{symbol.id}}</span>
           <span class="name">{{symbol.name}}</span>

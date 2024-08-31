@@ -19,14 +19,6 @@
 
 }
 
-#canvas {
-  border: 5px solid rgb(224, 20, 20);
-  width: 100px;
-  height: 100px;
-
-}
-
-
 /* SymbolsComponent's private CSS styles */
 .symbols {
   margin: 0 0 2em 0;
@@ -97,4 +89,28 @@
 .symbols .type {
   align-self: center;
   margin-left: 10px;
+}
+
+
+.symbolcontainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* Adjust column widths as needed */
+}
+
+
+.symbollist {
+  float: left;
+  height: 40em;
+  overflow-y: scroll;
+}
+
+
+.symboldetail {
+  padding-left: 20px;
+  float: left;
+}
+
+.clearfix {
+  clear: both;
 }

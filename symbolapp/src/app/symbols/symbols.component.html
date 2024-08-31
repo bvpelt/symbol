@@ -1,11 +1,16 @@
-<ul class="symbols">
-  <li *ngFor="let symbol of symbols">
-    <button type="button" [class.selected]="symbol === selectedSymbol" (click)="onSelect(symbol)">
-      <span class="badge">{{symbol.id}}</span>
-      <span class="name">{{symbol.name}}</span>
-      <span class="type">{{symbol.type}}</span>
-    </button>
-  </li>
-</ul>
-
-<app-symbol-detail [symbol]="selectedSymbol"></app-symbol-detail>
+<div class="symbolcontainer">
+  <div class="symbollist">
+    <ul class="symbols">
+      <li *ngFor="let symbol of symbols">
+        <button type="button" [class.selected]="symbol === selectedSymbol" (click)="onSelect(symbol)">
+          <span class="badge">{{symbol.id}}</span>
+          <span class="name">{{symbol.name}}</span>
+          <span class="type">{{symbol.type}}</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div class="symboldetail">
+    <app-symbol-detail [symbol]="selectedSymbol"></app-symbol-detail>
+  </div>
+</div>

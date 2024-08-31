@@ -1,3 +1,9 @@
+<div>
+  <label for="search-symbol">Search item</label>
+  <input id="search-symbol" [(ngModel)]="searchsymbol" placeholder="lt001">
+  <button type="button"  (click)="onSearch(searchsymbol)">Search</button>
+</div>
+
 <div class="symbolcontainer">
   <div class="symbollist">
     <ul class="symbols">

@@ -15,19 +15,8 @@ export class SymbolService {
 
   constructor(private http: HttpClient) { }
 
-  /*
-  getSymbols(): Observable<Symbol []> {
-    const symbols = of(SYMBOLS);
-    return symbols;
-  }
-  */
   getSymbols(name: string, limit?: string): Observable<Symbol[]> {
-    //const headers: HttpHeaders = new HttpHeaders({  
-    //   "content-type" : "application/json"
-    //});
 
-    name = 'lt';
-    limit = "40";
     if (typeof (limit) != undefined) {
       let params = new HttpParams();
       params = params.append("limit", limit!);

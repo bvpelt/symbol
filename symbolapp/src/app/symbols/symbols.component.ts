@@ -13,13 +13,14 @@ export class SymbolsComponent implements OnInit {
   selectedSymbol?: Symbol;
   canvas?: HTMLCanvasElement;
   ctx?: CanvasRenderingContext2D | null;
+  searchsymbol?: string;
 
   constructor(private symbolService: SymbolService) {
 
   }
 
   ngOnInit() {
-    this.getSymbols();
+    this.getSymbols('lt');
     this.canvas = document.getElementById('canvas1') as HTMLCanvasElement;
   }
 
@@ -29,6 +30,16 @@ export class SymbolsComponent implements OnInit {
 
     this.canvas.width = 100;
     this.canvas.height = 100;
+  }
+
+  onSearch(search?: string): void {
+    if ((typeof (search) != "undefined")) {
+      if (search.length == 5) {
+
+      } else {
+        this.getSymbols(search, '40');
+      }
+    }
   }
 
   onSelect(symbol: Symbol): void {
@@ -70,8 +81,8 @@ export class SymbolsComponent implements OnInit {
     }
   }
 
-  getSymbols(): void {
-    this.symbolService.getSymbols('lt', '40')
+  getSymbols(name: string, limit?: string): void {
+    this.symbolService.getSymbols(name, limit)
       .subscribe(symbols => this.symbols = symbols);
   }
 

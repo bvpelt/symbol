@@ -20,9 +20,6 @@ export class SymbolsComponent implements OnInit {
   }
 
   ngOnInit() {
-    //    this.getSymbols('lt');
-    // Focus on the first list item initially
-
   }
 
   onSearch(search?: string): void {
@@ -39,14 +36,16 @@ export class SymbolsComponent implements OnInit {
     this.getPrefixes();
   }
 
-  onSelect(symbol: Symbol): void {
-   // console.log("Draw symbol: " + symbol.name);
+  onSelect(symbol: Symbol, index: number): void {
+    // console.log("Draw symbol: " + symbol.name);
+    this.selectedIndex = index;
     this.selectedSymbol = symbol;
+    //    console.log('onselect - index: ', this.selectedIndex, ' symbol:', symbol);
   }
 
   @HostListener('document:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
-    console.log('selectedindex: ' + this.selectedIndex + ' ' + event);
+    //  console.log('selectedindex: ' + this.selectedIndex + ' ' + event);
     switch (event.key) {
       case 'ArrowUp':
         this.selectedIndex = Math.max(0, this.selectedIndex - 1);
@@ -65,8 +64,9 @@ export class SymbolsComponent implements OnInit {
   scrollToSelectedItem() {
     const list = document.querySelector('ul');
     const selectedItem = list?.querySelector('li:nth-child(' + (this.selectedIndex + 1) + ')');
-    console.log('selectedItem: ', selectedItem);
+    //    console.log('list: ', list, ' selectedItem: ', selectedItem);
     if (selectedItem) {
+      this.selectedSymbol = this.symbols[this.selectedIndex];
       selectedItem.scrollIntoView({ behavior: 'smooth' });
     }
   }

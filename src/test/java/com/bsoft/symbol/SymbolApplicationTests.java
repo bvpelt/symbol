@@ -10,17 +10,12 @@ import com.bsoft.symbol.line.Sld_NamedLayer;
 import com.bsoft.symbol.line.Sld_StyledLayerDescriptor;
 import com.bsoft.symbol.line.Sld_UserStyle;
 import com.bsoft.symbol.line.*;
-import com.bsoft.symbol.model.Area;
-import com.bsoft.symbol.model.Graphic;
-import com.bsoft.symbol.model.Line;
-import com.bsoft.symbol.model.Symbol;
+import com.bsoft.symbol.model.*;
+import com.bsoft.symbol.norm.NormSld;
 import com.bsoft.symbol.point.Se_Fill;
 import com.bsoft.symbol.point.Se_Graphic;
 import com.bsoft.symbol.point.*;
-import com.bsoft.symbol.repository.AreaRepository;
-import com.bsoft.symbol.repository.GrapphicRepository;
-import com.bsoft.symbol.repository.LineRepository;
-import com.bsoft.symbol.repository.SymbolRepository;
+import com.bsoft.symbol.repository.*;
 import com.bsoft.symbol.services.JsonToJava;
 import com.bsoft.symbol.services.SLDService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -55,13 +50,16 @@ class SymbolApplicationTests {
     AreaRepository areaRepository;
 
     @Autowired
+    NormRepository normRepository;
+
+    @Autowired
     SymbolRepository symbolRepository;
 
     @Test
     void contextLoads() {
     }
 
-    /*
+/*
     @Test
     @Order(1)
     void genPointSLD() {
@@ -127,9 +125,32 @@ class SymbolApplicationTests {
             log.error(e.getMessage());
         }
     }
-*/
+
     @Test
     @Order(4)
+    void genNormwaardeSLD() {
+        SLDService sldService = new SLDService();
+
+        try {
+            JSONObject json = sldService.convertXML("Normwaarden_v1.0.1.sld");
+            String jsonString = json.toString(4);
+            log.trace(jsonString);
+
+            String outputFileName = "/tmp/Normwaarden_v1.0.1.json";
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter(outputFileName));
+            writer.write(jsonString);
+            writer.flush(); // Force flushing the buffer
+            writer.close();
+
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
+    }
+*/
+
+    @Test
+    @Order(5)
     void readPointSLD() {
         JsonToJava json = new JsonToJava(objectMapper);
         ArrayList<Graphic> graphics = new ArrayList<Graphic>();
@@ -219,7 +240,7 @@ class SymbolApplicationTests {
     }
 
     @Test
-    @Order(5)
+    @Order(6)
     void readLineSLD() {
         JsonToJava json = new JsonToJava(objectMapper);
 
@@ -291,7 +312,7 @@ class SymbolApplicationTests {
 
 
     @Test
-    @Order(6)
+    @Order(7)
     void readAreaSld() {
         JsonToJava json = new JsonToJava(objectMapper);
         ArrayList<Area> areas = new ArrayList<Area>();
@@ -318,6 +339,110 @@ class SymbolApplicationTests {
                     symbol.setName(name);
                     com.bsoft.symbol.area.Se_Fill se_Fill = se_PolygonSymbolizer.getSe_Fill();
                     ArrayList<com.bsoft.symbol.area.Se_SvgParameter> se_SvgParameters_Fill = se_Fill.getSe_SvgParameter();
+                    se_SvgParameters_Fill.forEach(fill_parameter -> {
+                        switch (fill_parameter.getName()) {
+                            case "fill":
+                                area.setFill(fill_parameter.getContent());
+                                symbol.setFill(fill_parameter.getContent());
+                                break;
+                            case "fill-opacity":
+                                area.setFillopacity(Float.parseFloat(fill_parameter.getContent()));
+                                symbol.setFillopacity(Float.parseFloat(fill_parameter.getContent()));
+                                break;
+                            case "stroke-linejoin":
+                                area.setStrokelinejoinfill(fill_parameter.getContent());
+                                symbol.setStrokelinejoinfill(fill_parameter.getContent());
+                                break;
+                            default:
+                                log.error("Unexpected fill parameter: {}", fill_parameter.getName());
+                                break;
+                        }
+                    });
+
+                    Se_GraphicFill se_graphicFill = se_Fill.getSe_GraphicFill();
+                    if (se_graphicFill != null) {
+                        com.bsoft.symbol.area.Se_Graphic se_Graphic = se_graphicFill.getSe_Graphic();
+                        Se_ExternalGraphic se_ExternalGraphic = se_Graphic.getSe_ExternalGraphic();
+                        Se_OnlineResource se_OnlineResource = se_ExternalGraphic.getSe_OnlineResource();
+                        String xlinkhref = se_OnlineResource.getXlink_href();
+
+                        area.setSymbol(xlinkhref.replace("./symbols/", ""));
+                        symbol.setSymbol(xlinkhref.replace("./symbols/", ""));
+                    }
+
+                    com.bsoft.symbol.area.Se_Stroke se_Stroke = se_PolygonSymbolizer.getSe_Stroke();
+                    ArrayList<com.bsoft.symbol.area.Se_SvgParameter> se_SvgParameter_Stroke = se_Stroke.getSe_SvgParameter();
+                    se_SvgParameter_Stroke.forEach(stroke_parameter -> {
+                        switch (stroke_parameter.getName()) {
+                            case "stroke":
+                                area.setStroke(stroke_parameter.getContent());
+                                symbol.setStroke(stroke_parameter.getContent());
+                                break;
+                            case "stroke-opacity":
+                                area.setStrokeopacity(Integer.parseInt(stroke_parameter.getContent()));
+                                symbol.setStrokeopacity(Integer.parseInt(stroke_parameter.getContent()));
+                                break;
+                            case "stroke-width":
+                                area.setStrokewidth(Integer.parseInt(stroke_parameter.getContent()));
+                                symbol.setStrokewidth(Integer.parseInt(stroke_parameter.getContent()));
+                                break;
+                            case "stroke-linejoin":
+                                area.setStrokelinejoinstroke(stroke_parameter.getContent());
+                                symbol.setStrokelinejoinstroke(stroke_parameter.getContent());
+                                break;
+                            case "stroke-dasharray":
+                                area.setStrokedasharray(stroke_parameter.getContent());
+                                symbol.setStrokedasharray(stroke_parameter.getContent());
+                                break;
+                            default:
+                                log.error("Unexpected stroke parameter: {}", stroke_parameter.getName());
+                                break;
+                        }
+                        areas.add(area);
+                        areaRepository.save(area);
+                        symbolRepository.save(symbol);
+                    });
+                });
+
+            });
+            log.info("Converted {} areas", areas.size());
+
+            log.trace("Areas:\n{}", areas);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
+    }
+
+
+
+    @Test
+    @Order(8)
+    void readNormSld() {
+        JsonToJava json = new JsonToJava(objectMapper);
+        ArrayList<Area> areas = new ArrayList<Area>();
+        try {
+            normRepository.deleteAll();
+            NormSld normSld = json.readNormFromJson("src/main/resources/Normwaarden.1.0.1.json");
+
+            com.bsoft.symbol.norm.Sld_StyledLayerDescriptor styledLayerDescriptor = normSld.getSld_StyledLayerDescriptor();
+            com.bsoft.symbol.norm.Sld_NamedLayer sld_NamedLayer = styledLayerDescriptor.getSld_NamedLayer();
+            com.bsoft.symbol.norm.Sld_UserStyle sld_UserStyle = sld_NamedLayer.getSld_UserStyle();
+            String type = sld_UserStyle.getSe_Name();
+            ArrayList<com.bsoft.symbol.norm.Se_FeatureTypeStyle> se_FeatureTypeStyle = sld_UserStyle.getSe_FeatureTypeStyle();
+            se_FeatureTypeStyle.forEach(featureType -> {
+                ArrayList<com.bsoft.symbol.norm.Se_Rule> se_Rule = featureType.getSe_Rule();
+                se_Rule.forEach(rule -> {
+                    Norm norm = new Norm();
+                    norm.setType(type);
+                    Symbol symbol = new Symbol();
+                    symbol.setType(type);
+                    com.bsoft.symbol.norm.Se_PolygonSymbolizer se_PolygonSymbolizer = rule.getSe_PolygonSymbolizer();
+                    String name = se_PolygonSymbolizer.getSe_Name();
+                    log.info("Processing area: {}", name);
+                    norm.setName(name);
+                    symbol.setName(name);
+                    com.bsoft.symbol.norm.Se_Fill se_Fill = se_PolygonSymbolizer.getSe_Fill();
+                    ArrayList<com.bsoft.symbol.norm.Se_SvgParameter> se_SvgParameters_Fill = se_Fill.getSe_SvgParameter();
                     se_SvgParameters_Fill.forEach(fill_parameter -> {
                         switch (fill_parameter.getName()) {
                             case "fill":

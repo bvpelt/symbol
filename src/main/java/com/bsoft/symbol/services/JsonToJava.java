@@ -2,6 +2,7 @@ package com.bsoft.symbol.services;
 
 import com.bsoft.symbol.area.AreaSld;
 import com.bsoft.symbol.line.LineSld;
+import com.bsoft.symbol.norm.NormSld;
 import com.bsoft.symbol.point.PointSld;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,5 +47,15 @@ public class JsonToJava {
         AreaSld areaSld = objectMapper.readValue(jsonFile, AreaSld.class);
 
         return areaSld;
+    }
+
+    public NormSld readNormFromJson(String filename) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+
+
+        File jsonFile = new File(filename); // Replace with your file path
+        NormSld normSld = objectMapper.readValue(jsonFile, NormSld.class);
+
+        return normSld;
     }
 }

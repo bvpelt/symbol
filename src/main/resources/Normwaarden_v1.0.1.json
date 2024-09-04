@@ -1,0 +1,1569 @@
+{"sld_StyledLayerDescriptor": {
+    "xmlns_se": "http://www.opengis.net/se",
+    "sld_NamedLayer": {
+        "sld_UserStyle": {
+            "se_Description": {"se_Title": "Vlak symbolen kleur grijs (met 30% transparantie en een gesloten dunne lijn)"},
+            "se_FeatureTypeStyle": [
+                {
+                    "se_Description": {"se_Title": "Grijs met 30% transparantie en een gesloten dunne lijn"},
+                    "se_Rule": [
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#505050"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#505050"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt200"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt200"
+                            }},
+                            "se_Name": "vsgt200"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#646464"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#505050"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt201"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt201"
+                            }},
+                            "se_Name": "vsgt201"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#787878"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#505050"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt202"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt202"
+                            }},
+                            "se_Name": "vsgt202"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#8c8c8c"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#505050"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt203"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt203"
+                            }},
+                            "se_Name": "vsgt203"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#a0a0a0"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#505050"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt204"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt204"
+                            }},
+                            "se_Name": "vsgt204"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#b4b4b4"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#505050"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt205"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt205"
+                            }},
+                            "se_Name": "vsgt205"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#c8c8c8"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#505050"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt206"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt206"
+                            }},
+                            "se_Name": "vsgt206"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#dcdcdc"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#505050"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt207"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt207"
+                            }},
+                            "se_Name": "vsgt207"
+                        }
+                    ],
+                    "se_Name": "Grijs"
+                },
+                {
+                    "se_Description": {"se_Title": "Blauw met 30% transparantie en een gesloten dunne lijn"},
+                    "se_Rule": [
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#0000ff"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#0000ff"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt300"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt300"
+                            }},
+                            "se_Name": "vsgt300"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#1e1eff"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#0000ff"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt301"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt301"
+                            }},
+                            "se_Name": "vsgt301"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#3c3cff"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#0000ff"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt302"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt302"
+                            }},
+                            "se_Name": "vsgt302"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#5a5aff"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#0000ff"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt303"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt303"
+                            }},
+                            "se_Name": "vsgt303"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#7878ff"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#0000ff"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt304"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt304"
+                            }},
+                            "se_Name": "vsgt304"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#9696ff"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#0000ff"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt305"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt305"
+                            }},
+                            "se_Name": "vsgt305"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#b4b4ff"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#0000ff"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt306"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt306"
+                            }},
+                            "se_Name": "vsgt306"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#d2d2ff"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#0000ff"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt307"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt307"
+                            }},
+                            "se_Name": "vsgt307"
+                        }
+                    ],
+                    "se_Name": "Blauw"
+                },
+                {
+                    "se_Description": {"se_Title": "Groen met 30% transparantie en een gesloten dunne lijn"},
+                    "se_Rule": [
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#005000"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#005000"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt400"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt400"
+                            }},
+                            "se_Name": "vsgt400"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#007300"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#005000"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt401"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt401"
+                            }},
+                            "se_Name": "vsgt401"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#009600"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#005000"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt402"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt402"
+                            }},
+                            "se_Name": "vsgt402"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#00b900"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#005000"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt403"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt403"
+                            }},
+                            "se_Name": "vsgt403"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#00dc00"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#005000"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt404"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt404"
+                            }},
+                            "se_Name": "vsgt404"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#00ff00"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#005000"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt405"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt405"
+                            }},
+                            "se_Name": "vsgt405"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#4bff4b"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#005000"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt406"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt406"
+                            }},
+                            "se_Name": "vsgt406"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#96ff96"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#005000"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt407"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt407"
+                            }},
+                            "se_Name": "vsgt407"
+                        }
+                    ],
+                    "se_Name": "Groen"
+                },
+                {
+                    "se_Description": {"se_Title": "Rood met 30% transparantie en een gesloten dunne lijn"},
+                    "se_Rule": [
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#960000"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#960000"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt500"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt500"
+                            }},
+                            "se_Name": "vsgt500"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#b90000"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#960000"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt501"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt501"
+                            }},
+                            "se_Name": "vsgt501"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#dc0000"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#960000"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt502"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt502"
+                            }},
+                            "se_Name": "vsgt502"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#ff0000"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#960000"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt503"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt503"
+                            }},
+                            "se_Name": "vsgt503"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#ff5050"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#960000"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt504"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt504"
+                            }},
+                            "se_Name": "vsgt504"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#ff7878"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#960000"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt505"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt505"
+                            }},
+                            "se_Name": "vsgt505"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#ffa0a0"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#960000"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt506"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt506"
+                            }},
+                            "se_Name": "vsgt506"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#ffc8c8"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#960000"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt507"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt507"
+                            }},
+                            "se_Name": "vsgt507"
+                        }
+                    ],
+                    "se_Name": "Rood"
+                },
+                {
+                    "se_Description": {"se_Title": "Geel met 30% transparantie en een gesloten dunne lijn"},
+                    "se_Rule": [
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#e1c300"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#e1c300"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt600"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt600"
+                            }},
+                            "se_Name": "vsgt600"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#ebd700"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#e1c300"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt601"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt601"
+                            }},
+                            "se_Name": "vsgt601"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#f5eb00"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#e1c300"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt602"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt602"
+                            }},
+                            "se_Name": "vsgt602"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#ffff00"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#e1c300"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt603"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt603"
+                            }},
+                            "se_Name": "vsgt603"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#ffff50"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#e1c300"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt604"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt604"
+                            }},
+                            "se_Name": "vsgt604"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#ffff78"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#e1c300"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt605"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt605"
+                            }},
+                            "se_Name": "vsgt605"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#ffffa0"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#e1c300"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt606"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt606"
+                            }},
+                            "se_Name": "vsgt606"
+                        },
+                        {
+                            "se_PolygonSymbolizer": {
+                                "se_Fill": {"se_SvgParameter": [
+                                    {
+                                        "name": "fill",
+                                        "content": "#ffffc8"
+                                    },
+                                    {
+                                        "name": "fill-opacity",
+                                        "content": 0.3
+                                    }
+                                ]},
+                                "se_Stroke": {"se_SvgParameter": [
+                                    {
+                                        "name": "stroke",
+                                        "content": "#e1c300"
+                                    },
+                                    {
+                                        "name": "stroke-opacity",
+                                        "content": 1
+                                    },
+                                    {
+                                        "name": "stroke-width",
+                                        "content": 0.5
+                                    },
+                                    {
+                                        "name": "stroke-linejoin",
+                                        "content": "round"
+                                    }
+                                ]},
+                                "se_Name": "vsgt607"
+                            },
+                            "ogc_Filter": {"ogc_PropertyIsEqualTo": {
+                                "ogc_PropertyName": "symbol",
+                                "ogc_Literal": "vsgt607"
+                            }},
+                            "se_Name": "vsgt607"
+                        }
+                    ],
+                    "se_Name": "Geel"
+                }
+            ],
+            "se_Name": "Vlak met transparantie met een gesloten lijn"
+        },
+        "se_Name": "Normwaarden"
+    },
+    "xmlns_ogc": "http://www.opengis.net/ogc",
+    "xmlns_sld": "http://www.opengis.net/sld",
+    "xmlns_xlink": "http://www.w3.org/1999/xlink",
+    "xmlns_dso": "https://dso.org",
+    "xsi_schemaLocation": "http://www.opengis.net/sld http://schemas.opengis.net/sld/1.1.0/StyledLayerDescriptor.xsd",
+    "xmlns_xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "version": "1.1.0"
+}}

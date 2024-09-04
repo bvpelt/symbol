@@ -155,10 +155,23 @@ export class SymbolDetailComponent implements OnInit {
   }
 
   private drawLijn(symbol: Symbol, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
+    const offset:number = 10;
+    if (symbol.name.substring(0,3) === 'lth') {
+      console.log('name: ', symbol.name, ' substring: ', symbol.name.substring(0,3));
+      ctx.save();
+      ctx.lineWidth = 1;
+      ctx.strokeStyle ='#000000';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(offset, 50);
+      ctx.lineTo(canvas.width - offset, 50);
+      ctx.stroke();    
+      ctx.restore();
+    }
     ctx.beginPath();
-    ctx.moveTo(10, 50);
-    ctx.lineTo(canvas.width - 20, 50);
-    ctx.stroke();
+    ctx.moveTo(offset, 50);
+    ctx.lineTo(canvas.width - offset, 50);
+    ctx.stroke();    
   }
 
   private drawVlak(symbol: Symbol, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {

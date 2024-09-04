@@ -24,11 +24,12 @@ export class SymbolsComponent implements OnInit {
 
   onSearch(search?: string): void {
     this.prefixes = [];
-    if ((typeof (search) == "undefined")) {
+    console.log('search argument: ', search);
+    if ((typeof (search) === "undefined")) {
       search = 'lt001';
     }
     this.getSymbols(search, '40');
-    document.querySelector('li')?.focus();
+    document.querySelector('li')?.focus();   
   }
 
   onHelp(): void {
@@ -73,7 +74,12 @@ export class SymbolsComponent implements OnInit {
 
   getSymbols(name: string, limit?: string): void {
     this.symbolService.getSymbols(name, limit)
-      .subscribe(symbols => this.symbols = symbols);
+      .subscribe(symbols => { 
+        this.symbols = symbols; 
+        if (this.symbols.length > 0) {
+          this.selectedSymbol = this.symbols[this.selectedIndex];
+        }
+      });
   }
 
   getPrefixes(): void {

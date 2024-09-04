@@ -313,6 +313,7 @@ class SymbolApplicationTests {
                     symbol.setType(type);
                     Se_PolygonSymbolizer se_PolygonSymbolizer = rule.getSe_PolygonSymbolizer();
                     String name = se_PolygonSymbolizer.getSe_Name();
+                    log.info("Processing area: {}", name);
                     area.setName(name);
                     symbol.setName(name);
                     com.bsoft.symbol.area.Se_Fill se_Fill = se_PolygonSymbolizer.getSe_Fill();

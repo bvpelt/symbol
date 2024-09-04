@@ -61,6 +61,11 @@ export class SymbolDetailComponent implements OnInit {
   }
 
   drawPoint(symbol: Symbol, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
+    if ((typeof (symbol.rotation) != "undefined") && symbol.rotation > 0) {
+      ctx.translate(canvas.width / 2, 0); //canvas.height/2)
+      ctx.rotate(this.angleToRadians(symbol.rotation));
+      ctx.scale(0.5, 0.5);
+    }
     switch (symbol.welknownname) {
       case "circle":
         this.drawCircle(symbol, canvas, ctx);
@@ -100,13 +105,15 @@ export class SymbolDetailComponent implements OnInit {
   }
 
   private drawCross(symbol: Symbol, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
+    ctx.strokeStyle = ctx.fillStyle;
     ctx.beginPath();
     ctx.moveTo(canvas.width / 2, 0);
     ctx.lineTo(canvas.width / 2, canvas.height);
     ctx.moveTo(0, canvas.height / 2);
     ctx.lineTo(canvas.width, canvas.height / 2);
-    ctx.stroke();
     ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
   }
 
   private drawTriangle(symbol: Symbol, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
@@ -155,23 +162,28 @@ export class SymbolDetailComponent implements OnInit {
   }
 
   private drawLijn(symbol: Symbol, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
-    const offset:number = 10;
+    const offset: number = 10;
+    const ypos = canvas.width / 2;
+    /*
     if (symbol.name.substring(0,3) === 'lth') {
       console.log('name: ', symbol.name, ' substring: ', symbol.name.substring(0,3));
       ctx.save();
       ctx.lineWidth = 1;
       ctx.strokeStyle ='#000000';
-      ctx.lineWidth = 1;
+      ctx.setLineDash([]);
       ctx.beginPath();
-      ctx.moveTo(offset, 50);
-      ctx.lineTo(canvas.width - offset, 50);
-      ctx.stroke();    
+      ctx.moveTo(offset, ypos);
+      ctx.lineTo(canvas.width - offset, ypos);
+      ctx.closePath();
+      ctx.stroke();
       ctx.restore();
     }
+    */
     ctx.beginPath();
-    ctx.moveTo(offset, 50);
-    ctx.lineTo(canvas.width - offset, 50);
-    ctx.stroke();    
+    ctx.moveTo(offset, ypos);
+    ctx.lineTo(canvas.width - offset, ypos);
+    ctx.closePath();
+    ctx.stroke();
   }
 
   private drawVlak(symbol: Symbol, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
@@ -211,4 +223,7 @@ export class SymbolDetailComponent implements OnInit {
     return [x, y];
   }
 
+  private angleToRadians(angle: number): number {
+    return Math.PI * angle / 180;
+  }
 }

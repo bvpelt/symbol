@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, AfterViewInit } from '@angular/core';
 import { Symbol } from '../symbol';
 
 @Component({
@@ -6,25 +6,28 @@ import { Symbol } from '../symbol';
   templateUrl: './symbol-detail.component.html',
   styleUrls: ['./symbol-detail.component.css']
 })
-export class SymbolDetailComponent implements OnInit {
+export class SymbolDetailComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() symbol?: Symbol;
   canvas?: HTMLCanvasElement;
   ctx?: CanvasRenderingContext2D | null;
 
   ngOnInit() {
-    this.canvas = document.getElementById('canvas1') as HTMLCanvasElement;
+    //console.log('OnInit symbol: ', this.symbol);
   }
 
-
   ngAfterViewInit() {
+    //console.log('AfterviewInit symbol: ', this.symbol);
     this.canvas = document.getElementById('canvas1') as HTMLCanvasElement;
     this.ctx = this.canvas.getContext('2d');
 
     this.canvas.width = 100;
     this.canvas.height = 100;
+
+    this.ngOnChanges();
   }
 
   ngOnChanges() {
+    //console.log('change ctx: ', this.ctx);
     if (this.ctx != null) {
       this.ctx.clearRect(0, 0, this.canvas!.width, this.canvas!.height);
 
@@ -54,6 +57,7 @@ export class SymbolDetailComponent implements OnInit {
         if (this.symbol.type === "Punt") this.drawPoint(this.symbol, this.canvas!, this.ctx);
         if (this.symbol.type === "Lijn") this.drawLijn(this.symbol, this.canvas!, this.ctx);
         if (this.symbol.type === "Vlak") this.drawVlak(this.symbol, this.canvas!, this.ctx);
+        if (this.symbol.type === "Vlak met transparantie met een gesloten lijn") this.drawVlak(this.symbol, this.canvas!, this.ctx);
         // draw symbol
         this.ctx.restore();
       }

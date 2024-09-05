@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Symbol } from './symbol';
 import { SYMBOLS } from './mock-symbols';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +15,11 @@ export class SymbolService {
   private apiLookup = this.apiEndpoint + 'lookup/';
   private apiPrefix = this.apiEndpoint + 'prefix';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private messageService: MessageService) { }
 
   getSymbols(name: string, limit?: string): Observable<Symbol[]> {
 
+    this.messageService.add('Get symbol name: ' + name );
     if (typeof (limit) != undefined) {
       let params = new HttpParams();
       params = params.append("limit", limit!);

@@ -6,12 +6,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { SymbolsComponent } from './symbols/symbols.component';
 import { SymbolDetailComponent } from './symbol-detail/symbol-detail.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SymbolsComponent,
-    SymbolDetailComponent
+    SymbolDetailComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

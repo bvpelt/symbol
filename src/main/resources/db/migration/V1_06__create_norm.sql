@@ -9,7 +9,7 @@ create table norm
     fill                 text,
     fillopacity          float,
     stroke               text,
-    strokeopacity        int,
+    strokeopacity        float,
     strokewidth          float,
     strokelinejoinfill   text,
     strokelinejoinstroke text,

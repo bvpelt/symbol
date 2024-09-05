@@ -27,10 +27,10 @@ public class Symbol implements Serializable {
     private int size;
     private int rotation;
     private String fill;
-    private float fillopacity;
+    private Float fillopacity;
     private String stroke;
-    private int strokeopacity;
-    private float strokewidth;
+    private Float strokeopacity;
+    private Float strokewidth;
     private String stokelinecap;
     private String strokedasharray;
     private String strokelinejoinfill;

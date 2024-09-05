@@ -9,7 +9,7 @@ create table graphic
     fill          text,
     fillopacity   text,
     stroke        text,
-    strokeopacity int,
+    strokeopacity float,
     strokewidth   float,
     name          text
 );

@@ -6,7 +6,7 @@ create table line
     type      text,
     name      text,
     stroke    text,
-    opacity   int,
+    opacity   float,
     width     float,
     linecap   text,
     dasharray text

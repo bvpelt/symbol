@@ -193,7 +193,7 @@ class SymbolApplicationTests {
                                 symbol.setFill(parameter.getContent());
                                 break;
                             case "fill-opacity":
-                                graphic.setFillopacity(parameter.getContent());
+                                graphic.setFillopacity(Float.parseFloat(parameter.getContent()));
                                 symbol.setFillopacity(Float.parseFloat(parameter.getContent()));
                                 break;
                             default:
@@ -210,8 +210,8 @@ class SymbolApplicationTests {
                                 symbol.setStroke(parameter.getContent());
                                 break;
                             case "stroke-opacity":
-                                graphic.setStrokeopacity(Integer.parseInt(parameter.getContent()));
-                                symbol.setStrokeopacity(Integer.parseInt(parameter.getContent()));
+                                graphic.setStrokeopacity(Float.parseFloat(parameter.getContent()));
+                                symbol.setStrokeopacity(Float.parseFloat(parameter.getContent()));
                                 break;
                             case "stroke-width":
                                 graphic.setStrokewidth(Float.parseFloat(parameter.getContent()));
@@ -273,8 +273,8 @@ class SymbolApplicationTests {
                                 symbol.setStroke(parameter.getContent());
                                 break;
                             case "stroke-opacity":
-                                line.setOpacity(Integer.parseInt(parameter.getContent()));
-                                symbol.setStrokeopacity(Integer.parseInt(parameter.getContent()));
+                                line.setOpacity(Float.parseFloat(parameter.getContent()));
+                                symbol.setStrokeopacity(Float.parseFloat(parameter.getContent()));
                                 break;
                             case "stroke-width":
                                 line.setWidth(Float.parseFloat(parameter.getContent()));
@@ -375,8 +375,8 @@ class SymbolApplicationTests {
                                 symbol.setStroke(stroke_parameter.getContent());
                                 break;
                             case "stroke-opacity":
-                                area.setStrokeopacity(Integer.parseInt(stroke_parameter.getContent()));
-                                symbol.setStrokeopacity(Integer.parseInt(stroke_parameter.getContent()));
+                                area.setStrokeopacity(Float.parseFloat(stroke_parameter.getContent()));
+                                symbol.setStrokeopacity(Float.parseFloat(stroke_parameter.getContent()));
                                 break;
                             case "stroke-width":
                                 area.setStrokewidth(Float.parseFloat(stroke_parameter.getContent()));
@@ -462,8 +462,8 @@ class SymbolApplicationTests {
                                 symbol.setStroke(stroke_parameter.getContent());
                                 break;
                             case "stroke-opacity":
-                                norm.setStrokeopacity(Integer.parseInt(stroke_parameter.getContent()));
-                                symbol.setStrokeopacity(Integer.parseInt(stroke_parameter.getContent()));
+                                norm.setStrokeopacity(Float.parseFloat(stroke_parameter.getContent()));
+                                symbol.setStrokeopacity(Float.parseFloat(stroke_parameter.getContent()));
                                 break;
                             case "stroke-width":
                                 norm.setStrokewidth(Float.parseFloat(stroke_parameter.getContent()));

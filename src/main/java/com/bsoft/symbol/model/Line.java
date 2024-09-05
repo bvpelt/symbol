@@ -23,8 +23,8 @@ public class Line implements Serializable {
     private String type;
     private String name;
     private String stroke;
-    private int opacity;
-    private float width;
+    private Float opacity;
+    private Float width;
     private String linecap;
     private String dasharray;
 

@@ -23,10 +23,10 @@ public class Graphic implements Serializable {
     private int size;
     private int rotation;
     private String fill;
-    private String fillopacity;
+    private Float fillopacity;
     private String stroke;
-    private int strokeopacity;
-    private float strokewidth;
+    private Float strokeopacity;
+    private Float strokewidth;
     private String name;
     private String welknownname;
 }

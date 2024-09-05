@@ -23,6 +23,7 @@ import java.util.List;
 public class SymbolController {
     private final int SYMBOL_LIMIT = 10;
     private final SymbolService symbolService;
+
     public SymbolController(SymbolService symbolService) {
         this.symbolService = symbolService;
     }

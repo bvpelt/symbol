@@ -10,7 +10,7 @@ create table area
     fillopacity          float,
     stroke               text,
     strokeopacity        int,
-    strokewidth          int,
+    strokewidth          float,
     strokelinejoinfill   text,
     strokelinejoinstroke text,
     strokedasharray      text,

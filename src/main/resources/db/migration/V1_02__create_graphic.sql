@@ -10,7 +10,7 @@ create table graphic
     fillopacity   text,
     stroke        text,
     strokeopacity int,
-    strokewidth   int,
+    strokewidth   float,
     name          text
 );
 

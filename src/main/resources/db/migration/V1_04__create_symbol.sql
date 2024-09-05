@@ -10,7 +10,7 @@ create table symbol
     fillopacity          float,
     stroke               text,
     strokeopacity        int,
-    strokewidth          int,
+    strokewidth          float,
     stokelinecap         text,
     strokedasharray      text,
     strokelinejoinfill   text,

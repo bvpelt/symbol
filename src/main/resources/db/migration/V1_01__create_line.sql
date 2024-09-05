@@ -7,7 +7,7 @@ create table line
     name      text,
     stroke    text,
     opacity   int,
-    width     int,
+    width     float,
     linecap   text,
     dasharray text
 );

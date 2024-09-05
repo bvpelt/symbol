@@ -17,10 +17,8 @@ import com.bsoft.symbol.point.Se_Graphic;
 import com.bsoft.symbol.point.*;
 import com.bsoft.symbol.repository.*;
 import com.bsoft.symbol.services.JsonToJava;
-import com.bsoft.symbol.services.SLDService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.json.JSONObject;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -28,8 +26,6 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.util.ArrayList;
 
 @Slf4j
@@ -218,8 +214,8 @@ class SymbolApplicationTests {
                                 symbol.setStrokeopacity(Integer.parseInt(parameter.getContent()));
                                 break;
                             case "stroke-width":
-                                graphic.setStrokewidth(Integer.parseInt(parameter.getContent()));
-                                symbol.setStrokewidth(Integer.parseInt(parameter.getContent()));
+                                graphic.setStrokewidth(Float.parseFloat(parameter.getContent()));
+                                symbol.setStrokewidth(Float.parseFloat(parameter.getContent()));
                                 break;
                             default:
                                 log.error("Unknown stroke parameter: {}", parameter.getName());
@@ -281,8 +277,8 @@ class SymbolApplicationTests {
                                 symbol.setStrokeopacity(Integer.parseInt(parameter.getContent()));
                                 break;
                             case "stroke-width":
-                                line.setWidth(Integer.parseInt(parameter.getContent()));
-                                symbol.setStrokewidth(Integer.parseInt(parameter.getContent()));
+                                line.setWidth(Float.parseFloat(parameter.getContent()));
+                                symbol.setStrokewidth(Float.parseFloat(parameter.getContent()));
                                 break;
                             case "stroke-linecap":
                                 line.setLinecap(parameter.getContent());
@@ -383,8 +379,8 @@ class SymbolApplicationTests {
                                 symbol.setStrokeopacity(Integer.parseInt(stroke_parameter.getContent()));
                                 break;
                             case "stroke-width":
-                                area.setStrokewidth(Integer.parseInt(stroke_parameter.getContent()));
-                                symbol.setStrokewidth(Integer.parseInt(stroke_parameter.getContent()));
+                                area.setStrokewidth(Float.parseFloat(stroke_parameter.getContent()));
+                                symbol.setStrokewidth(Float.parseFloat(stroke_parameter.getContent()));
                                 break;
                             case "stroke-linejoin":
                                 area.setStrokelinejoinstroke(stroke_parameter.getContent());
@@ -413,16 +409,14 @@ class SymbolApplicationTests {
         }
     }
 
-
-
     @Test
     @Order(8)
     void readNormSld() {
         JsonToJava json = new JsonToJava(objectMapper);
-        ArrayList<Area> areas = new ArrayList<Area>();
+        ArrayList<Norm> normen = new ArrayList<Norm>();
         try {
             normRepository.deleteAll();
-            NormSld normSld = json.readNormFromJson("src/main/resources/Normwaarden.1.0.1.json");
+            NormSld normSld = json.readNormFromJson("src/main/resources/Normwaarden_v1.0.1.json");
 
             com.bsoft.symbol.norm.Sld_StyledLayerDescriptor styledLayerDescriptor = normSld.getSld_StyledLayerDescriptor();
             com.bsoft.symbol.norm.Sld_NamedLayer sld_NamedLayer = styledLayerDescriptor.getSld_NamedLayer();
@@ -438,7 +432,7 @@ class SymbolApplicationTests {
                     symbol.setType(type);
                     com.bsoft.symbol.norm.Se_PolygonSymbolizer se_PolygonSymbolizer = rule.getSe_PolygonSymbolizer();
                     String name = se_PolygonSymbolizer.getSe_Name();
-                    log.info("Processing area: {}", name);
+                    log.info("Processing norm: {}", name);
                     norm.setName(name);
                     symbol.setName(name);
                     com.bsoft.symbol.norm.Se_Fill se_Fill = se_PolygonSymbolizer.getSe_Fill();
@@ -446,16 +440,12 @@ class SymbolApplicationTests {
                     se_SvgParameters_Fill.forEach(fill_parameter -> {
                         switch (fill_parameter.getName()) {
                             case "fill":
-                                area.setFill(fill_parameter.getContent());
+                                norm.setFill(fill_parameter.getContent());
                                 symbol.setFill(fill_parameter.getContent());
                                 break;
                             case "fill-opacity":
-                                area.setFillopacity(Float.parseFloat(fill_parameter.getContent()));
+                                norm.setFillopacity(Float.parseFloat(fill_parameter.getContent()));
                                 symbol.setFillopacity(Float.parseFloat(fill_parameter.getContent()));
-                                break;
-                            case "stroke-linejoin":
-                                area.setStrokelinejoinfill(fill_parameter.getContent());
-                                symbol.setStrokelinejoinfill(fill_parameter.getContent());
                                 break;
                             default:
                                 log.error("Unexpected fill parameter: {}", fill_parameter.getName());
@@ -463,55 +453,40 @@ class SymbolApplicationTests {
                         }
                     });
 
-                    Se_GraphicFill se_graphicFill = se_Fill.getSe_GraphicFill();
-                    if (se_graphicFill != null) {
-                        com.bsoft.symbol.area.Se_Graphic se_Graphic = se_graphicFill.getSe_Graphic();
-                        Se_ExternalGraphic se_ExternalGraphic = se_Graphic.getSe_ExternalGraphic();
-                        Se_OnlineResource se_OnlineResource = se_ExternalGraphic.getSe_OnlineResource();
-                        String xlinkhref = se_OnlineResource.getXlink_href();
-
-                        area.setSymbol(xlinkhref.replace("./symbols/", ""));
-                        symbol.setSymbol(xlinkhref.replace("./symbols/", ""));
-                    }
-
-                    com.bsoft.symbol.area.Se_Stroke se_Stroke = se_PolygonSymbolizer.getSe_Stroke();
-                    ArrayList<com.bsoft.symbol.area.Se_SvgParameter> se_SvgParameter_Stroke = se_Stroke.getSe_SvgParameter();
+                    com.bsoft.symbol.norm.Se_Stroke se_Stroke = se_PolygonSymbolizer.getSe_Stroke();
+                    ArrayList<com.bsoft.symbol.norm.Se_SvgParameter> se_SvgParameter_Stroke = se_Stroke.getSe_SvgParameter();
                     se_SvgParameter_Stroke.forEach(stroke_parameter -> {
                         switch (stroke_parameter.getName()) {
                             case "stroke":
-                                area.setStroke(stroke_parameter.getContent());
+                                norm.setStroke(stroke_parameter.getContent());
                                 symbol.setStroke(stroke_parameter.getContent());
                                 break;
                             case "stroke-opacity":
-                                area.setStrokeopacity(Integer.parseInt(stroke_parameter.getContent()));
+                                norm.setStrokeopacity(Integer.parseInt(stroke_parameter.getContent()));
                                 symbol.setStrokeopacity(Integer.parseInt(stroke_parameter.getContent()));
                                 break;
                             case "stroke-width":
-                                area.setStrokewidth(Integer.parseInt(stroke_parameter.getContent()));
-                                symbol.setStrokewidth(Integer.parseInt(stroke_parameter.getContent()));
+                                norm.setStrokewidth(Float.parseFloat(stroke_parameter.getContent()));
+                                symbol.setStrokewidth(Float.parseFloat(stroke_parameter.getContent()));
                                 break;
                             case "stroke-linejoin":
-                                area.setStrokelinejoinstroke(stroke_parameter.getContent());
+                                norm.setStrokelinejoinstroke(stroke_parameter.getContent());
                                 symbol.setStrokelinejoinstroke(stroke_parameter.getContent());
-                                break;
-                            case "stroke-dasharray":
-                                area.setStrokedasharray(stroke_parameter.getContent());
-                                symbol.setStrokedasharray(stroke_parameter.getContent());
                                 break;
                             default:
                                 log.error("Unexpected stroke parameter: {}", stroke_parameter.getName());
                                 break;
                         }
-                        areas.add(area);
-                        areaRepository.save(area);
+                        normen.add(norm);
+                        normRepository.save(norm);
                         symbolRepository.save(symbol);
                     });
                 });
 
             });
-            log.info("Converted {} areas", areas.size());
+            log.info("Converted {} norm", normen.size());
 
-            log.trace("Areas:\n{}", areas);
+            log.trace("Normen:\n{}", normen);
         } catch (Exception e) {
             log.error(e.getMessage());
         }

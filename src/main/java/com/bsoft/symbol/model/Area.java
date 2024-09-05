@@ -25,7 +25,7 @@ public class Area implements Serializable {
     private float fillopacity;
     private String stroke;
     private int strokeopacity;
-    private int strokewidth;
+    private float strokewidth;
     private String strokelinejoinfill;
     private String strokelinejoinstroke;
     private String strokedasharray;

@@ -1,6 +1,5 @@
 package com.bsoft.symbol.norm;
 
-import com.bsoft.symbol.area.Se_SvgParameter;
 import lombok.Getter;
 import lombok.Setter;
 

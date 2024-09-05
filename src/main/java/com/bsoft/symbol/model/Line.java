@@ -24,7 +24,7 @@ public class Line implements Serializable {
     private String name;
     private String stroke;
     private int opacity;
-    private int width;
+    private float width;
     private String linecap;
     private String dasharray;
 

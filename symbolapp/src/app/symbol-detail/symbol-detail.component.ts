@@ -192,7 +192,7 @@ export class SymbolDetailComponent implements OnInit, AfterViewInit, OnChanges {
 
   private drawVlak(symbol: Symbol, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
 
-    if ((typeof (symbol.stroke) != "undefined") && symbol.stroke) ctx.fillStyle = symbol.stroke!;
+    //if ((typeof (symbol.stroke) != "undefined") && symbol.stroke) ctx.fillStyle = symbol.stroke!;
 
     ctx.beginPath();
     ctx.rect(0, 0, canvas.width, canvas.height);

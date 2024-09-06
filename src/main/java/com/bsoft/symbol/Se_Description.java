@@ -1,4 +1,4 @@
-package com.bsoft.symbol.area;
+package com.bsoft.symbol;
 
 import lombok.Getter;
 import lombok.Setter;

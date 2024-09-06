@@ -5,7 +5,6 @@ import com.bsoft.symbol.area.*;
 import com.bsoft.symbol.line.Se_FeatureTypeStyle;
 import com.bsoft.symbol.line.Se_Rule;
 import com.bsoft.symbol.line.Se_Stroke;
-import com.bsoft.symbol.line.Se_SvgParameter;
 import com.bsoft.symbol.line.Sld_NamedLayer;
 import com.bsoft.symbol.line.Sld_StyledLayerDescriptor;
 import com.bsoft.symbol.line.Sld_UserStyle;
@@ -149,7 +148,7 @@ class SymbolApplicationTests {
     @Order(5)
     void readPointSLD() {
         JsonToJava json = new JsonToJava(objectMapper);
-        ArrayList<Graphic> graphics = new ArrayList<Graphic>();
+        ArrayList<Graphic> graphics = new ArrayList<>();
 
         try {
             graphicRepository.deleteAll();
@@ -185,7 +184,7 @@ class SymbolApplicationTests {
                     graphic.setWelknownname(se_Mark.getSe_WellKnownName());
                     symbol.setWelknownname(se_Mark.getSe_WellKnownName());
                     Se_Fill se_Fill = se_Mark.getSe_Fill();
-                    ArrayList<com.bsoft.symbol.point.Se_SvgParameter> se_svgParameter_Fill = se_Fill.getSe_SvgParameter();
+                    ArrayList<Se_SvgParameter> se_svgParameter_Fill = se_Fill.getSe_SvgParameter();
                     se_svgParameter_Fill.forEach(parameter -> {
                         switch (parameter.getName()) {
                             case "fill":
@@ -202,7 +201,7 @@ class SymbolApplicationTests {
                         }
                     });
                     com.bsoft.symbol.point.Se_Stroke se_Stroke = se_Mark.getSe_Stroke();
-                    ArrayList<com.bsoft.symbol.point.Se_SvgParameter> se_svgParameter_Stroke = se_Stroke.getSe_SvgParameter();
+                    ArrayList<Se_SvgParameter> se_svgParameter_Stroke = se_Stroke.getSe_SvgParameter();
                     se_svgParameter_Stroke.forEach(parameter -> {
                         switch (parameter.getName()) {
                             case "stroke":
@@ -243,7 +242,7 @@ class SymbolApplicationTests {
         try {
             lineRepository.deleteAll();
             LineSld lineSld = json.readLinesFromJson("src/main/resources/Lijnsymbolen_v1.0.1.json");
-            ArrayList<Line> lines = new ArrayList<Line>();
+            ArrayList<Line> lines = new ArrayList<>();
 
             Sld_StyledLayerDescriptor styledLayerDescriptor = lineSld.getSld_StyledLayerDescriptor();
             Sld_NamedLayer sldNamedLayer = styledLayerDescriptor.getSld_NamedLayer();
@@ -311,7 +310,7 @@ class SymbolApplicationTests {
     @Order(7)
     void readAreaSld() {
         JsonToJava json = new JsonToJava(objectMapper);
-        ArrayList<Area> areas = new ArrayList<Area>();
+        ArrayList<Area> areas = new ArrayList<>();
         try {
             areaRepository.deleteAll();
             AreaSld areaSld = json.readAreasFromJson("src/main/resources/Vlaksymbolen_v1.1.0.json");
@@ -334,7 +333,7 @@ class SymbolApplicationTests {
                     area.setName(name);
                     symbol.setName(name);
                     com.bsoft.symbol.area.Se_Fill se_Fill = se_PolygonSymbolizer.getSe_Fill();
-                    ArrayList<com.bsoft.symbol.area.Se_SvgParameter> se_SvgParameters_Fill = se_Fill.getSe_SvgParameter();
+                    ArrayList<Se_SvgParameter> se_SvgParameters_Fill = se_Fill.getSe_SvgParameter();
                     se_SvgParameters_Fill.forEach(fill_parameter -> {
                         switch (fill_parameter.getName()) {
                             case "fill":
@@ -367,7 +366,7 @@ class SymbolApplicationTests {
                     }
 
                     com.bsoft.symbol.area.Se_Stroke se_Stroke = se_PolygonSymbolizer.getSe_Stroke();
-                    ArrayList<com.bsoft.symbol.area.Se_SvgParameter> se_SvgParameter_Stroke = se_Stroke.getSe_SvgParameter();
+                    ArrayList<Se_SvgParameter> se_SvgParameter_Stroke = se_Stroke.getSe_SvgParameter();
                     se_SvgParameter_Stroke.forEach(stroke_parameter -> {
                         switch (stroke_parameter.getName()) {
                             case "stroke":
@@ -413,7 +412,7 @@ class SymbolApplicationTests {
     @Order(8)
     void readNormSld() {
         JsonToJava json = new JsonToJava(objectMapper);
-        ArrayList<Norm> normen = new ArrayList<Norm>();
+        ArrayList<Norm> normen = new ArrayList<>();
         try {
             normRepository.deleteAll();
             NormSld normSld = json.readNormFromJson("src/main/resources/Normwaarden_v1.0.1.json");
@@ -436,7 +435,7 @@ class SymbolApplicationTests {
                     norm.setName(name);
                     symbol.setName(name);
                     com.bsoft.symbol.norm.Se_Fill se_Fill = se_PolygonSymbolizer.getSe_Fill();
-                    ArrayList<com.bsoft.symbol.norm.Se_SvgParameter> se_SvgParameters_Fill = se_Fill.getSe_SvgParameter();
+                    ArrayList<Se_SvgParameter> se_SvgParameters_Fill = se_Fill.getSe_SvgParameter();
                     se_SvgParameters_Fill.forEach(fill_parameter -> {
                         switch (fill_parameter.getName()) {
                             case "fill":
@@ -454,7 +453,7 @@ class SymbolApplicationTests {
                     });
 
                     com.bsoft.symbol.norm.Se_Stroke se_Stroke = se_PolygonSymbolizer.getSe_Stroke();
-                    ArrayList<com.bsoft.symbol.norm.Se_SvgParameter> se_SvgParameter_Stroke = se_Stroke.getSe_SvgParameter();
+                    ArrayList<Se_SvgParameter> se_SvgParameter_Stroke = se_Stroke.getSe_SvgParameter();
                     se_SvgParameter_Stroke.forEach(stroke_parameter -> {
                         switch (stroke_parameter.getName()) {
                             case "stroke":

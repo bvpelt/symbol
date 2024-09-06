@@ -12,7 +12,7 @@ export class MessageService {
 
   add(message: Message) {
     this.messages.push(message);
-    this.messages.sort(function (a,b):number { return new Date(a.timestamp) < new Date(b.timestamp) ? 1 : -1 });
+    //this.messages.sort(function (a,b):number { return new Date(a.timestamp) < new Date(b.timestamp) ? 1 : -1 });
   }
 
   clear() {

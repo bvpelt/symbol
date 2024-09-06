@@ -17,6 +17,11 @@ body, input[type="text"], button {
   color: #333;
   font-family: Cambria, Georgia, serif;
 }
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
 button {
   background-color: #eee;
   border: none;

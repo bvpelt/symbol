@@ -1,36 +1,38 @@
-<div>
-  <label for="search-symbol">Search item</label>
-  <input id="search-symbol" [(ngModel)]="searchsymbol" placeholder="lt001">
-  <button id="search" type="button" (click)="onSearch(searchsymbol)">Search</button>
-</div>
+<div class="app-symbols">
+  <div>
+    <label for="search-symbol">Search item</label>
+    <input id="search-symbol" [(ngModel)]="searchsymbol" placeholder="lt001">
+    <button id="search" type="button" (click)="onSearch(searchsymbol)">Search</button>
+  </div>
 
-<div>
-  <p id="search-prefix">Show prefix
-    <button id="prefix" type="button" (click)="onHelp()">Show prefixes</button>
-  </p>
-</div>
+  <div>
+    <p id="search-prefix">Show prefix
+      <button id="prefix" type="button" (click)="onHelp()">Show prefixes</button>
+    </p>
+  </div>
 
-<div *ngIf="symbols.length > 0" class="symbolcontainer">
-  <div class="symbollist">
+  <div *ngIf="symbols.length > 0" class="symbolcontainer">
+    <div class="symbollist">
+      <ul class="symbols">
+        <li *ngFor="let symbol of symbols; let i = index" [class.button.selected]="i === selectedIndex">
+          <button type="button" [class.selected]="symbol === selectedSymbol" (click)="onSelect(symbol,i)">
+            <span class="badge">{{symbol.id}}</span>
+            <span class="name">{{symbol.name}}</span>
+            <span class="type">{{symbol.type}}</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div class="symboldetail">
+      <app-symbol-detail [symbol]="selectedSymbol"></app-symbol-detail>
+    </div>
+  </div>
+
+  <div *ngIf="prefixes.length > 0">
     <ul class="symbols">
-      <li *ngFor="let symbol of symbols; let i = index" [class.button.selected]="i === selectedIndex">
-        <button type="button" [class.selected]="symbol === selectedSymbol" (click)="onSelect(symbol,i)">
-          <span class="badge">{{symbol.id}}</span>
-          <span class="name">{{symbol.name}}</span>
-          <span class="type">{{symbol.type}}</span>
-        </button>
+      <li *ngFor="let prefix of prefixes">
+        {{prefix}}
       </li>
     </ul>
   </div>
-  <div class="symboldetail">
-    <app-symbol-detail [symbol]="selectedSymbol"></app-symbol-detail>
-  </div>
-</div>
-
-<div *ngIf="prefixes.length > 0">
-  <ul class="symbols">
-    <li *ngFor="let prefix of prefixes">
-      {{prefix}}
-    </li>
-  </ul>
 </div>

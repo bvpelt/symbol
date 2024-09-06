@@ -1,5 +1,6 @@
 package com.bsoft.symbol.area;
 
+import com.bsoft.symbol.Se_Description;
 import lombok.Getter;
 import lombok.Setter;
 

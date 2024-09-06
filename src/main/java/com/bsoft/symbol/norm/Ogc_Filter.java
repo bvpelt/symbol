@@ -1,5 +1,6 @@
 package com.bsoft.symbol.norm;
 
+import com.bsoft.symbol.Ogc_PropertyIsEqualTo;
 import lombok.Getter;
 import lombok.Setter;
 

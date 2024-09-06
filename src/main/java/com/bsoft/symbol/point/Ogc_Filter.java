@@ -1,6 +1,7 @@
 package com.bsoft.symbol.point;
 
 
+import com.bsoft.symbol.Ogc_PropertyIsEqualTo;
 import lombok.Getter;
 import lombok.Setter;
 

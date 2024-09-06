@@ -16,7 +16,6 @@ export class SymbolsComponent implements OnInit {
   selectedIndex: number = 0;
 
   constructor(private symbolService: SymbolService) {
-
   }
 
   ngOnInit() {

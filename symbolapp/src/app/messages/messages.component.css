@@ -1,0 +1,4 @@
+.messages { 
+    height: 10em;  
+    overflow-y: scroll;
+  }

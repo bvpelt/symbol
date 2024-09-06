@@ -4,6 +4,8 @@ import { Observable, of } from 'rxjs';
 import { Symbol } from './symbol';
 import { SYMBOLS } from './mock-symbols';
 import { MessageService } from './message.service';
+import { Message, Severity } from './message';
+
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +21,9 @@ export class SymbolService {
 
   getSymbols(name: string, limit?: string): Observable<Symbol[]> {
 
-    this.messageService.add('Get symbol name: ' + name );
+    var message: Message =  new Message(new Date(), Severity.info, 'Get symbol name: ' + name );
+
+    this.messageService.add(message);
     if (typeof (limit) != undefined) {
       let params = new HttpParams();
       params = params.append("limit", limit!);

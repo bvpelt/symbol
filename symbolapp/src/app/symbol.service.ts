@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Symbol } from './symbol';
@@ -20,21 +20,18 @@ export class SymbolService {
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
   getSymbols(name: string, limit?: string): Observable<Symbol[]> {
-
-    //var message: Message = new Message(new Date(), Severity.info, 'getSymbols name: ' + name);
-    //this.messageService.add(message);
-
     if (typeof (limit) != undefined) {
       let params = new HttpParams();
       params = params.append("limit", limit!);
       const options = {
-        params: params
+        params: params,
+        headers: new HttpHeaders({ 'Accept': 'application/json' })
       };
+
       return this.http.get<Symbol[]>(this.apiLookup + name, options)
         .pipe(
           tap(_ => {
-            var message: Message = new Message(new Date(), Severity.info, 'getSymbols name: ' + name);
-            this.messageService.add(message);
+            this.messageService.add(new Message(new Date(), Severity.info, 'getSymbols name: ' + name));
           }),
           catchError(this.handleError<Symbol[]>('getSymbols', []))
         );
@@ -42,8 +39,7 @@ export class SymbolService {
       return this.http.get<Symbol[]>(this.apiLookup + name)
         .pipe(
           tap(_ => {
-            var message: Message = new Message(new Date(), Severity.info, 'getSymbols name: ' + name);
-            this.messageService.add(message);
+            this.messageService.add(new Message(new Date(), Severity.info, 'getSymbols name: ' + name));
           }),
           catchError(this.handleError<Symbol[]>('getSymbols', []))
         );
@@ -54,8 +50,7 @@ export class SymbolService {
     return this.http.get<Symbol>(this.apiName + name)
       .pipe(
         tap(_ => {
-          var message: Message = new Message(new Date(), Severity.info, 'getSymbolName: ' + name);
-          this.messageService.add(message);
+          this.messageService.add(new Message(new Date(), Severity.info, 'getSymbolName: ' + name));
         }),
         catchError(this.handleError<Symbol>('getSymbolName'))
       );
@@ -66,8 +61,7 @@ export class SymbolService {
     return this.http.get<Symbol>(this.apiEndpoint + id)
       .pipe(
         tap(_ => {
-          var message: Message = new Message(new Date(), Severity.info, 'getSymbolId ' + id);
-          this.messageService.add(message);
+          this.messageService.add(new Message(new Date(), Severity.info, 'getSymbolId ' + id));
         }),
 
         catchError(this.handleError<Symbol>('getSymbolId'))
@@ -78,8 +72,7 @@ export class SymbolService {
     return this.http.get<string[]>(this.apiPrefix)
       .pipe(
         tap(_ => {
-          var message: Message = new Message(new Date(), Severity.debug, 'getPrefixes');
-          this.messageService.add(message);
+          this.messageService.add(new Message(new Date(), Severity.debug, 'getPrefixes'));
         }),
         catchError(this.handleError<string[]>('getPrefixes', []))
       );
@@ -98,9 +91,7 @@ export class SymbolService {
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
-      // TODO: better job of transforming error for user consumption
-      var message: Message = new Message(new Date(), Severity.error, operation + ' failed: ' + error.message);
-      this.messageService.add(message);
+      this.messageService.add(new Message(new Date(), Severity.error, operation + ' failed: ' + error.message));
 
       // Let the app keep running by returning an empty result.
       return of(result as T);

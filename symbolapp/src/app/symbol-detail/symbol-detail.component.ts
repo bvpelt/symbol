@@ -1,5 +1,7 @@
 import { Component, Input, OnInit, OnChanges, AfterViewInit } from '@angular/core';
 import { Symbol } from '../symbol';
+import { MessageService } from '../message.service';
+import { Message, Severity } from '../message';
 
 @Component({
   selector: 'app-symbol-detail',
@@ -11,12 +13,15 @@ export class SymbolDetailComponent implements OnInit, AfterViewInit, OnChanges {
   canvas?: HTMLCanvasElement;
   ctx?: CanvasRenderingContext2D | null;
 
+  constructor(private messageService: MessageService) {}
+
   ngOnInit() {
     //console.log('OnInit symbol: ', this.symbol);
   }
 
   ngAfterViewInit() {
-    //console.log('AfterviewInit symbol: ', this.symbol);
+    this.messageService.add(new Message(new Date(), Severity.debug, 'SymbolDetailComponent - ngAfterViewInit'));
+
     this.canvas = document.getElementById('canvas1') as HTMLCanvasElement;
     this.ctx = this.canvas.getContext('2d');
 
@@ -27,7 +32,8 @@ export class SymbolDetailComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngOnChanges() {
-    //console.log('change ctx: ', this.ctx);
+    this.messageService.add(new Message(new Date(), Severity.debug, 'SymbolDetailComponent - ngOnChanges'));
+
     if (this.ctx != null) {
       this.ctx.clearRect(0, 0, this.canvas!.width, this.canvas!.height);
 

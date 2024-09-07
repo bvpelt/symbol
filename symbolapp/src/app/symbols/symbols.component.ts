@@ -2,6 +2,8 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { Symbol } from '../symbol';
 import { SYMBOLS } from '../mock-symbols';
 import { SymbolService } from '../symbol.service';
+import { MessageService } from '../message.service';
+import { Message, Severity } from '../message';
 
 @Component({
   selector: 'app-symbols',
@@ -15,7 +17,7 @@ export class SymbolsComponent implements OnInit {
   searchsymbol?: string;
   selectedIndex: number = 0;
 
-  constructor(private symbolService: SymbolService) {
+  constructor(private symbolService: SymbolService, private messageService: MessageService) {
   }
 
   ngOnInit() {
@@ -28,7 +30,7 @@ export class SymbolsComponent implements OnInit {
       search = 'lt001';
     }
     this.getSymbols(search, '40');
-    document.querySelector('li')?.focus();   
+    //document.querySelector('li')?.focus();
   }
 
   onHelp(): void {
@@ -37,10 +39,9 @@ export class SymbolsComponent implements OnInit {
   }
 
   onSelect(symbol: Symbol, index: number): void {
-    // console.log("Draw symbol: " + symbol.name);
+    this.messageService.add(new Message(new Date(), Severity.info, 'SymbolsComponent - onSelect : index ' + index + ' symbol name: ' + symbol.name));
     this.selectedIndex = index;
     this.selectedSymbol = symbol;
-    //    console.log('onselect - index: ', this.selectedIndex, ' symbol:', symbol);
   }
 
   @HostListener('document:keydown', ['$event'])
@@ -73,8 +74,8 @@ export class SymbolsComponent implements OnInit {
 
   getSymbols(name: string, limit?: string): void {
     this.symbolService.getSymbols(name, limit)
-      .subscribe(symbols => { 
-        this.symbols = symbols; 
+      .subscribe(symbols => {
+        this.symbols = symbols;
         if (this.symbols.length > 0) {
           this.selectedSymbol = this.symbols[this.selectedIndex];
         }

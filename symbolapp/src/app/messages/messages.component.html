@@ -1,36 +1,36 @@
 <div>
   <div *ngIf="messageService.messages.length">
     <button type="button" class="clear" (click)="messageService.clear()">Clear messages</button>
-
+<!--
     <label class="checkbox">All
-      <input type="checkbox" [(ngModel)]="isAll" name="isAll" (change)="filterChange($event)">
+      <input type="checkbox" [(ngModel)]="filter.isAll" name="isAll" (change)="filterChange($event)">
       <span class="checkmark"></span>
     </label>
     <label class="checkbox">Trace
-      <input type="checkbox" [(ngModel)]="isTrace" name="isTrace" (change)="filterChange($event)">
+      <input type="checkbox" [(ngModel)]="filter.isTrace" name="isTrace" (change)="filterChange($event)">
       <span class="checkmark"></span>
     </label>
     <label class="checkbox">Debug
-      <input type="checkbox" [(ngModel)]="isDebug" name="isDebug" (change)="filterChange($event)">
+      <input type="checkbox" [(ngModel)]="filter.isDebug" name="isDebug" (change)="filterChange($event)">
       <span class="checkmark"></span>
     </label>
     <label class="checkbox">Info
-      <input type="checkbox" [(ngModel)]="isInfo" name="isInfo" (change)="filterChange($event)">
+      <input type="checkbox" [(ngModel)]="filter.isInfo" name="isInfo" (change)="filterChange($event)">
       <span class="checkmark"></span>
     </label>
     <label class="checkbox">Warning
-      <input type="checkbox" [(ngModel)]="isWarning" name="isWarning" (change)="filterChange($event)">
+      <input type="checkbox" [(ngModel)]="filter.isWarning" name="isWarning" (change)="filterChange($event)">
       <span class="checkmark"></span>
     </label>
     <label class="checkbox">Error
-      <input type="checkbox" [(ngModel)]="isError" name="isError" (change)="filterChange($event)">
+      <input type="checkbox" [(ngModel)]="filter.isError" name="isError" (change)="filterChange($event)">
       <span class="checkmark"></span>
     </label>
     <label class="checkbox">Fatal
-      <input type="checkbox" [(ngModel)]="isFatal" name="isFatal" (change)="filterChange($event)">
+      <input type="checkbox" [(ngModel)]="filter.isFatal" name="isFatal" (change)="filterChange($event)">
       <span class="checkmark"></span>
     </label>
-
+-->
     <div class="messages">
       <div *ngFor='let message of messageService.messages'> {{message.timestamp | date:'yyyy-MM-dd HH:mm:ss.sss'}}-{{message.severity}} {{message.message}} </div>
     </div>

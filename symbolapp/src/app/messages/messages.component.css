@@ -1,4 +1,5 @@
-.messages { 
-    height: 10em;  
+.messages {
+    height: 10em;
     overflow-y: scroll;
+    font-family: Courier New,Courier;
   }

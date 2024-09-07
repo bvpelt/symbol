@@ -78,7 +78,7 @@ export class SymbolService {
     return this.http.get<string[]>(this.apiPrefix)
       .pipe(
         tap(_ => {
-          var message: Message = new Message(new Date(), Severity.info, 'getPrefixes');
+          var message: Message = new Message(new Date(), Severity.debug, 'getPrefixes');
           this.messageService.add(message);
         }),
         catchError(this.handleError<string[]>('getPrefixes', []))

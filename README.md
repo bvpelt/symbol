@@ -8,6 +8,11 @@ Bron https://github.com/Geonovum/TPOD/blob/master/Presentatiemodel/Symbolenbibli
 Create a postgres database with name usage and user testuser with pwd 12345
 or adjust datasource definition in [application.yaml](./src/main/resources/application.yaml)
 
+start the app
+```bash
+$ mvn clean spring-boot:run
+```
+
 ### Convert xml to json
 To convert the sld from the zip file to json execute [convert.bash](./scripts/convert.bash) from the project directory.
 This will generate json files and load the json files into the database.

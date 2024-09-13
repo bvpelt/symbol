@@ -16,7 +16,6 @@ export class SymbolDetailComponent implements OnInit, AfterViewInit, OnChanges {
   constructor(private messageService: MessageService) {}
 
   ngOnInit() {
-    //console.log('OnInit symbol: ', this.symbol);
   }
 
   ngAfterViewInit() {
@@ -147,24 +146,28 @@ export class SymbolDetailComponent implements OnInit, AfterViewInit, OnChanges {
     var radius_inside = radius_outside * 0.5;
     var path1 = new Path2D();
 
-    var r = 0;
     var [x, y] = [0, 0];
     var [xstart, ystart] = [canvas.width / 2, canvas.height / 2];
+    var angleOut = 0;
+    var angleIn = 0;
 
     ctx.beginPath();
     for (let i = 0; i < 5; i++) {
       // big ring
-      [x, y] = this.starCoordsOut(i, radius_outside);
+      angleOut =  2 * Math.PI * i / 5 - Math.PI / 10;
+      [x, y] = this.starCoords(angleOut, radius_outside);
       if (i == 0) {
         path1.moveTo(x + xstart, y + ystart);
       } else {
         path1.lineTo(x + xstart, y + ystart);
       }
       // small ring
-      [x, y] = this.starCoordsIn(i, radius_inside);
+      angleIn =  4 * Math.PI * (i + 0.5) / 10 - Math.PI / 10;
+      [x, y] = this.starCoords(angleIn, radius_inside);
       path1.lineTo(x + xstart, y + ystart);
     }
-    [x, y] = this.starCoordsOut(0, radius_outside);
+    angleOut =  -Math.PI / 10;
+    [x, y] = this.starCoords(angleOut, radius_outside);
     path1.lineTo(x + xstart, y + ystart);
 
     ctx.fill(path1);
@@ -207,13 +210,22 @@ export class SymbolDetailComponent implements OnInit, AfterViewInit, OnChanges {
     ctx.fill();
   }
 
+  private starCoords(angle: number, radius: number): [x: number, y: number] {
+    var x: number;
+    var y: number;
+
+    x = radius * Math.cos(angle);
+    y = radius * Math.sin(angle);
+
+    return [x, y];
+  }
+
   private starCoordsOut(index: number, radius: number): [x: number, y: number] {
     var x: number;
     var y: number;
     var angle: number;
 
     angle = 2 * Math.PI * index / 5 - Math.PI / 10;
-
     x = radius * Math.cos(angle);
     y = radius * Math.sin(angle);
 
@@ -226,7 +238,6 @@ export class SymbolDetailComponent implements OnInit, AfterViewInit, OnChanges {
     var angle: number;
 
     angle = 4 * Math.PI * (index + 0.5) / 10 - Math.PI / 10;
-
     x = radius * Math.cos(angle);
     y = radius * Math.sin(angle);
 

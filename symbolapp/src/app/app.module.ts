@@ -8,6 +8,7 @@ import { SymbolsComponent } from './symbols/symbols.component';
 import { SymbolDetailComponent } from './symbol-detail/symbol-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { FiltermessagePipe } from './filtermessage.pipe';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FiltermessagePipe } from './filtermessage.pipe';
   ],
   imports: [
     BrowserModule,
+    NgbModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule

@@ -72,6 +72,10 @@ typescript                      5.1.6
 zone.js                         0.13.3
 ```
 
+## Bootstrap
+
+See https://www.freecodecamp.org/news/how-to-add-bootstrap-css-framework-to-an-angular-application/ 
+
 ## Symbolen
 
 ### Lijnen

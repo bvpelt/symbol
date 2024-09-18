@@ -83,6 +83,10 @@ See
 
 See https://www.freecodecamp.org/news/how-to-add-bootstrap-css-framework-to-an-angular-application/ 
 
+### Overwrite default width
+See
+- https://stackoverflow.com/questions/22996429/override-bootstrap-container-width
+
 ## Symbolen
 
 ### Lijnen

@@ -11,3 +11,7 @@ button {
   padding: 4px;
 }
 
+.page{
+  height: 30em;
+  overflow-y: scroll;
+}

@@ -71,6 +71,13 @@ rxjs                            7.8.1
 typescript                      5.1.6
 zone.js                         0.13.3
 ```
+## Supported browsers
+See 
+- https://dev.to/aakashgoplani/manage-list-of-supported-browsers-for-your-application-in-angular-4b47
+- https://browsersl.ist/#q=%22browserslist%22%3A+%5B%0A++%22defaults+and+fully+supports+es6-module%22%2C%0A++%22maintained+node+versions%22%0A%5D
+- https://github.com/browserslist/browserslist-example
+- https://github.com/browserslist/browserslist
+
 
 ## Bootstrap
 

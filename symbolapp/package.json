@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "supportedBrowsers": "(echo module.exports = && browserslist-useragent-regexp --allowHigherVersions) > src/supportedBrowsers.js",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",

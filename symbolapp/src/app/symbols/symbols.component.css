@@ -15,3 +15,26 @@ button {
   height: 30em;
   overflow-y: scroll;
 }
+
+.name {  
+  margin: 0 0 0 10px;
+}
+
+.type {
+  margin: 0 0 0 10px;
+}
+
+.symbols button.selected {
+  background-color: black;
+  color: white;
+}
+
+.symbols button.selected:hover {
+  background-color: #505050;
+  color: white;
+}
+
+.symbols button.selected:active {
+  background-color: black;
+  color: white;
+}

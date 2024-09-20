@@ -31,15 +31,9 @@
                 <button type="button" class="btn btn-primary" [class.selected]="symbol === selectedSymbol"
                   (click)="onSelect(symbol,i)">{{symbol.id}}
                 </button>
+                <span class="name">{{symbol.name}}</span>
+                <span class="type">{{symbol.type}}</span>
               </div>
-              <div class="col">{{symbol.name}}</div>
-              <div class="col">{{symbol.type}}</div>
-              <!--
-            <span class="badge">{{symbol.id}}</span>
-            <span class="name">{{symbol.name}}</span>
-            <span class="type">{{symbol.type}}</span>
-            -->
-
             </li>
           </ul>
         </div>

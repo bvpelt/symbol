@@ -71,5 +71,5 @@ spring:
             mode: ALL
     hibernate:
       ddl-auto: none
-    show-sql: false
+    show-sql: true
     open-in-view: false

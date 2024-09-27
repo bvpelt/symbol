@@ -44,7 +44,10 @@
       <div *ngIf="prefixes.length > 0" class="col">
         <ul class="prefixes">
           <li *ngFor="let prefix of prefixes">
-            {{prefix}}
+            <div class="row">
+              <div class="col">{{prefix.prefix}}</div>
+              <div class="col">{{prefix.type}}</div>
+            </div>
           </li>
         </ul>
       </div>

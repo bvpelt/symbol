@@ -4,6 +4,7 @@ import { SYMBOLS } from '../mock-symbols';
 import { SymbolService } from '../symbol.service';
 import { MessageService } from '../message.service';
 import { Message, Severity } from '../message';
+import { Prefix } from '../prefix';
 
 @Component({
   selector: 'app-symbols',
@@ -12,7 +13,7 @@ import { Message, Severity } from '../message';
 })
 export class SymbolsComponent implements OnInit {
   symbols: Symbol[] = [];
-  prefixes: string[] = [];
+  prefixes: Prefix[] = [];
   selectedSymbol?: Symbol;
   searchsymbol?: string;
   selectedIndex: number = 0;

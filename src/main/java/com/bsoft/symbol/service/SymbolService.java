@@ -1,5 +1,7 @@
 package com.bsoft.symbol.service;
 
+import com.bsoft.symbol.model.Prefix;
+
 import com.bsoft.symbol.model.Symbol;
 import com.bsoft.symbol.repository.SymbolRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -45,7 +47,7 @@ public class SymbolService {
         return symbol;
     }
 
-    public List<String> prefixSymbol() {
+    public List<Prefix> prefixSymbol() {
         return symbolRepository.lookUpPrefix();
     }
 }

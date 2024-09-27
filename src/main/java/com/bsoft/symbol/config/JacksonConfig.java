@@ -17,10 +17,6 @@ public class JacksonConfig {
     @Primary
     public ObjectMapper objectMapper() {
         ObjectMapper mapper = new ObjectMapper();
-        //    mapper.registerModule(getTimeModule());
-        //    mapper.registerModule(new JsonNullableModule());
-        // mapper.registerModule(new JtsModule());
-//        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
         mapper.setSerializationInclusion(JsonInclude.Include.ALWAYS);
 
@@ -30,20 +26,4 @@ public class JacksonConfig {
         return mapper;
     }
 
-    /*
-    @Bean
-    public JsonNullableModule jsonNullableModule() {
-        return new JsonNullableModule();
-    }
-
-
-    private JavaTimeModule getTimeModule() {
-        JavaTimeModule javaTimeModule = new JavaTimeModule();
-        javaTimeModule.addDeserializer(OffsetDateTime.class, new OffsetDateTimeDeserializer());
-        javaTimeModule.addSerializer(OffsetDateTime.class, OffsetDateTimeSerializer.INSTANCE);
-        javaTimeModule.addKeyDeserializer(OffsetDateTime.class, OffsetDateTimeKeyDeserializer.INSTANCE);
-        return javaTimeModule;
-    }
-
-     */
 }

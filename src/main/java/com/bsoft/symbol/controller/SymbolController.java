@@ -1,6 +1,7 @@
 package com.bsoft.symbol.controller;
 
 import com.bsoft.symbol.exception.Problem;
+import com.bsoft.symbol.model.Prefix;
 import com.bsoft.symbol.model.Symbol;
 import com.bsoft.symbol.service.SymbolService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -210,7 +211,7 @@ public class SymbolController {
             tags = {"Symbol"},
             responses = {
                     @ApiResponse(responseCode = "200", description = "Resultaat van symbol bevraging", content = {
-                            @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Symbol.class))),
+                            @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Prefix.class))),
                             @Content(mediaType = "application/problem+json", schema = @Schema(implementation = Problem.class))
                     }),
                     @ApiResponse(responseCode = "404", description = "Not found", content = {
@@ -231,7 +232,7 @@ public class SymbolController {
     )
     public ResponseEntity<?> prefixSymbol() {
         log.info("prefix symbol");
-        List<String> prefix = new ArrayList<String>();
+        List<Prefix> prefix = new ArrayList<Prefix>();
         try {
             prefix = symbolService.prefixSymbol();
             return ResponseEntity.ok(prefix);

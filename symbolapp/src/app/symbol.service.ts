@@ -5,6 +5,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Symbol } from './symbol';
 import { MessageService } from './message.service';
 import { Message, Severity } from './message';
+import { Prefix } from './prefix';
 
 
 @Injectable({
@@ -68,13 +69,13 @@ export class SymbolService {
       );
   }
 
-  getPrefixes(): Observable<string[]> {
-    return this.http.get<string[]>(this.apiPrefix)
+  getPrefixes(): Observable<Prefix[]> {
+    return this.http.get<Prefix[]>(this.apiPrefix)
       .pipe(
         tap(_ => {
           this.messageService.add(new Message(new Date(), Severity.debug, 'getPrefixes'));
         }),
-        catchError(this.handleError<string[]>('getPrefixes', []))
+        catchError(this.handleError<Prefix[]>('getPrefixes', []))
       );
   }
 

@@ -1,22 +1,67 @@
 <div>
     <div *ngIf="symbol">
         <h2>{{symbol.name}} Details</h2>
-        <div>id: {{symbol.id}}</div>
+        <div class="row">
+            <div class="col">id:</div>
+            <div class="col">{{symbol.id}}</div>
+        </div>
         <div>
-            <div><span>name: </span>{{symbol.name}}</div>
-            <div><span>type: </span>{{symbol.type}}</div>
-            <div><span>size: </span>{{symbol.size}}</div>
-            <div><span>rotation: </span>{{symbol.rotation}}</div>
-            <div><span>fill: </span>{{symbol.fill}}</div>
-            <div><span>fillopacity: </span>{{symbol.fillopacity}}</div>
-            <div><span>stroke: </span>{{symbol.stroke}}</div>
-            <div><span>strokeopacity: </span>{{symbol.strokeopacity}}</div>
-            <div><span>strokewidth: </span>{{symbol.strokewidth}}</div>
-            <div><span>stokelinecap: </span>{{symbol.stokelinecap}}</div>
-            <div><span>strokedasharray: </span>{{symbol.strokedasharray}}</div>
-            <div><span>strokelinejoinfill: </span>{{symbol.strokelinejoinfill}}</div>
-            <div><span>symbol: </span>{{symbol.symbol}}</div>
-            <div><span>welknownname: </span>{{symbol.welknownname}}</div>
+            <div class="row">
+                <div class="col">name: </div>
+                <div class="col">{{symbol.name}}</div>
+            </div>
+            <div class="row">
+                <div class="col">type: </div>
+                <div class="col">{{symbol.type}}</div>
+            </div>
+            <div class="row">
+                <div class="col">size: </div>
+                <div class="col">{{symbol.size}}</div>
+            </div>
+            <div class="row">
+                <div class="col">rotation: </div>
+                <div class="col">{{symbol.rotation}}</div>
+            </div>
+            <div class="row">
+                <div class="col">fill: </div>
+                <div class="col">{{symbol.fill}}</div>
+            </div>
+            <div class="row">
+                <div class="col">fillopacity: </div>
+                <div class="col">{{symbol.fillopacity}}</div>
+            </div>
+            <div class="row">
+                <div class="col">stroke: </div>
+                <div class="col">{{symbol.stroke}}</div>
+            </div>
+            <div class="row">
+                <div class="col">strokeopacity: </div>
+                <div class="col">{{symbol.strokeopacity}}</div>
+            </div>
+            <div class="row">
+                <div class="col">strokewidth: </div>
+                <div class="col">{{symbol.strokewidth}}</div>
+            </div>
+            <div class="row">
+                <div class="col">stokelinecap: </div>
+                <div class="col">{{symbol.stokelinecap}}</div>
+            </div>
+            <div class="row">
+                <div class="col">strokedasharray: </div>
+                <div class="col">{{symbol.strokedasharray}}</div>
+            </div>
+            <div class="row">
+                <div class="col">strokelinejoinfill: </div>
+                <div class="col">{{symbol.strokelinejoinfill}}</div>
+            </div>
+            <div class="row">
+                <div class="col">symbol: </div>
+                <div class="col">{{symbol.symbol}}</div>
+            </div>
+            <div class="row">
+                <div class="col">welknownname: </div>
+                <div class="col">{{symbol.welknownname}}</div>
+            </div>
         </div>
     </div>
     <canvas id="canvas1"></canvas>

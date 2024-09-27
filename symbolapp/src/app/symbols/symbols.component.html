@@ -13,16 +13,16 @@
 
   <div class="row">
     <div class="col">
-      <p id="search-prefix">Show prefix</p>
     </div>
     <div class="col"></div>
     <div class="col">
-      <button id="prefix" type="button" class="btn btn-primary" (click)="onHelp()">Show prefixes</button>
+      <button id="prefix" type="button" class="btn btn-primary" (click)="onPrefixes()">Show prefixes</button>
     </div>
   </div>
 
   <div class="row">
     <div class="col page">
+
       <div *ngIf="symbols.length > 0">
         <div>
           <ul class="symbols">
@@ -30,22 +30,25 @@
               <div class="col">
                 <button type="button" class="btn btn-primary" [class.selected]="symbol === selectedSymbol"
                   (click)="onSelect(symbol,i)">{{symbol.id}}
+                  <span class="symbol">
+                    <span class="name">{{symbol.name}}</span>
+                    <span class="type">{{symbol.type}}</span>
+                  </span>
                 </button>
-                <span class="name">{{symbol.name}}</span>
-                <span class="type">{{symbol.type}}</span>
               </div>
             </li>
           </ul>
         </div>
-
       </div>
+
       <div *ngIf="prefixes.length > 0" class="col">
-        <ul class="symbols">
+        <ul class="prefixes">
           <li *ngFor="let prefix of prefixes">
             {{prefix}}
           </li>
         </ul>
       </div>
+
     </div>
     <div class="col">
       <div>

@@ -7,8 +7,8 @@ input {
 }
 
 button {
-  margin: 2px;
-  padding: 4px;
+  margin: 2px 0px 2px 2px;
+  padding: 4px 0px 4px 4px;
 }
 
 .page{
@@ -18,6 +18,13 @@ button {
 
 .name {  
   margin: 0 0 0 10px;
+}
+
+.symbol {
+  margin: 3px 5px 3px 0px;
+  padding: 5px;  
+  background-color: white;
+  color: black;
 }
 
 .type {
@@ -37,4 +44,8 @@ button {
 .symbols button.selected:active {
   background-color: black;
   color: white;
+}
+
+.prefixes {
+  list-style-type: none; /* Remove bullets */
 }

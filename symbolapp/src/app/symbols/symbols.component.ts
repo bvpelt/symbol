@@ -33,7 +33,7 @@ export class SymbolsComponent implements OnInit {
     //document.querySelector('li')?.focus();
   }
 
-  onHelp(): void {
+  onPrefixes(): void {
     this.symbols = [];
     this.getPrefixes();
   }

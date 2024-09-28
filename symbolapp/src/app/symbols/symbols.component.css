@@ -50,6 +50,10 @@ button {
   color: white;
 }
 
+.symbols {
+  list-style-type: none; /* Remove bullets */
+}
+
 .prefixes {
   list-style-type: none; /* Remove bullets */
 }

@@ -25,8 +25,8 @@
       <div *ngIf="symbols.length > 0">
         <div>
           <ul class="symbols">
-            <li class="row" *ngFor="let symbol of symbols; let i = index" [class.button.selected]="i === selectedIndex">
-              <div class="col">
+            <li *ngFor="let symbol of symbols; let i = index" [class.button.selected]="i === selectedIndex">
+              <div>
                 <button type="button" class="btn btn-primary" [class.selected]="symbol === selectedSymbol"
                   (click)="onSelect(symbol,i)">{{symbol.id}}
                   <span class="symbol">
@@ -40,10 +40,10 @@
         </div>
       </div>
 
-      <div *ngIf="prefixes.length > 0" class="col">
+      <div *ngIf="prefixes.length > 0">
         <ul class="prefixes">
-          <li class="row" *ngFor="let prefix of prefixes; let i = index">
-            <div class="col">
+          <li *ngFor="let prefix of prefixes; let i = index">
+            <div>
               <button type="button" class="btn btn-primary" [class.selected]="prefix === selectedPrefix"
                 (click)="onSelectPrefix(prefix,i)">{{prefix.prefix}}
                 <span class="prefix">
@@ -62,6 +62,5 @@
       </div>
     </div>
   </div>
-
 
 </div>

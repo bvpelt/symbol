@@ -43,10 +43,14 @@
 
       <div *ngIf="prefixes.length > 0" class="col">
         <ul class="prefixes">
-          <li *ngFor="let prefix of prefixes">
-            <div class="row">
-              <div class="col">{{prefix.prefix}}</div>
-              <div class="col">{{prefix.type}}</div>
+          <li class="row" *ngFor="let prefix of prefixes; let i = index">
+            <div class="col">
+              <button type="button" class="btn btn-primary" [class.selected]="prefix === selectedPrefix"
+                (click)="onSelectPrefix(prefix,i)">{{prefix.prefix}}
+                <span class="prefix">
+                  <span class="type">{{prefix.type}}</span>
+                </span>
+              </button>
             </div>
           </li>
         </ul>

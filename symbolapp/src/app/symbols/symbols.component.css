@@ -16,13 +16,13 @@ button {
   overflow-y: scroll;
 }
 
-.name {  
+.name {
   margin: 0 0 0 10px;
 }
 
 .symbol {
   margin: 3px 5px 3px 0px;
-  padding: 5px;  
+  padding: 5px;
   background-color: white;
   color: black;
 }
@@ -48,4 +48,26 @@ button {
 
 .prefixes {
   list-style-type: none; /* Remove bullets */
+}
+
+.prefixes button.selected {
+  background-color: black;
+  color: white;
+}
+
+.prefixes button.selected:hover {
+  background-color: #505050;
+  color: white;
+}
+
+.prefixes button.selected:active {
+  background-color: black;
+  color: white;
+}
+
+.prefix {
+    margin: 3px 5px 3px 0px;
+    padding: 5px;
+    background-color: white;
+    color: black;
 }

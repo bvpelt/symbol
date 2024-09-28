@@ -15,8 +15,10 @@ export class SymbolsComponent implements OnInit {
   symbols: Symbol[] = [];
   prefixes: Prefix[] = [];
   selectedSymbol?: Symbol;
+  selectedPrefix?: Prefix;
   searchsymbol?: string;
   selectedIndex: number = 0;
+  selectedIndexPrefix: number = 0;
 
   constructor(private symbolService: SymbolService, private messageService: MessageService) {
   }
@@ -26,12 +28,11 @@ export class SymbolsComponent implements OnInit {
 
   onSearch(search?: string): void {
     this.prefixes = [];
-    console.log('search argument: ', search);
     if ((typeof (search) === "undefined")) {
       search = 'lt001';
     }
+    this.messageService.add(new Message(new Date(), Severity.info, 'SymbolsComponent - onSearch with: ' + search));
     this.getSymbols(search, '40');
-    //document.querySelector('li')?.focus();
   }
 
   onPrefixes(): void {
@@ -43,6 +44,14 @@ export class SymbolsComponent implements OnInit {
     this.messageService.add(new Message(new Date(), Severity.info, 'SymbolsComponent - onSelect : index ' + index + ' symbol name: ' + symbol.name));
     this.selectedIndex = index;
     this.selectedSymbol = symbol;
+  }
+
+  onSelectPrefix(prefix: Prefix, index: number): void {
+    this.messageService.add(new Message(new Date(), Severity.info, 'SymbolsComponent - onSelectPrefix : index ' + index + ' prefix: ' + prefix.prefix));
+    this.selectedIndexPrefix = index;
+    this.selectedPrefix = prefix;
+
+    this.onSearch(prefix.prefix);
   }
 
   @HostListener('document:keydown', ['$event'])

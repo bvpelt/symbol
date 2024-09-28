@@ -31,6 +31,10 @@ button {
   margin: 0 0 0 10px;
 }
 
+.symbol-box {
+  margin: 0px 0px 0px 12px;
+}
+
 .symbols button.selected {
   background-color: black;
   color: white;

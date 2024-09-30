@@ -2,6 +2,10 @@ label,p {
   margin: 6px 6px 6px 0px;
 }
 
+ul {
+  padding: 0;
+}
+
 input {
   margin: 5px;
 }

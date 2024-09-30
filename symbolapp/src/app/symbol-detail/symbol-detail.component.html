@@ -1,68 +1,66 @@
-<div>
-    <div *ngIf="symbol">
-        <h2>{{symbol.name}} Details</h2>
-        <div >
-            <div class="col-8">id:</div>
-            <div class="col-4">{{symbol.id}}</div>
-        </div>
-        <div>
-            <div class="row">
-                <div class="col-8">name</div>
-                <div class="col-4">{{symbol.name}}</div>
-            </div>
-            <div class="row">
-                <div class="col-8">type</div>
-                <div class="col-4">{{symbol.type}}</div>
-            </div>
-            <div class="row">
-                <div class="col-8">size</div>
-                <div class="cocol-4l">{{symbol.size}}</div>
-            </div>
-            <div class="row">
-                <div class="col-8">rotation</div>
-                <div class="col-4">{{symbol.rotation}}</div>
-            </div>
-            <div class="row">
-                <div class="col-8">fill</div>
-                <div class="col-4">{{symbol.fill}}</div>
-            </div>
-            <div class="row">
-                <div class="col-8">fillopacity</div>
-                <div class="col-4">{{symbol.fillopacity}}</div>
-            </div>
-            <div class="row">
-                <div class="col-8">stroke</div>
-                <div class="col-4">{{symbol.stroke}}</div>
-            </div>
-            <div class="row">
-                <div class="col-8">strokeopacity</div>
-                <div class="col-4">{{symbol.strokeopacity}}</div>
-            </div>
-            <div class="row">
-                <div class="col-8">strokewidth</div>
-                <div class="col-4">{{symbol.strokewidth}}</div>
-            </div>
-            <div class="row">
-                <div class="col-8">stokelinecap</div>
-                <div class="col-4">{{symbol.stokelinecap}}</div>
-            </div>
-            <div class="row">
-                <div class="col-8">strokedasharray</div>
-                <div class="col-4">{{symbol.strokedasharray}}</div>
-            </div>
-            <div class="row">
-                <div class="col-8">strokelinejoinfill</div>
-                <div class="col-4">{{symbol.strokelinejoinfill}}</div>
-            </div>
-            <div class="row">
-                <div class="col-8">symbol</div>
-                <div class="col-4">{{symbol.symbol}}</div>
-            </div>
-            <div class="row">
-                <div class="col-8">welknown name</div>
-                <div class="col-4">{{symbol.welknownname}}</div>
-            </div>
-        </div>
+<div *ngIf="symbol">
+  <h2>{{symbol.name}} Details</h2>
+  <div>
+    <div class="left">id:</div>
+    <div class="right">{{symbol.id}}</div>
+  </div>
+  <div>
+    <div class="wrapper">
+      <div class="left">name</div>
+      <div class="right">{{symbol.name}}</div>
     </div>
-    <canvas id="canvas1"></canvas>
+    <div class="wrapper">
+      <div class="left">type</div>
+      <div class="right">{{symbol.type}}</div>
+    </div>
+    <div class="wrapper">
+      <div class="left">size</div>
+      <div class="right">{{symbol.size}}</div>
+    </div>
+    <div class="wrapper">
+      <div class="left">rotation</div>
+      <div class="right">{{symbol.rotation}}</div>
+    </div>
+    <div class="wrapper">
+      <div class="left">fill</div>
+      <div class="right">{{symbol.fill}}</div>
+    </div>
+    <div class="wrapper">
+      <div class="left">fillopacity</div>
+      <div class="right">{{symbol.fillopacity}}</div>
+    </div>
+    <div class="wrapper">
+      <div class="left">stroke</div>
+      <div class="right">{{symbol.stroke}}</div>
+    </div>
+    <div class="wrapper">
+      <div class="left">strokeopacity</div>
+      <div class="right">{{symbol.strokeopacity}}</div>
+    </div>
+    <div class="wrapper">
+      <div class="left">strokewidth</div>
+      <div class="right">{{symbol.strokewidth}}</div>
+    </div>
+    <div class="wrapper">
+      <div class="left">stokelinecap</div>
+      <div class="right">{{symbol.stokelinecap}}</div>
+    </div>
+    <div class="wrapper">
+      <div class="left">strokedasharray</div>
+      <div class="right">{{symbol.strokedasharray}}</div>
+    </div>
+    <div class="wrapper">
+      <div class="left">strokelinejoinfill</div>
+      <div class="right">{{symbol.strokelinejoinfill}}</div>
+    </div>
+    <div class="wrapper">
+      <div class="left">symbol</div>
+      <div class="right">{{symbol.symbol}}</div>
+    </div>
+    <div class="wrapper">
+      <div class="left">welknown name</div>
+      <div class="right">{{symbol.welknownname}}</div>
+    </div>
+  </div>
 </div>
+<canvas id="canvas1"></canvas>

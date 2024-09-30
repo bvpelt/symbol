@@ -1,0 +1,12 @@
+.wrapper {
+  width: 100%;
+}
+
+.left {
+  display: inline-block;
+  width: 10em;
+}
+
+.right {
+  display: inline-block;
+}
